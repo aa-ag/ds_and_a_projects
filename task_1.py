@@ -21,6 +21,8 @@ def unique_phone_numbers():
      creates a list of unique phone numbers
      prints out final count in expected format
     '''
+    global regex
+
     unique_phone_numbers = list()
 
     with open('texts.csv', 'r') as f:

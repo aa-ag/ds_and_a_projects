@@ -9,6 +9,10 @@ September 2016.".
 
 ###--- IMPORTS ---###
 import csv
+import re
+
+###--- GLOBAL VARIABLES ---###
+regex = r"[\s+\(|\)]"
 
 
 ###--- CODE ---###
@@ -19,13 +23,16 @@ def longest_time_on_the_phone():
      creates a list of phone call lenghts, in seconds
      prints out phone number of longest call in expected format
     '''
-    with open('texts.csv', 'r') as f:
-        reader = csv.reader(f)
-        texts = list(reader)
+    global regex
 
     with open('calls.csv', 'r') as f:
         reader = csv.reader(f)
         calls = list(reader)
+
+    time_on_phone_by_number = dict()
+
+    for row in calls:
+        pass
 
     print(f"{} spent the longest time, {} seconds, on the phone during")
 
@@ -33,3 +40,28 @@ def longest_time_on_the_phone():
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
     longest_time_on_the_phone()
+
+
+'''
+SOLUTION:
+- read calls
+- create a data structure where each phone number can have a total
+- attribute seconds to each number in the call
+- sort this data structure
+- print phone number whose total is highest
+
+BIG QUESTION:
+
+the average text message lenght is: 7 words*
+it takes the average human 44 wpm seconds to write a text **
+it takes the average human 250 seconds to read a text ***
+
+* https://crushhapp.com/blog/k-wrap-it-up-mom
+** https://www.ratatype.com/learn/average-typing-speed/
+*** https://irisreading.com/what-is-the-average-reading-speed/
+
+if ^ then: 
+    with open('texts.csv', 'r') as f:
+        reader = csv.reader(f)
+        texts = list(reader)
+'''
