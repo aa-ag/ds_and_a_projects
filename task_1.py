@@ -18,8 +18,8 @@ def unique_phone_numbers():
     '''
      opens and reads texts.csv
      opens and reads calls.csv
-     creates a clean list of unique phone numbers
-     prints out final count adding both
+     creates a list of unique phone numbers
+     prints out final count in expected format
     '''
     unique_phone_numbers = list()
 
@@ -28,6 +28,7 @@ def unique_phone_numbers():
         texts = list(reader)
 
     for row in texts:
+
         from_number = re.sub(regex, '', str(row[0].lstrip('0')))
 
         if from_number not in unique_phone_numbers:
