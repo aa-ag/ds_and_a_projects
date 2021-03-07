@@ -42,7 +42,7 @@ pattern = "(080)"
 def part_a():
     '''
      open & read calls.csv
-     use predifined pattern to check if number is from Bangalore
+     use predefined pattern to check if number is from Bangalore;
      if it is, add to answer in expected format
      then print that answer
     '''
@@ -79,8 +79,8 @@ def part_b():
      iterates through calls (list)
      increments `calls_from_and_to_bangalore` by 1
      each time caller and recipient are both from Bangalore
-     computes `calls_from_and_to_bangalore` 
-     as a percentage of total calls
+     computes `calls_from_and_to_bangalore` as a percentage 
+     of total calls
     '''
     f = open('calls.csv', 'r')
     reader = csv.reader(f)

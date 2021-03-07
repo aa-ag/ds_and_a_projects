@@ -15,7 +15,7 @@ regex = r"[\s+\(|\)]"
 
 
 ###--- CODE ---###
-def first_record_of_texts():
+def get_first_record_of_texts():
     '''
      opens & reads texts.csv
      slices first record/first element in list
@@ -40,7 +40,7 @@ def first_record_of_texts():
     print(answer_as_expected)
 
 
-def last_record_of_calls():
+def get_last_record_of_calls():
     '''
      opens calls.csv
      reads calls.csv
@@ -66,5 +66,5 @@ def last_record_of_calls():
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    first_record_of_texts()
-    last_record_of_calls()
+    get_first_record_of_texts()
+    get_last_record_of_calls()

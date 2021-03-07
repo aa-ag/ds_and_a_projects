@@ -19,8 +19,8 @@ regex = r"[\s+\(|\)]"
 ###--- CODE ---###
 def find_number_with_longest_time_on_the_phone():
     '''
-     opens and reads texts.csv
      opens and reads calls.csv
+     no need to open texts.csv since looking for duration
      creates a list of phone call lenghts, in total seconds
      prints out phone number of longest call in expected format
     '''
@@ -33,8 +33,8 @@ def find_number_with_longest_time_on_the_phone():
 
     for row in calls:
 
-        caller_number = re.sub(regex, '', row[0])
-        call_recipient = re.sub(regex, '', row[1])
+        caller_number = row[0]
+        call_recipient = row[1]
 
         duration = int(row[3])
 

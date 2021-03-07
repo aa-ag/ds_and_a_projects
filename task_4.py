@@ -21,7 +21,7 @@ regex = r"[\s+\(|\)]"
 
 
 ###--- CODE ---###
-def identify_potential_telemarketers():
+def identify_possible_telemarketers():
     '''
      open & read calls.csv, as well as texts.csv
      create a list of possible telemarketers.
@@ -65,4 +65,4 @@ def identify_potential_telemarketers():
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    identify_potential_telemarketers()
+    identify_possible_telemarketers()
