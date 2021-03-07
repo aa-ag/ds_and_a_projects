@@ -13,9 +13,15 @@ The list of numbers should be print out one per line in lexicographic order with
 
 ###--- IMPORTS ---###
 import csv
+import re
 
+
+###--- GLOBAL VARIABLES ---###
+regex = r"[\s+\(|\)]"
 
 ###--- CODE ---###
+
+
 def identify_potential_telemarketers():
     '''
      open & read calls.csv, as well as texts.csv
@@ -26,6 +32,7 @@ def identify_potential_telemarketers():
      (iii) never receive texts, or  
      (iv) never send texts.
     '''
+    global regex
 
     f = open('texts.csv', 'r')
     reader = csv.reader(f)
@@ -37,14 +44,9 @@ def identify_potential_telemarketers():
 
     answer_string = "These numbers could be telemarketers: "
 
-    numbers_that_made_outgoing_calls = list()
-
     numbers_that_received_incoming_calls = list()
 
     for row in calls:
-        if row[0] not in numbers_that_made_outgoing_calls:
-            numbers_that_made_outgoing_calls.append(row[0])
-
         if row[1] not in numbers_that_received_incoming_calls:
             numbers_that_received_incoming_calls.append(row[1])
 
@@ -53,13 +55,15 @@ def identify_potential_telemarketers():
     answer_list = list()
 
     for row in calls:
-        if row[0] in numbers_that_made_outgoing_calls and \
-                row[0] not in numbers_that_received_incoming_calls and \
+        if row[0] not in numbers_that_received_incoming_calls and \
             row[0] not in texts and \
                 row[0] not in answer_list:
             answer_list.append(row[0])
 
-    print(len(answer_list))
+    print(answer_string)
+
+    for potential_telemarketer in sorted(answer_list):
+        print(re.sub(regex, '', potential_telemarketer))
 
 
 ###--- DRIVER CODE ---###
