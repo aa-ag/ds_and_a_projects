@@ -32,7 +32,6 @@ The percentage should have 2 decimal digits
 
 ###--- IMPORTS ---###
 import csv
-import re
 
 
 ###--- GLOBAL VARIABLES ---###
