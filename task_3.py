@@ -47,12 +47,14 @@ def part_a():
     if it is, add to answer in expected format 
     then print that answer
     '''
-    with open('calls.csv', 'r') as f:
-        reader = csv.reader(f)
-        calls = list(reader)
+    f = open('calls.csv', 'r')
+    reader = csv.reader(f)
+    calls = list(reader)
+
+    call_recipients_called_by_a_number_from_bangalore = list()
 
     if regex in calls[6][0]:
-        print(calls[6][1])
+        print(calls[6][1].split()[0])
 
     # expected_answer_format = "The numbers called by" \
     #     " people in Bangalore have codes: {}"
