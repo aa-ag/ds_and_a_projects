@@ -42,7 +42,7 @@ pattern = "(080)"
 def part_a():
     '''
     open & read calls.csv
-    use regular expression to check if number is from Bangalore
+    use predifined pattern to check if number is from Bangalore
     if it is, add to answer in expected format
     then print that answer
     '''

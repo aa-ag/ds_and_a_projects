@@ -16,15 +16,52 @@ import csv
 
 
 ###--- CODE ---###
-with open('texts.csv', 'r') as f:
+def identify_potential_telemarketers():
+    '''
+     open & read calls.csv, as well as texts.csv
+     create a list of possible telemarketers.
+     these numbers:
+     (i) make outgoing calls
+     (ii) never receive incoming calls, 
+     (iii) never receive texts, or  
+     (iv) never send texts.
+    '''
+
+    f = open('texts.csv', 'r')
     reader = csv.reader(f)
     texts = list(reader)
 
-with open('calls.csv', 'r') as f:
+    f = open('calls.csv', 'r')
     reader = csv.reader(f)
     calls = list(reader)
+
+    answer_string = "These numbers could be telemarketers: "
+
+    numbers_that_made_outgoing_calls = list()
+
+    numbers_that_received_incoming_calls = list()
+
+    for row in calls:
+        if row[0] not in numbers_that_made_outgoing_calls:
+            numbers_that_made_outgoing_calls.append(row[0])
+
+        if row[1] not in numbers_that_received_incoming_calls:
+            numbers_that_received_incoming_calls.append(row[1])
+
+    # The list of numbers should be print out one per line
+    # in lexicographic order with no duplicates.
+    answer_list = list()
+
+    for row in calls:
+        if row[0] in numbers_that_made_outgoing_calls and \
+                row[0] not in numbers_that_received_incoming_calls and \
+            row[0] not in texts and \
+                row[0] not in answer_list:
+            answer_list.append(row[0])
+
+    print(len(answer_list))
 
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    pass
+    identify_potential_telemarketers()

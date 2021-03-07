@@ -14,7 +14,7 @@ regex = r"[\s+\(|\)]"
 
 
 ###--- CODE ---###
-def unique_phone_numbers():
+def get_unique_phone_numbers():
     '''
      opens and reads texts.csv
      opens and reads calls.csv
@@ -63,4 +63,4 @@ def unique_phone_numbers():
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    unique_phone_numbers()
+    get_unique_phone_numbers()
