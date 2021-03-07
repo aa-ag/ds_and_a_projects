@@ -36,7 +36,7 @@ import re
 
 
 ###--- GLOBAL VARIABLES ---###
-regex = r"(080)"
+pattern = "(080)"
 
 
 ###--- CODE ---###
@@ -51,10 +51,15 @@ def part_a():
     reader = csv.reader(f)
     calls = list(reader)
 
-    call_recipients_called_by_a_number_from_bangalore = list()
+    called_by_a_bangalore_number = list()
 
-    if regex in calls[6][0]:
-        print(calls[6][1].split()[0])
+    for i in range(len(calls)):
+        if pattern in calls[i][0]:
+            if calls[i][1].split()[0] not in called_by_a_bangalore_number:
+                called_by_a_bangalore_number.append(
+                    calls[i][1].split()[0])
+
+    print(called_by_a_bangalore_number)
 
     # expected_answer_format = "The numbers called by" \
     #     " people in Bangalore have codes: {}"
