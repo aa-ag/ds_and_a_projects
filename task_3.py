@@ -1,19 +1,3 @@
-###--- IMPORTS ---###
-import csv
-
-
-###--- CODE ---###
-with open('texts.csv', 'r') as f:
-    reader = csv.reader(f)
-    texts = list(reader)
-
-with open('calls.csv', 'r') as f:
-    reader = csv.reader(f)
-    calls = list(reader)
-
-
-###--- DRIVER CODE ---###
-
 """
 TASK 3:
 (080) is the area code for fixed line telephones in Bangalore.
@@ -23,12 +7,12 @@ have the form (080)xxxxxxx.)
 Part A: Find all of the area codes and mobile prefixes called by people
 in Bangalore.
  - Fixed lines start with an area code enclosed in brackets. The area
-   codes vary in length but always begin with 0.
+	 codes vary in length but always begin with 0.
  - Mobile numbers have no parentheses, but have a space in the middle
-   of the number to help readability. The prefix of a mobile number
-   is its first four digits, and they always start with 7, 8 or 9.
+	 of the number to help readability. The prefix of a mobile number
+	 is its first four digits, and they always start with 7, 8 or 9.
  - Telemarketers' numbers have no parentheses or space, but they start
-   with the area code 140.
+	 with the area code 140.
 
 Print the answer as part of a message:
 "The numbers called by people in Bangalore have codes:"
@@ -45,3 +29,31 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+###--- IMPORTS ---###
+import csv
+import re
+
+
+###--- GLOBAL VARIABLES ---###
+regex = r"[\s+\(|\)]"
+
+
+###--- CODE ---###
+def find_all_of_the_area_codes_and_mobile_prefixes():
+    '''
+     open & read calls.csv
+     use regular expression to count 
+     how many of the provided pattern there are;
+     then print that count
+    '''
+    with open('calls.csv', 'r') as f:
+        reader = csv.reader(f)
+        calls = list(reader)
+
+    pass
+
+
+###--- DRIVER CODE ---###
+if __name__ == '__main__':
+    find_all_of_the_area_codes_and_mobile_prefixes()

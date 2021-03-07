@@ -14,8 +14,9 @@ import re
 ###--- GLOBAL VARIABLES ---###
 regex = r"[\s+\(|\)]"
 
-
 ###--- CODE ---###
+
+
 def longest_time_on_the_phone():
     '''
      opens and reads texts.csv
