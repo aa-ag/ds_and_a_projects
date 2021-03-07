@@ -32,9 +32,24 @@ def longest_time_on_the_phone():
     time_on_phone_by_number = dict()
 
     for row in calls:
-        pass
 
-    print(f"{} spent the longest time, {} seconds, on the phone during")
+        from_number = re.sub(regex, '', str(row[0]))
+        to_number = re.sub(regex, '', str(row[1]))
+        duration = int(row[3])
+
+        if from_number in time_on_phone_by_number:
+            time_on_phone_by_number[from_number] += duration
+        else:
+            time_on_phone_by_number[from_number] = duration
+
+        if to_number in time_on_phone_by_number:
+            time_on_phone_by_number[to_number] += duration
+        else:
+            time_on_phone_by_number[to_number] = duration
+
+    print(time_on_phone_by_number)
+
+    # print(f"{} spent the longest time, {} seconds, on the phone during")
 
 
 ###--- DRIVER CODE ---###
