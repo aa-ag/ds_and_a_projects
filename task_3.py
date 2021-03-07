@@ -42,9 +42,9 @@ pattern = "(080)"
 ###--- CODE ---###
 def part_a():
     '''
-    open & read calls.csv 
+    open & read calls.csv
     use regular expression to check if number is from Bangalore
-    if it is, add to answer in expected format 
+    if it is, add to answer in expected format
     then print that answer
     '''
     f = open('calls.csv', 'r')
@@ -62,7 +62,7 @@ def part_a():
                 if area_code not in called_by_a_bangalore_number:
                     called_by_a_bangalore_number.append(area_code)
 
-            # alternatively, if does not have parenthesis, add prefix to list
+            # alternatively, add prefix to list
             elif "(" not in calls:
                 prefix = calls[i][1].split()[0]
                 if prefix not in called_by_a_bangalore_number:
@@ -74,6 +74,27 @@ def part_a():
     print(expected_answer_format)
 
 
+def part_b():
+    f = open('calls.csv', 'r')
+    reader = csv.reader(f)
+    calls = list(reader)
+
+    calls_from_and_to_bangalore = 0
+
+    for row in calls:
+        if pattern in row[0] and pattern in row[1]:
+            calls_from_and_to_bangalore += 1
+
+    percentage_for_answer = round((
+        calls_from_and_to_bangalore / len(calls)) * 100, 2)
+
+    expected_answer_format = f"{percentage_for_answer} percent" \
+        " of calls from fixed lines in Bangalore are calls"
+
+    print(expected_answer_format)
+
+
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    part_a()
+    # part_a()
+    part_b()
