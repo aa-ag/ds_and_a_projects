@@ -54,15 +54,24 @@ def part_a():
     called_by_a_bangalore_number = list()
 
     for i in range(len(calls)):
+        # if called by a number in Bangalore
         if pattern in calls[i][0]:
-            if calls[i][1].split()[0] not in called_by_a_bangalore_number:
-                called_by_a_bangalore_number.append(
-                    calls[i][1].split()[0])
+            # if has parenthesis, add area code to list
+            if "(" in calls[i][1]:
+                area_code = calls[i][1].split(')')[0].lstrip('(')
+                if area_code not in called_by_a_bangalore_number:
+                    called_by_a_bangalore_number.append(area_code)
 
-    print(called_by_a_bangalore_number)
+            # alternatively, if does not have parenthesis, add prefix to list
+            elif "(" not in calls:
+                prefix = calls[i][1].split()[0]
+                if prefix not in called_by_a_bangalore_number:
+                    called_by_a_bangalore_number.append(prefix)
 
-    # expected_answer_format = "The numbers called by" \
-    #     " people in Bangalore have codes: {}"
+    expected_answer_format = "The numbers called by" \
+        f" people in Bangalore have codes: {called_by_a_bangalore_number}"
+
+    print(expected_answer_format)
 
 
 ###--- DRIVER CODE ---###
