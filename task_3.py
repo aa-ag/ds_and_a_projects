@@ -36,24 +36,28 @@ import re
 
 
 ###--- GLOBAL VARIABLES ---###
-regex = r"[\s+\(|\)]"
+regex = r"(080)"
 
 
 ###--- CODE ---###
-def find_all_of_the_area_codes_and_mobile_prefixes():
+def part_a():
     '''
-     open & read calls.csv
-     use regular expression to count 
-     how many of the provided pattern there are;
-     then print that count
+    open & read calls.csv 
+    use regular expression to check if number is from Bangalore
+    if it is, add to answer in expected format 
+    then print that answer
     '''
     with open('calls.csv', 'r') as f:
         reader = csv.reader(f)
         calls = list(reader)
 
-    pass
+    if regex in calls[6][0]:
+        print(calls[6][1])
+
+    # expected_answer_format = "The numbers called by" \
+    #     " people in Bangalore have codes: {}"
 
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    find_all_of_the_area_codes_and_mobile_prefixes()
+    part_a()
