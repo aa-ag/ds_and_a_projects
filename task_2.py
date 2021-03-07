@@ -11,52 +11,52 @@ September 2016.".
 import csv
 import re
 
+
 ###--- GLOBAL VARIABLES ---###
 regex = r"[\s+\(|\)]"
 
+
 ###--- CODE ---###
-
-
-def longest_time_on_the_phone():
+def find_number_with_longest_time_on_the_phone():
     '''
      opens and reads texts.csv
      opens and reads calls.csv
-     creates a list of phone call lenghts, in seconds
+     creates a list of phone call lenghts, in total seconds
      prints out phone number of longest call in expected format
     '''
-    global regex
 
-    with open('calls.csv', 'r') as f:
-        reader = csv.reader(f)
-        calls = list(reader)
+    f = open('calls.csv', 'r')
+    reader = csv.reader(f)
+    calls = list(reader)
 
     time_on_phone_by_number = dict()
 
     for row in calls:
 
-        from_number = re.sub(regex, '', str(row[0]))
-        to_number = re.sub(regex, '', str(row[1]))
+        caller_number = re.sub(regex, '', row[0])
+        call_recipient = re.sub(regex, '', row[1])
+
         duration = int(row[3])
 
-        if from_number in time_on_phone_by_number:
-            time_on_phone_by_number[from_number] += duration
+        if caller_number in time_on_phone_by_number:
+            time_on_phone_by_number[caller_number] += duration
         else:
-            time_on_phone_by_number[from_number] = duration
+            time_on_phone_by_number[caller_number] = duration
 
-        if to_number in time_on_phone_by_number:
-            time_on_phone_by_number[to_number] += duration
+        if call_recipient in time_on_phone_by_number:
+            time_on_phone_by_number[call_recipient] += duration
         else:
-            time_on_phone_by_number[to_number] = duration
+            time_on_phone_by_number[call_recipient] = duration
 
     phone_with_longest_duration = max(
         time_on_phone_by_number, key=lambda x: time_on_phone_by_number[x])
 
     print(
         f"{phone_with_longest_duration} spent the longest time,"
-        f" {time_on_phone_by_number[str(phone_with_longest_duration)]} seconds,"
+        f" {time_on_phone_by_number[phone_with_longest_duration]} seconds,"
         " on the phone during September 2016.")
 
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    longest_time_on_the_phone()
+    find_number_with_longest_time_on_the_phone()

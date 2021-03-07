@@ -21,40 +21,38 @@ def get_unique_phone_numbers():
      creates a list of unique phone numbers
      prints out final count in expected format
     '''
-    global regex
+
+    f = open('texts.csv', 'r')
+    reader = csv.reader(f)
+    texts = list(reader)
 
     unique_phone_numbers = list()
 
-    with open('texts.csv', 'r') as f:
-        reader = csv.reader(f)
-        texts = list(reader)
-
     for row in texts:
+        text_sender = re.sub(regex, '', row[0].lstrip('0'))
 
-        from_number = re.sub(regex, '', str(row[0].lstrip('0')))
+        if text_sender not in unique_phone_numbers:
+            unique_phone_numbers.append(text_sender)
 
-        if from_number not in unique_phone_numbers:
-            unique_phone_numbers.append(from_number)
+        text_recipient = re.sub(regex, '', row[1].lstrip('0'))
 
-        to_number = re.sub(regex, '', str(row[1].lstrip('0')))
+        if text_recipient not in unique_phone_numbers:
+            unique_phone_numbers.append(text_recipient)
 
-        if to_number not in unique_phone_numbers:
-            unique_phone_numbers.append(to_number)
-
-    with open('calls.csv', 'r') as f:
-        reader = csv.reader(f)
-        calls = list(reader)
+    f = open('calls.csv', 'r')
+    reader = csv.reader(f)
+    calls = list(reader)
 
     for row in calls:
-        from_number = re.sub(regex, '', str(row[0].lstrip('0')))
+        caller = re.sub(regex, '', row[0].lstrip('0'))
 
-        if from_number not in unique_phone_numbers:
-            unique_phone_numbers.append(from_number)
+        if caller not in unique_phone_numbers:
+            unique_phone_numbers.append(caller)
 
-        to_number = re.sub(regex, '', str(row[1].lstrip('0')))
+        call_recipient = re.sub(regex, '', row[1].lstrip('0'))
 
-        if to_number not in unique_phone_numbers:
-            unique_phone_numbers.append(to_number)
+        if call_recipient not in unique_phone_numbers:
+            unique_phone_numbers.append(call_recipient)
 
     print(
         f"There are {len(unique_phone_numbers)}"

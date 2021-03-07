@@ -17,26 +17,24 @@ regex = r"[\s+\(|\)]"
 ###--- CODE ---###
 def first_record_of_texts():
     '''
-     opens texts.csv
-     reads texts.csv
+     opens & reads texts.csv
      slices first record/first element in list
      returns first record from text.csv
      in expected format string
     '''
-    global regex
 
-    with open('texts.csv', 'r') as f:
-        reader = csv.reader(f)
-        texts = list(reader)
+    f = open('texts.csv', 'r')
+    reader = csv.reader(f)
+    texts = list(reader)
 
     first_record = texts[0]
 
-    from_number = re.sub(regex, '', str(first_record[0]))
-    to_number = re.sub(regex, '', str(first_record[1]))
+    from_number = re.sub(regex, '', first_record[0].lstrip('0'))
+    to_number = re.sub(regex, '', first_record[1].lstrip('0'))
     text_time = first_record[2].split()[1]
 
     answer_as_expected = f"First record of texts, " \
-        f"{from_number.lstrip('0')} texts {to_number.lstrip('0')} " \
+        f"{from_number} texts {to_number} " \
         f"at time {text_time}"
 
     print(answer_as_expected)
@@ -48,20 +46,19 @@ def last_record_of_calls():
      reads calls.csv
      returns first record from calls.csv
     '''
-    global regex
 
-    with open('calls.csv', 'r') as f:
-        reader = csv.reader(f)
-        calls = list(reader)
+    f = open('calls.csv', 'r')
+    reader = csv.reader(f)
+    calls = list(reader)
 
-    last_record = calls[-1]
+    last_record = calls.pop()
 
-    from_number = re.sub(regex, '', str(last_record[0]))
-    to_number = re.sub(regex, '', str(last_record[1]))
+    from_number = re.sub(regex, '', last_record[0].lstrip('0'))
+    to_number = re.sub(regex, '', last_record[1].lstrip('0'))
     call_time = last_record[2].split()[1]
 
     answer_as_expected = f"Last record of calls, " \
-        f"{from_number.lstrip('0')} calls {to_number.lstrip('0')} " \
+        f"{from_number} calls {to_number} " \
         f"at time {call_time}"
 
     print(answer_as_expected)

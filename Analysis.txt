@@ -1,0 +1,46 @@
+--------------------------------------------------------------------
+*** Time Complexity Analysis ***
+--------------------------------------------------------------------
+
+Provide a text file accurately 
+explaining their run time analysis (Worst-Case Big-O Notation) 
+for each solution they produced.
+
+--------------------------------------------------------------------
+
+- Task 0:
+    
+    O(n). While getting the last item in list is O(1),
+    because it's using `pop()`.* Combined, getting first
+    and last items, have a worst-case-scenario of O(n) 
+    because although it performs a few operations,
+    those remain constant independent of input size
+
+- Task 1:
+
+    O(n). Althought there are two loops, and `open()` has a constant
+    time complexity, iterating through each row in both documents 
+    has a time complexity of O(n) -- because execution time will grow
+    linearly as size of input grows.
+
+- Task 2:
+
+    O(n log n) -- Looks a lot like `task_1.py` in terms of iteration.
+    Tried to gain speed by storing into a dict(), except there is a step 
+    where I sort a dictionary. **
+    
+- Task 3:
+
+    O(n). Both `part_a()` & `part_b` are both O(n) for the same reasons.
+
+- Task 4:
+
+    O(n log n). Iteration is O(n) + O(n log n) by using `sorted()`.
+
+Common to all of them, opening & reading files with `open()` 
+is O(1) or constant time.***
+
+--------------------------------------------------------------------
+* https://wiki.python.org/moin/TimeComplexity
+** https://stackoverflow.com/questions/40751144/time-complexity-of-sorting-a-dictionary
+*** https://github.com/python/cpython/blob/master/Lib/_pyio.py

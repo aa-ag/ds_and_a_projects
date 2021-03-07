@@ -41,10 +41,10 @@ pattern = "(080)"
 ###--- CODE ---###
 def part_a():
     '''
-    open & read calls.csv
-    use predifined pattern to check if number is from Bangalore
-    if it is, add to answer in expected format
-    then print that answer
+     open & read calls.csv
+     use predifined pattern to check if number is from Bangalore
+     if it is, add to answer in expected format
+     then print that answer
     '''
     f = open('calls.csv', 'r')
     reader = csv.reader(f)
@@ -74,6 +74,14 @@ def part_a():
 
 
 def part_b():
+    '''
+     open and reads calls.csv
+     iterates through calls (list)
+     increments `calls_from_and_to_bangalore` by 1
+     each time caller and recipient are both from Bangalore
+     computes `calls_from_and_to_bangalore` 
+     as a percentage of total calls
+    '''
     f = open('calls.csv', 'r')
     reader = csv.reader(f)
     calls = list(reader)
@@ -88,12 +96,13 @@ def part_b():
         calls_from_and_to_bangalore / len(calls)) * 100, 2)
 
     expected_answer_format = f"{percentage_for_answer} percent" \
-        " of calls from fixed lines in Bangalore are calls"
+        " of calls from fixed lines in Bangalore are calls" \
+        " to other fixed lines in Bangalore."
 
     print(expected_answer_format)
 
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    # part_a()
+    part_a()
     part_b()
