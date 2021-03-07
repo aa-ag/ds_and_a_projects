@@ -47,36 +47,15 @@ def longest_time_on_the_phone():
         else:
             time_on_phone_by_number[to_number] = duration
 
-    print(time_on_phone_by_number)
+    phone_with_longest_duration = max(
+        time_on_phone_by_number, key=lambda x: time_on_phone_by_number[x])
 
-    # print(f"{} spent the longest time, {} seconds, on the phone during")
+    print(
+        f"{phone_with_longest_duration} spent the longest time,"
+        f" {time_on_phone_by_number[str(phone_with_longest_duration)]} seconds,"
+        " on the phone during September 2016.")
 
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
     longest_time_on_the_phone()
-
-
-'''
-SOLUTION:
-- read calls
-- create a data structure where each phone number can have a total
-- attribute seconds to each number in the call
-- sort this data structure
-- print phone number whose total is highest
-
-BIG QUESTION:
-
-the average text message lenght is: 7 words*
-it takes the average human 44 wpm seconds to write a text **
-it takes the average human 250 seconds to read a text ***
-
-* https://crushhapp.com/blog/k-wrap-it-up-mom
-** https://www.ratatype.com/learn/average-typing-speed/
-*** https://irisreading.com/what-is-the-average-reading-speed/
-
-if ^ then: 
-    with open('texts.csv', 'r') as f:
-        reader = csv.reader(f)
-        texts = list(reader)
-'''
