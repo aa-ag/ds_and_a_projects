@@ -27,7 +27,7 @@ Provide a text file accurately explaining their run time analysis
     
 - Task 3:
 
-    O(n). `part_a()` & `part_b` are both O(n) for the same reasons.
+    O(n). `part_a()` & `part_b` are both O(n).
 
 - Task 4:
 
