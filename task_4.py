@@ -35,18 +35,30 @@ def identify_possible_telemarketers():
     reader = csv.reader(f)
     calls = list(reader)
 
-    numbers_that_received_incoming_calls = set()
+    # set of numbers that
+    nope = set()
+
+    # received incoming calls
+    for call in calls:
+        nope.add(call[1])
+
+    # sent texts, and/or
+    for text in texts:
+        nope.add(text[0])
+
+    # received texts
+    for text in texts:
+        nope.add(text[1])
+
     answer = set()
 
+    # if number has made outgoing calls
     for row in calls:
-        numbers_that_received_incoming_calls.add(row[1])
-
-        if row[0] not in numbers_that_received_incoming_calls and \
-            row[0] not in texts[0] and \
-                row[0] not in texts[1]:
+        # and does not meet the other criteria
+        if row[0] not in nope:
             answer.add(row[0])
 
-    # The list of numbers should be print out one per line
+    # the list of numbers should be print out one per line
     # in lexicographic order with no duplicates.
 
     print("These numbers could be telemarketers:")
