@@ -80,23 +80,25 @@ def part_b():
     '''
      open and reads calls.csv
      iterates through calls (list)
-     increments `calls_from_and_to_bangalore` by 1
-     each time caller and recipient are both from Bangalore
-     computes `calls_from_and_to_bangalore` as a percentage 
-     of total calls
+     of all the calls made from a number starting with "(080)", 
+     what percentage of these calls were made 
+     to a number also starting with "(080)"
     '''
     f = open('calls.csv', 'r')
     reader = csv.reader(f)
     calls = list(reader)
 
-    calls_from_and_to_bangalore = 0
+    caller_in_bangalore = 0
+    call_recipient_in_bangalore = 0
 
-    for row in calls:
-        if pattern in row[0] and pattern in row[1]:
-            calls_from_and_to_bangalore += 1
+    for call in calls:
+        if call[0].startswith('(080)'):
+            caller_in_bangalore += 1
+            if call[1].startswith('(080)'):
+                call_recipient_in_bangalore += 1
 
     percentage_for_answer = round((
-        calls_from_and_to_bangalore / len(calls)) * 100, 2)
+        call_recipient_in_bangalore/caller_in_bangalore) * 100, 2)
 
     expected_answer_format = f"{percentage_for_answer} percent" \
         " of calls from fixed lines in Bangalore are calls" \
@@ -107,5 +109,5 @@ def part_b():
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    part_a()
-    # part_b()
+    # part_a()
+    part_b()
