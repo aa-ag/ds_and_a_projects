@@ -9,11 +9,6 @@ September 2016.".
 
 ###--- IMPORTS ---###
 import csv
-import re
-
-
-###--- GLOBAL VARIABLES ---###
-regex = r"[\s+\(|\)]"
 
 
 ###--- CODE ---###
