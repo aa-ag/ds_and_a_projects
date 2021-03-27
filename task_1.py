@@ -7,10 +7,6 @@ Print a message:
 
 ###--- IMPORTS ---###
 import csv
-import re
-
-###--- GLOBAL VARIABLES ---###
-regex = r"[\s+\(|\)]"
 
 
 ###--- CODE ---###
@@ -29,33 +25,19 @@ def count_unique_phone_numbers():
     unique_phone_numbers = list()
 
     for row in texts:
-        text_sender = re.sub(regex, '', row[0].lstrip('0'))
-
-        if text_sender not in unique_phone_numbers:
-            unique_phone_numbers.append(text_sender)
-
-        text_recipient = re.sub(regex, '', row[1].lstrip('0'))
-
-        if text_recipient not in unique_phone_numbers:
-            unique_phone_numbers.append(text_recipient)
+        unique_phone_numbers.append(row[0])
+        unique_phone_numbers.append(row[1])
 
     f = open('calls.csv', 'r')
     reader = csv.reader(f)
     calls = list(reader)
 
     for row in calls:
-        caller = re.sub(regex, '', row[0].lstrip('0'))
-
-        if caller not in unique_phone_numbers:
-            unique_phone_numbers.append(caller)
-
-        call_recipient = re.sub(regex, '', row[1].lstrip('0'))
-
-        if call_recipient not in unique_phone_numbers:
-            unique_phone_numbers.append(call_recipient)
+        unique_phone_numbers.append(row[0])
+        unique_phone_numbers.append(row[1])
 
     print(
-        f"There are {len(unique_phone_numbers)}"
+        f"There are {len(set(unique_phone_numbers))}"
         " different telephone numbers in the records.")
 
 
