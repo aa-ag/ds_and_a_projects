@@ -36,19 +36,18 @@ def identify_possible_telemarketers():
     calls = list(reader)
 
     numbers_that_received_incoming_calls = set()
+    answer = set()
 
     for row in calls:
         numbers_that_received_incoming_calls.add(row[1])
 
-    # The list of numbers should be print out one per line
-    # in lexicographic order with no duplicates.
-    answer = set()
-
-    for row in calls:
         if row[0] not in numbers_that_received_incoming_calls and \
             row[0] not in texts[0] and \
                 row[0] not in texts[1]:
             answer.add(row[0])
+
+    # The list of numbers should be print out one per line
+    # in lexicographic order with no duplicates.
 
     print("These numbers could be telemarketers:")
 
