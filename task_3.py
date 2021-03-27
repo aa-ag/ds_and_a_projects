@@ -92,9 +92,9 @@ def part_b():
     call_recipient_in_bangalore = 0
 
     for call in calls:
-        if call[0].startswith('(080)'):
+        if call[0].startswith(pattern):
             caller_in_bangalore += 1
-            if call[1].startswith('(080)'):
+            if call[1].startswith(pattern):
                 call_recipient_in_bangalore += 1
 
     percentage_for_answer = round((
