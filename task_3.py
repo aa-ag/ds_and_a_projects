@@ -50,27 +50,30 @@ def part_a():
     reader = csv.reader(f)
     calls = list(reader)
 
-    called_by_a_bangalore_number = list()
+    called_by_a_bangalore_number = set()
 
-    for i in range(len(calls)):
-        # if called by a number in Bangalore
-        if pattern in calls[i][0]:
-            # if has parenthesis, add area code to list
-            if "(" in calls[i][1]:
-                area_code = calls[i][1].split(')')[0].lstrip('(')
-                if area_code not in called_by_a_bangalore_number:
-                    called_by_a_bangalore_number.append(area_code)
+    # iterate over list of calls
+    for call in calls:
+        # check if caller meets condition:
+        # number starts with "(080)"?
+        if call[0].startswith(pattern):
+            if call[1].startswith('(0'):
+                called_by_a_bangalore_number.add(int(call[1].split(')')[
+                                                 0].replace('(', '')))
+            elif call[1].startswith('140'):
+                called_by_a_bangalore_number.add(140)
+            elif call[1].startswith('7') \
+                or call[1].startswith('8') \
+                    or call[1].startswith('9'):
+                called_by_a_bangalore_number.add(int(call[1].split()[0]))
+            else:
+                continue
 
-            # alternatively, add prefix to list
-            elif "(" not in calls:
-                prefix = calls[i][1].split()[0]
-                if prefix not in called_by_a_bangalore_number:
-                    called_by_a_bangalore_number.append(prefix)
+    print("The numbers called by"
+          f" people in Bangalore have codes: ")
 
-    expected_answer_format = "The numbers called by" \
-        f" people in Bangalore have codes: {called_by_a_bangalore_number}"
-
-    print(expected_answer_format)
+    for i in sorted(called_by_a_bangalore_number):
+        print(i)
 
 
 def part_b():
@@ -105,4 +108,4 @@ def part_b():
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
     part_a()
-    part_b()
+    # part_b()
