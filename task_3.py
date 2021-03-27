@@ -73,7 +73,10 @@ def part_a():
           f" people in Bangalore have codes: ")
 
     for i in sorted(called_by_a_bangalore_number):
-        print(i)
+        if len(str(i)) < 5:
+            print('0'+str(i))
+        else:
+            print(i)
 
 
 def part_b():
@@ -109,5 +112,5 @@ def part_b():
 
 ###--- DRIVER CODE ---###
 if __name__ == '__main__':
-    # part_a()
+    part_a()
     part_b()
