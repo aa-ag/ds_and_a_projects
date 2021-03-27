@@ -8,10 +8,6 @@ Print messages:
 
 ###--- IMPORTS ---###
 import csv
-import re
-
-###--- GLOBAL VARIABLES ---###
-regex = r"[\s+\(|\)]"
 
 
 ###--- CODE ---###
@@ -29,9 +25,9 @@ def get_first_record_of_texts():
 
     first_record = texts[0]
 
-    from_number = re.sub(regex, '', first_record[0].lstrip('0'))
-    to_number = re.sub(regex, '', first_record[1].lstrip('0'))
-    text_time = first_record[2].split()[1]
+    from_number = first_record[0]
+    to_number = first_record[1]
+    text_time = first_record[2]
 
     answer_as_expected = f"First record of texts, " \
         f"{from_number} texts {to_number} " \
@@ -53,13 +49,14 @@ def get_last_record_of_calls():
 
     last_record = calls.pop()
 
-    from_number = re.sub(regex, '', last_record[0].lstrip('0'))
-    to_number = re.sub(regex, '', last_record[1].lstrip('0'))
-    call_time = last_record[2].split()[1]
+    from_number = last_record[0]
+    to_number = last_record[1]
+    call_time = last_record[2]
+    seconds = last_record[3]
 
     answer_as_expected = f"Last record of calls, " \
         f"{from_number} calls {to_number} " \
-        f"at time {call_time}"
+        f"at time {call_time}, lasting {seconds} seconds"
 
     print(answer_as_expected)
 
