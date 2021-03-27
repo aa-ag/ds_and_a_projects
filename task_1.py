@@ -22,22 +22,22 @@ def count_unique_phone_numbers():
     reader = csv.reader(f)
     texts = list(reader)
 
-    unique_phone_numbers = list()
+    unique_phone_numbers = set()
 
     for row in texts:
-        unique_phone_numbers.append(row[0])
-        unique_phone_numbers.append(row[1])
+        unique_phone_numbers.add(row[0])
+        unique_phone_numbers.add(row[1])
 
     f = open('calls.csv', 'r')
     reader = csv.reader(f)
     calls = list(reader)
 
     for row in calls:
-        unique_phone_numbers.append(row[0])
-        unique_phone_numbers.append(row[1])
+        unique_phone_numbers.add(row[0])
+        unique_phone_numbers.add(row[1])
 
     print(
-        f"There are {len(set(unique_phone_numbers))}"
+        f"There are {len(unique_phone_numbers)}"
         " different telephone numbers in the records.")
 
 
