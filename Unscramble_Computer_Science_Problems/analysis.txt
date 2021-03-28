@@ -1,0 +1,20 @@
+--------------------------------------------------------------------
+*** Time Complexity Analysis ***
+--------------------------------------------------------------------
+
+Provide a text file accurately explaining their run time analysis 
+(Worst-Case Big-O Notation) for each solution they produced.
+
+--------------------------------------------------------------------
+
+- Task 0: O(1).
+
+- Task 1: O(1).
+
+- Task 2: O(n log n).
+    
+- Task 3: O(n).
+
+- Task 4: O(n).
+
+--------------------------------------------------------------------

@@ -6,7 +6,7 @@ config
 config.py
 
 # .DS Store
-.DS Store
+.DS_Store
 
 # VSS
 .vscode
