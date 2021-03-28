@@ -27,35 +27,36 @@ def identify_possible_telemarketers():
      (iv) never send texts.
     '''
 
-    f = open('texts.csv', 'r')
-    reader = csv.reader(f)
-    texts = list(reader)
-
     f = open('calls.csv', 'r')
     reader = csv.reader(f)
     calls = list(reader)
 
     # set of numbers that
-    nope = set()
+    make_outgoing_calls = set()
+    received_incoming_calls_or_sent_text_or_received_text = set()
 
-    # received incoming calls
     for call in calls:
-        nope.add(call[1])
+        make_outgoing_calls.add(call[0])
+        received_incoming_calls_or_sent_text_or_received_text.add(call[1])
+
+    f = open('texts.csv', 'r')
+    reader = csv.reader(f)
+    texts = list(reader)
 
     # sent texts, and/or
-    for text in texts:
-        nope.add(text[0])
-
     # received texts
     for text in texts:
-        nope.add(text[1])
+        received_incoming_calls_or_sent_text_or_received_text.add(text[0])
+        received_incoming_calls_or_sent_text_or_received_text.add(text[1])
 
     answer = set()
 
-    # if number has made outgoing calls
     for row in calls:
-        # and does not meet the other criteria
-        if row[0] not in nope:
+        # if number has made outgoing calls
+        # and has not received incoming calls,
+        # sent a text, nor received a text
+        if row[0] in make_outgoing_calls \
+                and row[0] not in received_incoming_calls_or_sent_text_or_received_text:
             answer.add(row[0])
 
     # the list of numbers should be print out one per line
