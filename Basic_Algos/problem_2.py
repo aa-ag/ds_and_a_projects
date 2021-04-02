@@ -3,9 +3,11 @@ You are given a sorted array which is rotated at some random pivot point.
 
 Example: [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]
 
-You are given a target value to search. If found in the array return its index, otherwise return -1.
+You are given a target value to search.
+If found in the array return its index, otherwise return -1.
 
-You can assume there are no duplicates in the array and your algorithm's runtime complexity must be in the order of O(log n).
+You can assume there are no duplicates in the array
+and your algorithm's runtime complexity must be in the order of O(log n).
 
 Example:
 
@@ -22,13 +24,17 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
-   pass
+    if number in input_list:
+        return input_list.index(number)
+    return -1
+
 
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
         if element == number:
             return index
     return -1
+
 
 def test_function(test_case):
     input_list = test_case[0]
@@ -37,6 +43,7 @@ def test_function(test_case):
         print("Pass")
     else:
         print("Fail")
+
 
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
