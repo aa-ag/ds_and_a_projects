@@ -22,7 +22,7 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
-    return round(number ** 0.5)
+    return number ** 0.5 // 1
 
 
 ######------ DRIVER CODE ------######
