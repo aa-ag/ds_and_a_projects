@@ -14,7 +14,6 @@ Here is some boilerplate code and test cases to start with:
 
 
 ######------ FUNCTION ------######
-
 def sqrt(number):
     """
     Calculate the floored square root of a number
