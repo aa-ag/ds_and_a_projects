@@ -10,8 +10,8 @@ The expected time complexity is O(log(n))
 Here is some boilerplate code and test cases to start with:
 '''
 
-######------ FUNCTION ------######
 
+######------ FUNCTION ------######
 
 def sqrt(number):
     """
@@ -22,7 +22,7 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
-    pass
+    return round(number ** 0.5)
 
 
 ######------ DRIVER CODE ------######
