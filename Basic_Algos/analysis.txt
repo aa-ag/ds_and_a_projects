@@ -1,0 +1,18 @@
+--------------------------------------------------------------------
+*** Time Complexity Analysis ***
+--------------------------------------------------------------------
+
+You will write up a clean and efficient answer in Python, 
+as well as a text explanation of the efficiency of your code 
+and your design choices.
+
+--------------------------------------------------------------------
+
+- problem_1.py: O(log(n)).'
+- problem_1.py: ...
+- problem_1.py: ...
+- problem_1.py: ...
+
+--------------------------------------------------------------------
+
+'https://stackoverflow.com/questions/48839772/why-is-time-complexity-o1-for-powx-y-while-it-is-on-for-xy
