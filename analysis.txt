@@ -5,14 +5,28 @@
 Provide a text file accurately explaining their run time analysis 
 (Worst-Case Big-O Notation) for each solution they produced.
 
+EXPECTED FORMAT:
+" Task 0: Worst-case time complexity is O(1).
+The time complexity is O(1) because we are accessing the first and 
+last value from the lists (calls and texts) by an index. "
+
 --------------------------------------------------------------------
 
-- Task 0: O(1).
+- Task 0: Worst-case time complexity is O(1).
 
-- Task 1: O(n).
+  Python's `open()` built-in function has a time complexity of O(1) and 
+  slicing first and/or last value from created list is also O(1)
 
-- Task 2: O(n^2).
+- Task 1: Worst-case time complexity is O(n).
+
+  Python's set lookup/insert/delete in O(1) average, however, we are iterating
+  over all N elements in `texts` and `calls` (in each case) which means and this becomes
+  the most costly part of our code. 
+
+- Task 2: ...?
     
+Task3 and Task4 implement the python built-in sorting technique which will take O(n log n) runtime. Kindly consider it while analyzing the worst time complexity.
+
 - Task 3: O(n).
 
 - Task 4: O(n^2).
