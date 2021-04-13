@@ -59,13 +59,13 @@ def part_a():
         if call[0].startswith(pattern):
             if call[1].startswith('(0'):
                 called_by_a_bangalore_number.add(int(call[1].split(')')[
-                                                 0].replace('(', '')))
+                                                 0].replace('(', '')[:3]))
             elif call[1].startswith('140'):
                 called_by_a_bangalore_number.add(140)
             elif call[1].startswith('7') \
                 or call[1].startswith('8') \
                     or call[1].startswith('9'):
-                called_by_a_bangalore_number.add(int(call[1].split()[0]))
+                called_by_a_bangalore_number.add(int(call[1].split()[0][:3]))
             else:
                 continue
 

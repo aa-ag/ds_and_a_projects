@@ -17,7 +17,7 @@ def sort_012(input_list):
     Args:
        input_list(list): List to be sorted
     """
-    return sorted(input_list)
+    pass
 
 
 def test_function(test_case):
