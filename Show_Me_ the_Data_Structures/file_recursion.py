@@ -32,10 +32,14 @@ def find_files(s, p):
        a list of paths
     """
 
+    all_files = list()
+
     for (root, directories, files) in os.walk(p, topdown=True):
-        print(root)
-        print(directories)
-        print(files)
+        for each_file in files:
+            if each_file.endswith(s):
+                all_files.append(each_file)
+
+    print(all_files)
 
 
 ############------------ DRIVER CODE ------------############
