@@ -9,6 +9,10 @@ all files under a directory (and all directories beneath it)
 import os
 
 
+############------------ GLOBAL VARIABLES ------------############
+path_to_root_directory = '/Users/aaronaguerrevere/Documents/portfolio/ds_and_a_projects/testdir'
+
+
 ############------------ FUNCTIONS ------------############
 def find_files(suffix, path):
     """
@@ -26,7 +30,7 @@ def find_files(suffix, path):
     Returns:
        a list of paths
     """
-    return None
+    global
 
 
 ############------------ DRIVER CODE ------------############
@@ -40,3 +44,9 @@ print(os.path.isfile("./ex.py"))
 
 # Does the file end with .py?
 print("./ex.py".endswith(".py"))
+
+'''
+['testdir', 'ex.py']
+True
+True
+'''
