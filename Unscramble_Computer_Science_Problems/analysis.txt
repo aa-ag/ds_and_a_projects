@@ -20,15 +20,24 @@ last value from the lists (calls and texts) by an index. "
 - Task 1: Worst-case time complexity is O(n).
 
   Python's set lookup/insert/delete in O(1) average, however, we are iterating
-  over all N elements in `texts` and `calls` (in each case) which means and this becomes
-  the most costly part of our code. 
+  over all N elements in `texts` and `calls` (in each case).
 
-- Task 2: ...?
-    
-Task3 and Task4 implement the python built-in sorting technique which will take O(n log n) runtime. Kindly consider it while analyzing the worst time complexity.
+- Task 2: Worst-case time complexity is O(n).
 
-- Task 3: O(n).
+  The most costly part of the code for this solution is iterating over
+  each element within `calls` -- after that, insertion and lookup in a dictionary
+  behaves as O(1)
 
-- Task 4: O(n^2).
+- Task 3: O(n log n).
+
+  While iterating over each element in list `calls` would be 0(n), 
+  using Python's built-in `sort()` takes O(n log n) runtime.
+
+- Task 4: O(n log n).
+
+  Similarly, though iterating over each element in list `calls` would be O(n), 
+  and inserting into set `received_incoming_calls_or_sent_text_or_received_text` O(1), 
+  using Python's built-in `sort()` takes O(n log n) runtime. This is the most significant
+  time expense of the code. 
 
 --------------------------------------------------------------------
