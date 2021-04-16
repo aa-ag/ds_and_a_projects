@@ -40,6 +40,7 @@ def find_files(s, p):
                 all_files.append(each_file)
 
     print(all_files)
+    # ['t1.c', 'b.c', 'a.c', 'a.c']
 
 
 ############------------ DRIVER CODE ------------############
