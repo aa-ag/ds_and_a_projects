@@ -7,6 +7,7 @@ all files under a directory (and all directories beneath it)
 
 ############------------ IMPORTS ------------############
 import os
+from pathlib import Path
 
 
 ############------------ GLOBAL VARIABLES ------------############
@@ -32,14 +33,8 @@ def find_files(s, p):
        a list of paths
     """
 
-    all_files = list()
-
-    for (root, directories, files) in os.walk(p, topdown=True):
-        for each_file in files:
-            if each_file.endswith(s):
-                all_files.append(each_file)
-
-    print(all_files)
+    for path in Path(p).rglob('*.c'):
+        print(path.name)
     # ['t1.c', 'b.c', 'a.c', 'a.c']
 
 
