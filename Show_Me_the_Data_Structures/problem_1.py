@@ -47,6 +47,7 @@ our_cache.get(9)  # returns -1 because 9 is not present in the cache
 our_cache.set(5, 5)  # adds 5, 5 to ordered dictionary/cache
 our_cache.print_cache()  # see full object
 our_cache.set(6, 6)  # returns -1 because the cache reached it's capacity
+# but it also removes oldest item to add 6, 6
 
 our_cache.print_cache()  # see full object
-our_cache.get(3)  # returns 3 was the least recently used entry
+our_cache.get(3)  # returns 3
