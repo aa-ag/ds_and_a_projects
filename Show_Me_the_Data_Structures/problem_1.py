@@ -28,25 +28,25 @@ class LRU_Cache():
             self.cache[key] = value
             print(-1)
 
-    def show_entire_cache(self):
+    def print_cache(self):
         print(self.cache)
 
 
 ############------------ DRIVER CODE ------------############
 our_cache = LRU_Cache(5)
 
-our_cache.set(1, 1)
-our_cache.set(2, 2)
-our_cache.set(3, 3)
-our_cache.set(4, 4)
+our_cache.set(1, 1)  # adds 1, 1 to ordered dictionary/cache
+our_cache.set(2, 2)  # adds 2, 2 to ordered dictionary/cache
+our_cache.set(3, 3)  # adds 3, 3 to ordered dictionary/cache
+our_cache.set(4, 4)  # adds 4, 4 to ordered dictionary/cache
 
 our_cache.get(1)  # returns 1
 our_cache.get(2)  # returns 2
 our_cache.get(9)  # returns -1 because 9 is not present in the cache
 
-our_cache.set(5, 5)
-our_cache.show_entire_cache()  # see full object
-our_cache.set(6, 6)     # returns -1 because the cache reached it's capacity
+our_cache.set(5, 5)  # adds 5, 5 to ordered dictionary/cache
+our_cache.print_cache()  # see full object
+our_cache.set(6, 6)  # returns -1 because the cache reached it's capacity
 
-our_cache.show_entire_cache()  # see full object
+our_cache.print_cache()  # see full object
 our_cache.get(3)  # returns 3 was the least recently used entry
