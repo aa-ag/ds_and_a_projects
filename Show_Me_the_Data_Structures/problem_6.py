@@ -15,10 +15,8 @@ Once you have completed the problem you will
 
 # inspiration in java: https://www.geeksforgeeks.org/union-and-intersection-of-two-linked-lists/
 
-############------------ IMPORTS ------------############
 
-
-############------------ FUNCTIONS ------------############
+############------------ HELPER CODE ------------############
 class Node:
     def __init__(self, value):
         self.value = value
@@ -38,7 +36,7 @@ class LinkedList:
         while current_head:
             out_string += str(current_head.value) + " -> "
             current_head = current_head.next
-        return out_string
+        return out_string.rstrip(' -> ')
 
     def append(self, value):
 
@@ -62,20 +60,38 @@ class LinkedList:
         return size
 
 
-# def union(llist_1, llist_2):
-#     '''
-#      creates a variable `n2` to
-#      store head and traverse `llist_2`
-#      whilst its head isn't `None`, appending
-#      each node to `llist_1`
-#     '''
-#     n2 = llist_2.head
+def is_in(llist, v):
+    '''
+     accepts linked list `llist` and value `v`
+     traverses the linked lists and if the value
+     of one of the nodes equals `v` returns boolean True
+     else, returns False after there are no more nodes
+    '''
+    head_from_llist = llist.head
 
-#     while n2 is not None:
-#         llist_1.append(n2)
-#         n2 = n2.next
+    while head_from_llist is not None:
+        if head_from_llist.value == v:
+            return True
+        head_from_llist = head_from_llist.next
+    return False
 
-#     return llist_1
+############------------ FUNCTIONS ------------############
+
+
+def union(llist_1, llist_2):
+    '''
+     creates a variable `n2` to
+     store head and traverse `llist_2`
+     whilst its head isn't `None`, appending
+     each node to `llist_1`
+    '''
+    n2 = llist_2.head
+
+    while n2 is not None:
+        llist_1.append(n2)
+        n2 = n2.next
+
+    return llist_1
 
 
 def intersection(llist_1, llist_2):
@@ -91,22 +107,15 @@ def intersection(llist_1, llist_2):
     head_from_llist_1 = llist_1.head
 
     while head_from_llist_1 is not None:
-        if is_in(llist_2, head_from_llist_1.value) and not is_in(intersection_llist, head_from_llist_1.value):
+        if is_in(llist_2, head_from_llist_1.value) \
+                and not is_in(intersection_llist, head_from_llist_1.value):
             intersection_llist.append(head_from_llist_1.value)
         head_from_llist_1 = head_from_llist_1.next
 
     return intersection_llist
 
 
-def is_in(llist_2, v):
-    head_from_llist_2 = llist_2.head
-
-    while head_from_llist_2 is not None:
-        if head_from_llist_2.value == v:
-            return True
-        head_from_llist_2 = head_from_llist_2.next
-    return False
-
+############------------ TESTS ------------############
 # Test case 1
 
 
@@ -122,7 +131,7 @@ for i in element_1:
 for i in element_2:
     linked_list_2.append(i)
 
-# print(union(linked_list_1, linked_list_2))
+print(union(linked_list_1, linked_list_2))
 print(intersection(linked_list_1, linked_list_2))
 
 # Test case 2
