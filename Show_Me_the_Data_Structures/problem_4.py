@@ -5,8 +5,11 @@
  Where User is represented by str representing their ids.
 '''
 
+# removed () & "object" per
+# https://docs.python.org/3/tutorial/classes.html
 
-class Group(object):
+
+class Group:
     def __init__(self, _name):
         self.name = _name
         self.groups = []
