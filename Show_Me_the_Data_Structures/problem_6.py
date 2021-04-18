@@ -63,7 +63,12 @@ class LinkedList:
 
 
 def union(llist_1, llist_2):
-    # Your Solution Here
+    '''
+     creates a variable `n2` to 
+     store head and traverse `llist_2`
+     whilst its head isn't `None`, appending
+     each node to `llist_1`
+    '''
     n2 = llist_2.head
 
     while n2 is not None:
@@ -74,7 +79,12 @@ def union(llist_1, llist_2):
 
 
 def intersection(llist_1, llist_2):
-    # Your Solution Here
+    '''
+     traverses `llist_1` and searches the value
+     of each node in `llist_2`.
+     if value in both "llists", appends element 
+     to `intersection_llist`
+    '''
     pass
 
 
