@@ -62,20 +62,20 @@ class LinkedList:
         return size
 
 
-def union(llist_1, llist_2):
-    '''
-     creates a variable `n2` to 
-     store head and traverse `llist_2`
-     whilst its head isn't `None`, appending
-     each node to `llist_1`
-    '''
-    n2 = llist_2.head
+# def union(llist_1, llist_2):
+#     '''
+#      creates a variable `n2` to
+#      store head and traverse `llist_2`
+#      whilst its head isn't `None`, appending
+#      each node to `llist_1`
+#     '''
+#     n2 = llist_2.head
 
-    while n2 is not None:
-        llist_1.append(n2)
-        n2 = n2.next
+#     while n2 is not None:
+#         llist_1.append(n2)
+#         n2 = n2.next
 
-    return llist_1
+#     return llist_1
 
 
 def intersection(llist_1, llist_2):
@@ -85,10 +85,30 @@ def intersection(llist_1, llist_2):
      if value in both "llists", appends element 
      to `intersection_llist`
     '''
-    pass
 
+    intersection_llist = LinkedList()
+
+    head_from_llist_1 = llist_1.head
+
+    while head_from_llist_1 is not None:
+        if is_in(llist_2, head_from_llist_1.value):
+            intersection_llist.append(head_from_llist_1.value)
+        head_from_llist_1 = head_from_llist_1.next
+
+    return intersection_llist
+
+
+def is_in(llist_2, v):
+    head_from_llist_2 = llist_2.head
+
+    while head_from_llist_2 is not None:
+        if head_from_llist_2.value == v:
+            return True
+        head_from_llist_2 = head_from_llist_2.next
+    return False
 
 # Test case 1
+
 
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
@@ -102,8 +122,8 @@ for i in element_1:
 for i in element_2:
     linked_list_2.append(i)
 
-print(union(linked_list_1, linked_list_2))
-# print(intersection(linked_list_1, linked_list_2))
+# print(union(linked_list_1, linked_list_2))
+print(intersection(linked_list_1, linked_list_2))
 
 # Test case 2
 
