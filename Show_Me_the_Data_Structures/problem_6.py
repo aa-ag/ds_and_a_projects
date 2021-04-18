@@ -91,7 +91,7 @@ def intersection(llist_1, llist_2):
     head_from_llist_1 = llist_1.head
 
     while head_from_llist_1 is not None:
-        if is_in(llist_2, head_from_llist_1.value):
+        if is_in(llist_2, head_from_llist_1.value) and not is_in(intersection_llist, head_from_llist_1.value):
             intersection_llist.append(head_from_llist_1.value)
         head_from_llist_1 = head_from_llist_1.next
 
