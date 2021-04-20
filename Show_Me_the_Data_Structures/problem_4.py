@@ -1,7 +1,7 @@
 '''
- In Windows Active Directory, 
- a group can consist of user(s) and group(s) themselves. 
- We can construct this hierarchy as such. 
+ In Windows Active Directory,
+ a group can consist of user(s) and group(s) themselves.
+ We can construct this hierarchy as such.
  Where User is represented by str representing their ids.
 '''
 
@@ -49,22 +49,27 @@ parent.add_group(child)
 ############------------ FUNCTIONS ------------############
 def is_user_in_group(user, group):
     """
-    Return True if user is in the group, 
+    Return True if user is in the group,
     False otherwise.
 
     Args:
       user(str): user name/id
-      group(class:Group): 
+      group(class:Group):
       group to check user membership against
     """
-    print(child.get_name())
-    # print(child.get_groups())
-    # print(child.get_users())
+    print(group.get_name())
+    print(group.get_groups())
+    print(group.get_users())
+
+    '''
+    subchild
+    []
+    ['sub_child_user']
+    '''
 
 
 ############------------ DRIVER CODE/TESTS ------------############
-user_1 = 'foo'
-group_1 = 'bar'
+user = 'foobar'
 
 if __name__ == "__main__":
-    is_user_in_group(user_1, child)
+    is_user_in_group(user, sub_child)
