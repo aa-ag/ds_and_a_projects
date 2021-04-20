@@ -13,12 +13,15 @@ count = {}
 for i in s:
     count[i] = s.count(i)
 
-count = [j[0] for j in sorted(count.items(), key=lambda i: i[1])]
+heap = [j[0] for j in sorted(count.items(), key=lambda i: i[1])]
 
 # create empty heap
-hq.heapify(count)
+hq.heapify(heap)
 
-print(count)
+print(heap)
+
+element = hq.heappop(heap)
+print(element)
 
 # def huffman_encoding(data):
 #     pass
