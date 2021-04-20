@@ -35,12 +35,14 @@ class Group:
 parent = Group("parent")
 child = Group("child")
 sub_child = Group("subchild")
+snacks = Group('snacks')
 
 sub_child_user = "sub_child_user"
 sub_child.add_user(sub_child_user)
 
 child.add_group(sub_child)
 parent.add_group(child)
+sub_child.add_group(snacks)
 
 # Write a function that provides an efficient
 # look up of whether the user is in a group.
@@ -58,7 +60,7 @@ def is_user_in_group(user, group):
       group to check user membership against
     """
     print(group.get_name())
-    print(group.get_groups())
+    print([i.get_name() for i in group.get_groups()])
     print(group.get_users())
 
     '''
