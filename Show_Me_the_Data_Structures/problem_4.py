@@ -8,9 +8,8 @@
 # removed () & "object" per
 # https://docs.python.org/3/tutorial/classes.html
 
+
 ############------------ HELPER CODE ------------############
-
-
 class Group:
     def __init__(self, _name):
         self.name = _name
@@ -47,6 +46,7 @@ parent.add_group(child)
 # look up of whether the user is in a group.
 
 
+############------------ FUNCTIONS ------------############
 def is_user_in_group(user, group):
     """
     Return True if user is in the group, 
@@ -57,4 +57,14 @@ def is_user_in_group(user, group):
       group(class:Group): 
       group to check user membership against
     """
-    return None
+    print(child.get_name())
+    # print(child.get_groups())
+    # print(child.get_users())
+
+
+############------------ DRIVER CODE/TESTS ------------############
+user_1 = 'foo'
+group_1 = 'bar'
+
+if __name__ == "__main__":
+    is_user_in_group(user_1, child)
