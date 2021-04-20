@@ -14,7 +14,7 @@ We can break the blockchain down into three main parts.
 
 First is the information hash:
 '''
-
+############------------ HELPER CODE ------------############
 import hashlib
 
 

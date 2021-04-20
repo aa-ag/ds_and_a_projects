@@ -8,6 +8,8 @@
 # removed () & "object" per
 # https://docs.python.org/3/tutorial/classes.html
 
+############------------ HELPER CODE ------------############
+
 
 class Group:
     def __init__(self, _name):
