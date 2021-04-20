@@ -35,14 +35,19 @@ class Group:
 parent = Group("parent")
 child = Group("child")
 sub_child = Group("subchild")
-snacks = Group('snacks')
+foo = Group('foo')
+bar = Group('bar')
 
 sub_child_user = "sub_child_user"
+another_sub_child_user = "another_sub_child_user"
+
 sub_child.add_user(sub_child_user)
+sub_child.add_user(another_sub_child_user)
 
 child.add_group(sub_child)
 parent.add_group(child)
-sub_child.add_group(snacks)
+sub_child.add_group(foo)
+sub_child.add_group(bar)
 
 # Write a function that provides an efficient
 # look up of whether the user is in a group.
