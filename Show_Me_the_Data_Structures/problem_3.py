@@ -1,7 +1,7 @@
 ############------------ IMPORTS ------------############
 import sys
 import collections
-import heapq
+import heapq as hq
 
 ############------------ FUNCTIONS ------------############
 
@@ -9,11 +9,18 @@ import heapq
 # I.a: determine frequency of each character in string
 s = "AAAAAAABBBCCCCCCCDDEEEEEE"
 print(len(s))
-print(collections.Counter(s))
+
+count = collections.Counter(s)
 
 # create empty heap
 heap = []
-heapq.heapify(heap)
+hq.heapify(heap)
+
+# add items to heap
+for k, v in count.items():
+    hq.heappush(heap, [k, v])
+
+print(heap)
 
 # def huffman_encoding(data):
 #     pass
