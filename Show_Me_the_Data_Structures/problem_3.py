@@ -7,14 +7,13 @@ import heapq as hq
 # PHASE I - Build the Huffman Tree
 # I.a: determine frequency of each character in string
 s = "AAAAAAABBBCCCCCCCDDEEEEEE"
-print(len(s))
 
 count = {}
 
 for i in s:
     count[i] = s.count(i)
 
-count = [j[0] for j in sorted(count.items(), key=lambda i: i[1], reverse=True)]
+count = [j[0] for j in sorted(count.items(), key=lambda i: i[1])]
 
 # create empty heap
 hq.heapify(count)
