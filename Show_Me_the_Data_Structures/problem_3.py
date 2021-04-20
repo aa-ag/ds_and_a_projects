@@ -1,6 +1,7 @@
 ############------------ IMPORTS ------------############
 import sys
 import collections
+import heapq
 
 ############------------ FUNCTIONS ------------############
 
@@ -10,13 +11,16 @@ s = "AAAAAAABBBCCCCCCCDDEEEEEE"
 print(len(s))
 print(collections.Counter(s))
 
+# create empty heap
+heap = []
+heapq.heapify(heap)
 
-def huffman_encoding(data):
-    pass
+# def huffman_encoding(data):
+#     pass
 
 
-def huffman_decoding(data, tree):
-    pass
+# def huffman_decoding(data, tree):
+#     pass
 
 
 ############------------ DRIVER CODE ------------############
