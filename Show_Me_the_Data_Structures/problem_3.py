@@ -1,6 +1,7 @@
 ############------------ IMPORTS ------------############
 import sys
 import heapq as hq
+import queue as q
 
 ############------------ FUNCTIONS ------------############
 
@@ -13,15 +14,9 @@ count = {}
 for i in s:
     count[i] = s.count(i)
 
-heap = [j[0] for j in sorted(count.items(), key=lambda i: i[1])]
-
-# create empty heap
-hq.heapify(heap)
+heap = [j for j in sorted(count.items(), key=lambda i: i[1])]
 
 print(heap)
-
-element = hq.heappop(heap)
-print(element)
 
 # def huffman_encoding(data):
 #     pass
