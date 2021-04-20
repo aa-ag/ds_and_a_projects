@@ -64,19 +64,26 @@ def is_user_in_group(user, group):
       group(class:Group):
       group to check user membership against
     """
-    print(group.get_name())
-    print([i.get_name() for i in group.get_groups()])
-    print(group.get_users())
+    print(f"Group name: {group.get_name()}\n")
+    print(
+        f"Groups within Group: {[i.get_name() for i in group.get_groups()]}\n")
+    print(f"Users within group: {group.get_users()}\n")
+
+    print(user in group.get_users())
 
     '''
-    subchild
-    []
-    ['sub_child_user']
+    Group name: subchild
+
+    Groups within Group: ['foo', 'bar']
+
+    Users within group: ['sub_child_user', 'another_sub_child_user']
+
+    True
     '''
 
 
 ############------------ DRIVER CODE/TESTS ------------############
-user = 'foobar'
+user = 'sub_child_user'
 
 if __name__ == "__main__":
     is_user_in_group(user, sub_child)
