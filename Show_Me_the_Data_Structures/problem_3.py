@@ -1,6 +1,5 @@
 ############------------ IMPORTS ------------############
 import sys
-import collections
 import heapq as hq
 
 ############------------ FUNCTIONS ------------############
@@ -10,17 +9,17 @@ import heapq as hq
 s = "AAAAAAABBBCCCCCCCDDEEEEEE"
 print(len(s))
 
-count = collections.Counter(s)
+count = {}
+
+for i in s:
+    count[i] = s.count(i)
+
+count = [j[0] for j in sorted(count.items(), key=lambda i: i[1], reverse=True)]
 
 # create empty heap
-heap = []
-hq.heapify(heap)
+hq.heapify(count)
 
-# add items to heap
-for k, v in count.items():
-    hq.heappush(heap, [k, v])
-
-print(heap)
+print(count)
 
 # def huffman_encoding(data):
 #     pass
