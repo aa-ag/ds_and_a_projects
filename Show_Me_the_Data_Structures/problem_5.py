@@ -22,12 +22,15 @@ from datetime import datetime
 ############------------ HELPER CODE ------------############
 class Block:
 
-    def __init__(self, timestamp, data, previous_hash, next=None):
+    def __init__(self, timestamp, data, previous_hash):
         self.timestamp = timestamp
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.calc_hash()
         self.next = None
+
+    def __repr__(self):
+        return self.data
 
     def calc_hash(self):
         sha = hashlib.sha256()
@@ -44,17 +47,20 @@ class BlockChain:
     def __init__(self):
         self.head = None
 
-    def __repr__(self):
-        node = self.head
-        nodes = []
-        while node is not None:
-            nodes.append(node.data)
-            node = node.next
-        nodes.append("None")
-        return " -> ".join(nodes)
-
 
 first_blockchain = BlockChain()
 first_blockchain.head = Block(datetime.now(), 'abcdefg', None)
+first_blockchain.next = Block(datetime.now(), 'hijklmn', first_blockchain.head)
+first_blockchain.next.next = Block(
+    datetime.now(), 'opqrstu', first_blockchain.next)
 
-print(first_blockchain)
+print(first_blockchain.head)  # abcdefg
+print(first_blockchain.head.timestamp)  # 2021-04-20 19:58:26.874650
+
+print(first_blockchain.next)  # hijklmn
+print(first_blockchain.next.timestamp)  # 2021-04-20 19:58:26.874718
+print(first_blockchain.next.previous_hash)  # abcdefg
+
+print(first_blockchain.next.next)  # opqrstu
+print(first_blockchain.next.next.timestamp)  # 2021-04-20 19:58:26.874726
+print(first_blockchain.next.next.previous_hash)  # hijklmn
