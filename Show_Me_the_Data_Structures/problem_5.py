@@ -35,7 +35,7 @@ class Block:
     def calc_hash(self):
         sha = hashlib.sha256()
 
-        hash_str = "Encoding this!".encode('utf-8')
+        hash_str = self.data.encode('utf-8')
 
         sha.update(hash_str)
 
@@ -62,8 +62,11 @@ print()
 
 print(first_blockchain.next)  # hijklmn
 print(first_blockchain.next.timestamp)  # 2021-04-20 19:58:26.874718
+print(first_blockchain.next.hash)
 print(first_blockchain.next.previous_hash)  # abcdefg
+print()
 
 print(first_blockchain.next.next)  # opqrstu
 print(first_blockchain.next.next.timestamp)  # 2021-04-20 19:58:26.874726
+print(first_blockchain.next.next.hash)
 print(first_blockchain.next.next.previous_hash)  # hijklmn
