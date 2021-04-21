@@ -2,15 +2,15 @@
 import heapq as hq
 import collections as c
 
+
 ############------------ FUNCTIONS ------------############
-# from heapq import heappush, heappop, heapify
-# from collections import defaultdict
+def huffman_encoding(data):
 
+    frequencies = c.Counter(data)
 
-def encode(data):
-    """Huffman encode the given dict mapping symbols to weights"""
-    heap = [[value, [key, ""]] for key, value in data.items()]
+    heap = [[value, [key, ""]] for key, value in frequencies.items()]
     hq.heapify(heap)
+
     while len(heap) > 1:
         left = hq.heappop(heap)
         right = hq.heappop(heap)
@@ -23,17 +23,17 @@ def encode(data):
 
         hq.heappush(heap, [left[0] + right[0]] + left[1:] + right[1:])
 
-    return sorted(hq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
+    encoded = sorted(hq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
+
+    print(''.join([e[1] for e in encoded]))
 
 
-s = "AAAAAAABBBCCCCCCCDDEEEEEE"
+huffman_encoding("AAAAAAABBBCCCCCCCDDEEEEEE")
 
-data = c.Counter(s)
 
-huff = encode(data)
-print("Symbol\tWeight\tHuffman Code")
-for p in huff:
-    print("%s\t%s\t%s" % (p[0], data[p[0]], p[1]))
+# print("Symbol\tWeight\tHuffman Code")
+# for p in huff:
+#     print("%s\t%s\t%s" % (p[0], data[p[0]], p[1]))
 
 
 # def huffman_decoding(data, tree):
