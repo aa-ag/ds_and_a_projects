@@ -1,32 +1,34 @@
 ############------------ IMPORTS ------------############
-import heapq
-import collections
+import heapq as hq
+import collections as c
 
 ############------------ FUNCTIONS ------------############
-
-
-from heapq import heappush, heappop, heapify
-from collections import defaultdict
+# from heapq import heappush, heappop, heapify
+# from collections import defaultdict
 
 
 def encode(data):
     """Huffman encode the given dict mapping symbols to weights"""
-    heap = [[wt, [sym, ""]] for sym, wt in data.items()]
-    heapify(heap)
+    heap = [[value, [key, ""]] for key, value in data.items()]
+    hq.heapify(heap)
     while len(heap) > 1:
-        lo = heappop(heap)
-        hi = heappop(heap)
-        for pair in lo[1:]:
+        left = hq.heappop(heap)
+        right = hq.heappop(heap)
+
+        for pair in left[1:]:
             pair[1] = '0' + pair[1]
-        for pair in hi[1:]:
+
+        for pair in right[1:]:
             pair[1] = '1' + pair[1]
-        heappush(heap, [lo[0] + hi[0]] + lo[1:] + hi[1:])
-    return sorted(heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
+
+        hq.heappush(heap, [left[0] + right[0]] + left[1:] + right[1:])
+
+    return sorted(hq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
 
 
 s = "AAAAAAABBBCCCCCCCDDEEEEEE"
 
-data = collections.Counter(s)
+data = c.Counter(s)
 
 huff = encode(data)
 print("Symbol\tWeight\tHuffman Code")
