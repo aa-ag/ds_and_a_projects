@@ -33,12 +33,23 @@ class Block:
         return self.data
 
     def calc_hash(self):
+        # create a SHA-256 hash object.
+        # this allows us to feed this object
+        # with bytes-like objects (normally bytes)
+        # using the update() method.
         sha = hashlib.sha256()
 
-        hash_str = self.data.encode('utf-8')
+        # returns a bytes representation of the Unicode string,
+        # encoded in the requested encoding.
+        hash_string = self.data.encode('utf-8')
 
-        sha.update(hash_str)
+        sha.update(hash_string)
 
+        # Return the digest of the data passed
+        # to the update() method so far.
+        # This is a bytes object of size digest_size
+        # which may contain bytes
+        # in the whole range from 0 to 255.
         return sha.hexdigest()
 
 
@@ -57,16 +68,18 @@ first_blockchain.next.next = Block(
 print(first_blockchain.head)  # abcdefg
 print(first_blockchain.head.timestamp)  # 2021-04-20 19:58:26.874650
 print(first_blockchain.head.hash)
-# 0a9ced2c3eafd83ef77295dedf997bd475275594eff10ba83e9bedfbc686120b
+# 7d1a54127b222502f5b79b5fb0803061152a44f92b37e23c6527baf665d4da9a
 print()
 
 print(first_blockchain.next)  # hijklmn
 print(first_blockchain.next.timestamp)  # 2021-04-20 19:58:26.874718
-print(first_blockchain.next.hash)
 print(first_blockchain.next.previous_hash)  # abcdefg
+print(first_blockchain.next.hash)
+# a2cc0056817d002901742f20883fb838f296af3a4fa9dbb6da71b8af69ccd4d5
 print()
 
 print(first_blockchain.next.next)  # opqrstu
 print(first_blockchain.next.next.timestamp)  # 2021-04-20 19:58:26.874726
-print(first_blockchain.next.next.hash)
 print(first_blockchain.next.next.previous_hash)  # hijklmn
+print(first_blockchain.next.next.hash)
+# 0eb6146ed8b2eff5b1f9ab848b6534d1cab216040f5d729070e6ba0208a6789a
