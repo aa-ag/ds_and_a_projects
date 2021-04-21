@@ -1,26 +1,37 @@
 ############------------ IMPORTS ------------############
-import sys
-import heapq as hq
-import queue as q
+import heapq
+import collections
 
 ############------------ FUNCTIONS ------------############
 
-# PHASE I - Build the Huffman Tree
-# I.a: determine frequency of each character in string
+
+def huffman_encoding(data):
+
+    heap = [[v, [k, ""]] for k, v in data.items()]
+
+    heapq.heapify(heap)
+
+    while len(heap) > 1:
+        low = heapq.heappop(heap)
+        high = heapq.heappop(heap)
+
+        for pair in high[1:]:
+            pair[1] = '0' + pair[1]
+
+        for pair in high[1:]:
+            pair[1] = '1' + pair[1]
+
+        heapq.heappush(heap, [low[0] + high[0]] + low[1:] + high[1:])
+
+    return sorted(heapq.heappop(heap)[1:], key=lambda j: (len(j[-1]), j))
+
+
 s = "AAAAAAABBBCCCCCCCDDEEEEEE"
+character_frequency = collections.Counter(s)
+huff = huffman_encoding(character_frequency)
 
-count = {}
-
-for i in s:
-    count[i] = s.count(i)
-
-heap = [j for j in sorted(count.items(), key=lambda i: i[1])]
-
-print(heap)
-
-# def huffman_encoding(data):
-#     pass
-
+for p in huff:
+    print("%s\t%s\t%s" % (p[0], character_frequency[p[0]], p[1]))
 
 # def huffman_decoding(data, tree):
 #     pass
