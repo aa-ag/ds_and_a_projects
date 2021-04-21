@@ -56,6 +56,9 @@ first_blockchain.next.next = Block(
 
 print(first_blockchain.head)  # abcdefg
 print(first_blockchain.head.timestamp)  # 2021-04-20 19:58:26.874650
+print(first_blockchain.head.hash)
+# 0a9ced2c3eafd83ef77295dedf997bd475275594eff10ba83e9bedfbc686120b
+print()
 
 print(first_blockchain.next)  # hijklmn
 print(first_blockchain.next.timestamp)  # 2021-04-20 19:58:26.874718
