@@ -27,13 +27,10 @@ def huffman_encoding(data):
 
     print(''.join([e[1] for e in encoded]))
 
+    return heap
+
 
 huffman_encoding("AAAAAAABBBCCCCCCCDDEEEEEE")
-
-
-# print("Symbol\tWeight\tHuffman Code")
-# for p in huff:
-#     print("%s\t%s\t%s" % (p[0], data[p[0]], p[1]))
 
 
 # def huffman_decoding(data, tree):

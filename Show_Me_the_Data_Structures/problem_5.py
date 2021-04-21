@@ -14,42 +14,47 @@ We can break the blockchain down into three main parts.
 
 First is the information hash:
 '''
-############------------ HELPER CODE ------------############
+############------------ IMPORTS ------------############
 import hashlib
+from datetime import datetime
 
 
-def calc_hash(self):
-    sha = hashlib.sha256()
-
-    hash_str = "We are going to encode this string of data!".encode('utf-8')
-
-    sha.update(hash_str)
-
-    return sha.hexdigest()
-
-
-'''
-We do this for the information we want to store 
-in the block chain such as transaction time, data, 
-and information like the previous chain.
-
-The next main component is the block on the blockchain:
-'''
-
-
+############------------ HELPER CODE ------------############
 class Block:
 
-    def __init__(self, timestamp, data, previous_hash):
+    def __init__(self, timestamp, data, previous_hash, next=None):
         self.timestamp = timestamp
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.calc_hash()
+        self.next = None
+
+    def calc_hash(self):
+        sha = hashlib.sha256()
+
+        hash_str = "Encoding this!".encode('utf-8')
+
+        sha.update(hash_str)
+
+        return sha.hexdigest()
 
 
-'''
-Above is an example of attributes you could find in a Block class.
+class BlockChain:
 
-Finally you need to link all of this together in a block chain, 
-which you will be doing by implementing it in a linked list. 
-All of this will help you build up to a simple but full blockchain implementation!
-'''
+    def __init__(self):
+        self.head = None
+
+    def __repr__(self):
+        node = self.head
+        nodes = []
+        while node is not None:
+            nodes.append(node.data)
+            node = node.next
+        nodes.append("None")
+        return " -> ".join(nodes)
+
+
+first_blockchain = BlockChain()
+first_blockchain.head = Block(datetime.now(), 'abcdefg', None)
+
+print(first_blockchain)
