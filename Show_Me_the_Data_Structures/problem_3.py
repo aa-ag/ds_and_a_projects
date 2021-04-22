@@ -80,6 +80,10 @@ plain = "I USED TO WONDER WHAT FRIENDSHIP COULD BE, UNTIL YOU ALL SHARED ITS MAG
 cipher = code(plain, eng_codebook)
 print(cipher)
 
+eng_codebook = Huffman(eng_freqs)
+decipher = decode(cipher, eng_codebook)
+print(decipher)
+
 # if __name__ == "__main__":
 #     codes = {}
 
