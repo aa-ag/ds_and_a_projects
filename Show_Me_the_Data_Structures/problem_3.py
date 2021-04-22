@@ -1,62 +1,85 @@
-############------------ IMPORTS ------------############
-import heapq as hq
-import collections as c
+# inspiration
+# http://zackmdavis.net/blog/2013/06/huffman/
+
+import sys
 
 
-############------------ FUNCTIONS ------------############
-def huffman_encoding(data):
+class Subtree:
+    def __init__(self, char, freq, left, right):
+        self.char = char
+        self.freq = freq
+        self.left = left
+        self.right = right
 
-    frequencies = c.Counter(data)
+    def __gt__(self, othernode):
+        return self.freq > othernode.freq
 
-    heap = [[value, [key, ""]] for key, value in frequencies.items()]
-    hq.heapify(heap)
+    def codebook(self):
+        codes = {}
 
-    while len(heap) > 1:
-        left = hq.heappop(heap)
-        right = hq.heappop(heap)
-
-        for pair in left[1:]:
-            pair[1] = '0' + pair[1]
-
-        for pair in right[1:]:
-            pair[1] = '1' + pair[1]
-
-        hq.heappush(heap, [left[0] + right[0]] + left[1:] + right[1:])
-
-    encoded = sorted(hq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
-    print(''.join([e[1] for e in encoded]))
-    # 101101001000
-
-    return encoded
+        def traversal(item, code):
+            if item != None:
+                traversal(item.left, code+'0')
+                if item.char != None:
+                    codes[item.char] = code
+                traversal(item.right, code+'1')
+        traversal(self, '')
+        return codes
 
 
-# huffman_encoding("AAAAAAABBBCCCCCCCDDEEEEEE")
+class MinPriorityQueue:
+    def __init__(self):
+        self.queue = []
+
+    def put(self, item):
+        self.queue.append(item)
+        self.queue.sort(reverse=True)
+
+    def get(self):
+        return self.queue.pop()
 
 
-def huffman_decoding(encoded, frequecies_dictionary):
-    decoded_huffman = ""
-
-    while encoded:
-        for k, v in frequecies_dictionary.items():
-            if encoded.startswith(k):
-                decoded_huffman += frequecies_dictionary[k]
-                encoded = encoded[len(k):]
-
-    print(decoded_huffman)
-
-
-frequecies_dictionary = {
-    'A': '10',
-    'C': '11',
-    'E': '01',
-    'B': '001',
-    'D': '000'
-}
-
-huffman_decoding('101101001000', frequecies_dictionary)
+def Huffman(C):
+    Q = MinPriorityQueue()
+    leaves = {Subtree(k, C[k], None, None) for k in C}
+    for leaf in leaves:
+        Q.put(leaf)
+    for i in range(len(C)-1):
+        left = Q.get()
+        right = Q.get()
+        new_node = Subtree(None, left.freq + right.freq, left, right)
+        Q.put(new_node)
+    return Q.get().codebook()
 
 
-############------------ DRIVER CODE ------------############
+def code(plaintext, codebook):
+    return ''.join(codebook[c] for c in plaintext)
+
+
+def decode(ciphertext, codebook):
+    decodebook = {v: k for k, v in codebook.items()}
+    codeword = ''
+    plaintext = ''
+    for i in range(len(ciphertext)):
+        codeword += ciphertext[i]
+        if codeword in decodebook:
+            plaintext += decodebook[codeword]
+            codeword = ''
+    return plaintext
+
+
+eng_freqs = {'A': 8167, 'B': 1492, 'C': 2782, 'D': 4253, 'E': 12702,
+             'F': 2228, 'G': 2015, 'H': 6094, 'I': 6966, 'J': 153, 'K': 772,
+             'L': 4025, 'M': 2406, 'N': 6749, 'O': 7507, 'P': 1929, 'Q': 95,
+             'R': 5987, 'S': 6327, 'T': 9056, 'U': 2758, 'V': 978, 'W': 2360,
+             'X': 150, 'Y': 1974, 'Z': 74, ' ': 13000, '.': 4250, ',': 4250}
+
+eng_codebook = Huffman(eng_freqs)
+plain = "I USED TO WONDER WHAT FRIENDSHIP COULD BE, UNTIL YOU ALL SHARED ITS MAGIC WITH ME."
+
+cipher = code(plain, eng_codebook)
+print(cipher)
+
 # if __name__ == "__main__":
 #     codes = {}
 
