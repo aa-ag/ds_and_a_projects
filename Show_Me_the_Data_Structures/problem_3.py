@@ -24,17 +24,36 @@ def huffman_encoding(data):
         hq.heappush(heap, [left[0] + right[0]] + left[1:] + right[1:])
 
     encoded = sorted(hq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
-
     print(''.join([e[1] for e in encoded]))
+    # 101101001000
 
-    return heap
-
-
-huffman_encoding("AAAAAAABBBCCCCCCCDDEEEEEE")
+    return encoded
 
 
-# def huffman_decoding(data, tree):
-#     pass
+# huffman_encoding("AAAAAAABBBCCCCCCCDDEEEEEE")
+
+
+def huffman_decoding(encoded, frequecies_dictionary):
+    decoded_huffman = ""
+
+    while encoded:
+        for k, v in frequecies_dictionary.items():
+            if encoded.startswith(k):
+                decoded_huffman += frequecies_dictionary[k]
+                encoded = encoded[len(k):]
+
+    print(decoded_huffman)
+
+
+frequecies_dictionary = {
+    'A': '10',
+    'C': '11',
+    'E': '01',
+    'B': '001',
+    'D': '000'
+}
+
+huffman_decoding('101101001000', frequecies_dictionary)
 
 
 ############------------ DRIVER CODE ------------############
