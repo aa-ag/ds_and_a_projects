@@ -4,10 +4,6 @@ import collections as c
 import heapq as hq
 
 
-############------------ GLOBAL FUNCTIONS ------------############
-character_frequency = {}
-
-
 ############------------ HELPER CODE ------------############
 class Node:
     def __init__(self, character, frequency, left_child, right_child):
@@ -38,14 +34,12 @@ class Heap:
 
 
 ############------------ FUNCTIONS ------------############
-def character_frequency(data):
-    global character_frequency
-    character_frequency = c.Counter(data.replace(' ', ''))
-    print(character_frequency)
+def count_character_frequency(data):
+    return c.Counter(data.replace(' ', ''))
 
 
 def huffman_encoding(data):
-    pass
+    print(count_character_frequency(data))
 
 
 def huffman_decoding(data, tree):
@@ -77,7 +71,7 @@ if __name__ == "__main__":
 
     a_great_sentence = "The bird is the word"
 
-    character_frequency(a_great_sentence)
+    huffman_encoding(a_great_sentence)
 
 # print("The size of the data is: {}\n".format(
 #     sys.getsizeof(a_great_sentence)))
