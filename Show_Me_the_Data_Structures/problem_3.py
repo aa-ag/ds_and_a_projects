@@ -17,6 +17,9 @@ class Heap:
     def __init__(self):
         self.heap = []
 
+    def __iter__(self):
+        return iter(self.heap)
+
     def size(self):
         return len(self.heap)
 
@@ -28,6 +31,12 @@ class Heap:
             return None
         else:
             return hq.heappop(self.heap)[1]
+
+    def next(self):
+        try:
+            return self.pop()
+        except IndexError:
+            raise StopIteration
 
 
 ############------------ FUNCTIONS ------------############
@@ -44,14 +53,15 @@ def huffman_decoding(data, tree):
 ############------------ DRIVER CODE ------------############
 h = Heap()
 
-h.push(1, "first value here")
-h.push(2, "second value here")
-print(h.size())  # 2
-
 h.push(3, "third value here")
 h.push(4, "fourth value here")
+# print(h.size())  # 2
+h.push(1, "first value here")
+h.push(2, "second value here")
+# print(h.size())  # 4
 
-print(h.size())  # 4
+for i in h:
+    print(i)
 
 
 # if __name__ == "__main__":
