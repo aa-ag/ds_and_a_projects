@@ -40,7 +40,7 @@ class Heap:
 ############------------ FUNCTIONS ------------############
 def character_frequency(data):
     global character_frequency
-    character_frequency = c.Counter(data)
+    character_frequency = c.Counter(data.replace(' ', ''))
     print(character_frequency)
 
 
