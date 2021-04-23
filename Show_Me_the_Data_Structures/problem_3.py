@@ -4,6 +4,10 @@ import collections as c
 import heapq as hq
 
 
+############------------ GLOBAL FUNCTIONS ------------############
+character_frequency = {}
+
+
 ############------------ HELPER CODE ------------############
 class Node:
     def __init__(self, character, frequency, left_child, right_child):
@@ -34,6 +38,10 @@ class Heap:
 
 
 ############------------ FUNCTIONS ------------############
+def character_frequency(data):
+    global character_frequency
+    character_frequency = c.Counter(data)
+    print(character_frequency)
 
 
 def huffman_encoding(data):
@@ -45,14 +53,14 @@ def huffman_decoding(data, tree):
 
 
 ############------------ DRIVER CODE ------------############
-h = Heap()
+# h = Heap()
 
-h.push([1, "first value here"])
-h.push([2, "second value here"])
-h.push([3, "third value here"])
-h.push([4, "fourth value here"])
+# h.push([1, "first value here"])
+# h.push([2, "second value here"])
+# h.push([3, "third value here"])
+# h.push([4, "fourth value here"])
 
-print(h.pop())
+# print(h.pop())
 
 # for i in h:
 #     print(i)
@@ -64,12 +72,12 @@ print(h.pop())
 [4, 'fourth value here']
 '''
 
-# if __name__ == "__main__":
-#     codes = {}
+if __name__ == "__main__":
+    # codes = {}
 
-#     a_great_sentence = "The bird is the word"
+    a_great_sentence = "The bird is the word"
 
-#     generate_priority_queue(a_great_sentence)
+    character_frequency(a_great_sentence)
 
 # print("The size of the data is: {}\n".format(
 #     sys.getsizeof(a_great_sentence)))
