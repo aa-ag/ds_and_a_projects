@@ -39,7 +39,19 @@ def count_character_frequency(data):
 
 
 def huffman_encoding(data):
-    print(count_character_frequency(data))
+    character_frequency = count_character_frequency(data)
+    '''
+    Counter({'h': 2, 'e': 2, 'i': 2, 'r': 2, 'd': 2, 
+    'T': 1, 'b': 1, 's': 1, 't': 1, 'w': 1, 'o': 1})
+    '''
+
+    heap = Heap()
+
+    for key, value in character_frequency.items():
+        heap.push([key, value])
+
+    print(heap.__len__())
+    # 11
 
 
 def huffman_decoding(data, tree):
