@@ -47,11 +47,28 @@ def huffman_encoding(data):
 
     heap = Heap()
 
-    for key, value in character_frequency.items():
-        heap.push([key, value])
+    for key, value in sorted(character_frequency.items(), key=lambda x: x[1]):
+        heap.push([value, key])
 
     print(heap.__len__())
     # 11
+
+    while heap:
+        print(heap.pop())
+
+    '''
+    [1, 'T']
+    [1, 'b']
+    [1, 'o']
+    [1, 's']
+    [1, 't']
+    [1, 'w']
+    [2, 'd']
+    [2, 'e']
+    [2, 'h']
+    [2, 'i']
+    [2, 'r']
+    '''
 
 
 def huffman_decoding(data, tree):
