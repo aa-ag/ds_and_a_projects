@@ -17,26 +17,20 @@ class Heap:
     def __init__(self):
         self.heap = []
 
-    def __iter__(self):
-        return iter(self.heap)
-
-    def size(self):
-        return len(self.heap)
-
-    def push(self, priority, item):
-        self.heap.append(item)
+    def push(self, item):
+        hq.heappush(self.heap, item)
 
     def pop(self):
-        if self.size() == 0:
-            return None
-        else:
-            return hq.heappop(self.heap)[1]
+        return hq.heappop(self.heap)
 
-    def next(self):
-        try:
-            return self.pop()
-        except IndexError:
-            raise StopIteration
+    def peek(self):
+        return self.heap[0]
+
+    def __getitem__(self, item):
+        return self.heap[item]
+
+    def __len__(self):
+        return len(self.heap)
 
 
 ############------------ FUNCTIONS ------------############
@@ -53,16 +47,22 @@ def huffman_decoding(data, tree):
 ############------------ DRIVER CODE ------------############
 h = Heap()
 
-h.push(3, "third value here")
-h.push(4, "fourth value here")
-# print(h.size())  # 2
-h.push(1, "first value here")
-h.push(2, "second value here")
-# print(h.size())  # 4
+h.push([1, "first value here"])
+h.push([2, "second value here"])
+h.push([3, "third value here"])
+h.push([4, "fourth value here"])
 
-for i in h:
-    print(i)
+print(h.pop())
 
+# for i in h:
+#     print(i)
+
+'''
+[1, 'first value here']
+[2, 'second value here']
+[3, 'third value here']
+[4, 'fourth value here']
+'''
 
 # if __name__ == "__main__":
 #     codes = {}
