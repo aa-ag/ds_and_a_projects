@@ -2,12 +2,16 @@ import sys
 import collections
 
 
-def character_frequency(data):
-    return collections.Counter(data)
+class Node:
+    def __init__(self, character, frequency, left_child, right_child):
+        self.character = character
+        self.frequency = frequency
+        self.left_child = left_child
+        self.right_child = right_child
 
 
 def huffman_encoding(data):
-    print(character_frequency(data))
+    pass
 
 
 def huffman_decoding(data, tree):
@@ -16,6 +20,8 @@ def huffman_decoding(data, tree):
 
 if __name__ == "__main__":
     codes = {}
+
+    character_frequency = collections.Counter(data)
 
     a_great_sentence = "The bird is the word"
 
