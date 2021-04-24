@@ -50,10 +50,20 @@ def huffman_encoding(data):
     for value, frequency in sorted(character_frequency.items(), key=lambda x: x[1]):
         heap.push([frequency, value])
 
-    left = heap.pop()
-    right = heap.pop()
+    answer = ''
 
-    print(left, right)
+    while len(heap) > 1:
+
+        left = heap.pop()
+        right = heap.pop()
+
+        for i in left:
+            answer += str(i)
+
+        for i in right:
+            answer += str(i)
+
+    print(answer)
 
 
 def huffman_decoding(data, tree):
