@@ -47,9 +47,9 @@ def huffman_decoding(encoded_data, tree):
     p = tree
     for bit in encoded_data:
         if bit == '0':
-            p = p[0]  # go left
+            p = p[1]  # go left
         else:
-            p = p[1]  # go right
+            p = p[0]  # go right
 
         if type(p) == type(""):
             output += p  # found a character. Add to output
@@ -63,18 +63,18 @@ if __name__ == "__main__":
 
     input_string = "The bird is the word"
 
-    print("The size of the data is: {}\n".format(
+    print("The size of the data is: {}".format(
         sys.getsizeof(input_string)))
     print("The content of the data is: {}\n".format(input_string))
 
     encoded_data, tree = huffman_encoding(input_string)
 
-    print("The size of the encoded data is: {}\n".format(
+    print("The size of the encoded data is: {}".format(
         sys.getsizeof(int(encoded_data, base=2))))
     print("The content of the encoded data is: {}\n".format(encoded_data))
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
-    print("The size of the decoded data is: {}\n".format(
+    print("The size of the decoded data is: {}".format(
         sys.getsizeof(decoded_data)))
     print("The content of the encoded data is: {}\n".format(decoded_data))
