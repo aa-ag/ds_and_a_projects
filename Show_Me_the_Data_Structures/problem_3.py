@@ -1,70 +1,85 @@
+############------------ IMPORTS ------------############
 import collections
 
 
-def frequency(s):
-    freqs = collections.Counter(s)
-    return freqs
+############------------ FUNCTIONS ------------############
+def count_character_frequency(s):
+    character_frequency = collections.Counter(s)
+
+    return character_frequency
 
 
-def sortFreq(freqs):
-    letters = freqs.keys()
-    tuples = []
-    for let in letters:
-        tuples.append((freqs[let], let))
-    tuples.sort()
-    return tuples
+def sort_character_frequency(character_frequency):
+    characters = character_frequency.keys()
+
+    pseudo_heap = []
+
+    for character in characters:
+        pseudo_heap.append((character_frequency[character], character))
+    pseudo_heap.sort()
+
+    return pseudo_heap
 
 
-def buildTree(tuples):
-    while len(tuples) > 1:
-        leastTwo = tuple(tuples[0:2])                  # get the 2 to combine
-        theRest = tuples[2:]                          # all the others
-        combFreq = leastTwo[0][0] + leastTwo[1][0]     # the branch points freq
-        # add branch point to the end
-        tuples = theRest + [(combFreq, leastTwo)]
-        # sort it into place
-        tuples = sorted(tuples, key=lambda x: x[0])
-    return tuples[0]  # Return the single tree inside the list
+def build_tree(pseudo_heap):
+    while len(pseudo_heap) > 1:
+        two_lower_values = tuple(pseudo_heap[0:2])
+
+        rest_of_pseudo_heap = pseudo_heap[2:]
+
+        merge = two_lower_values[0][0] + two_lower_values[1][0]
+
+        pseudo_heap = rest_of_pseudo_heap + [(merge, two_lower_values)]
+
+        pseudo_heap = sorted(pseudo_heap, key=lambda x: x[0])
+
+    return pseudo_heap[0]
 
 
-def trimTree(tree):
-    # Trim the freq counters off, leaving just the letters
-    p = tree[1]                                    # ignore freq count in [0]
-    if type(p) == type(""):
-        return p              # if just a leaf, return it
+def trim_tree(tree):
+    leaf = tree[1]
+
+    if type(leaf) == str:
+        return leaf
     else:
-        # trim left then right and recombine
-        return (trimTree(p[0]), trimTree(p[1]))
+        return (trim_tree(leaf[0]), trim_tree(leaf[1]))
 
 
-def assignCodes(node, pat=''):
+def encode(node, branch=''):
     global codes
-    if type(node) == type(""):
-        codes[node] = pat                # A leaf. set its code
-    else:                              #
-        assignCodes(node[0], pat+"0")    # Branch point. Do the left branch
-        assignCodes(node[1], pat+"1")
+
+    if type(node) == str:
+        codes[node] = branch
+    else:
+        encode(node[0], branch + '0')
+        encode(node[1], branch + '1')
 
 
-def encode(s):
+def huffman_encoding(s):
     global codes
-    output = ""
-    for ch in s:
-        output += codes[ch]
+
+    output = ''
+
+    for character in s:
+        output += codes[character]
+
     return output
 
 
-def decode(tree, s):
-    output = ""
-    p = tree
+def huffman_decoding(tree, s):
+    output = ''
+
+    leaf = tree
+
     for bit in s:
         if bit == '0':
-            p = p[0]     # Head up the left branch
+            leaf = leaf[0]
         else:
-            p = p[1]     # or up the right branch
-        if type(p) == type(""):
-            output += p              # found a character. Add to output
-            p = tree                 # and restart for next character
+            leaf = leaf[1]
+        if type(leaf) == str:
+            output += leaf
+            leaf = tree
+
     return output
 
 
@@ -73,20 +88,17 @@ codes = {}
 
 s = 'aaabccdeeeeeffg'
 
-freqs = frequency(s)
-# print(frequency)
+character_frequency_table = count_character_frequency(s)
 
-tuples = sortFreq(freqs)
-# print(tuples)
+pseudo_heap = sort_character_frequency(character_frequency_table)
 
-tree = buildTree(tuples)
-trim = trimTree(tree)
-# print(trim)
+tree = build_tree(pseudo_heap)
 
-assignCodes(trim)
-# print(codes)
+trim = trim_tree(tree)
 
-encoded_data = encode(s)
+encode(trim)
+
+encoded_data = huffman_encoding(s)
 print(encoded_data)
 
-print(decode(trim, encoded_data))
+print(huffman_decoding(trim, encoded_data))
