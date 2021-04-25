@@ -1,12 +1,3 @@
-############------------ INSTRUCTIONS ------------############
-'''
-For this problem, the goal is to write code for finding 
-all files under a directory (and all directories beneath it)
- that end with ".c"
-
-... for this problem you are not allowed to use os.walk().
-'''
-
 ############------------ IMPORTS ------------############
 import os
 from pathlib import Path

@@ -1,14 +1,3 @@
-'''
- In Windows Active Directory,
- a group can consist of user(s) and group(s) themselves.
- We can construct this hierarchy as such.
- Where User is represented by str representing their ids.
-'''
-
-# removed () & "object" per
-# https://docs.python.org/3/tutorial/classes.html
-
-
 ############------------ HELPER CODE ------------############
 class Group:
     def __init__(self, _name):
@@ -82,7 +71,7 @@ def is_user_in_group(user, group):
     '''
 
 
-############------------ DRIVER CODE/TESTS ------------############
+############------------ DRIVER CODE ------------############
 user = 'sub_child_user'
 
 if __name__ == "__main__":
