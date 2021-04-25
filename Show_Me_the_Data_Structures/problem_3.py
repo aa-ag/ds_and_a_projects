@@ -3,49 +3,7 @@ import sys
 import collections
 
 
-############------------ FUNCTIONS ------------############
-def huffman_encoding(s):
-    '''
-     creates empty string, imports global codes variable,
-     iterates through input string `s` and pupolates output
-     string with either a 0 or a 1 depending on frequency 
-     using global variable `codes` which is itself prepared in 
-     function `encode`
-    '''
-    global codes
-
-    huffman_encoded_output = ''
-
-    for character in s:
-        huffman_encoded_output += codes[character]
-
-    return huffman_encoded_output
-
-
-def huffman_decoding(tree, encoded_data):
-    '''
-     creates empty string, and using the `tree` created
-     in `build_tree()` function, together with ecoded data
-     generated in `huffman_encoding`, iterates over tree to 
-     find what character corresponds with either a 0 or a 1
-    '''
-    huffman_decoded_output = ''
-
-    leaf = tree
-
-    for bit in encoded_data:
-        if bit == '0':
-            leaf = leaf[0]
-        else:
-            leaf = leaf[1]
-
-        if type(leaf) == str:
-            huffman_decoded_output += leaf
-            leaf = tree
-
-    return huffman_decoded_output
-
-
+############------------ HELPER CODE ------------############
 def generate_pseudo_heap(s):
     '''
      counts frequency of each character in input string `s`
@@ -130,6 +88,49 @@ def encode(node, branch=''):
     else:
         encode(node[0], branch + '0')
         encode(node[1], branch + '1')
+
+
+############------------ FUNCTIONS ------------############
+def huffman_encoding(s):
+    '''
+     creates empty string, imports global codes variable,
+     iterates through input string `s` and pupolates output
+     string with either a 0 or a 1 depending on frequency 
+     using global variable `codes` which is itself prepared in 
+     function `encode`
+    '''
+    global codes
+
+    huffman_encoded_output = ''
+
+    for character in s:
+        huffman_encoded_output += codes[character]
+
+    return huffman_encoded_output
+
+
+def huffman_decoding(tree, encoded_data):
+    '''
+     creates empty string, and using the `tree` created
+     in `build_tree()` function, together with ecoded data
+     generated in `huffman_encoding`, iterates over tree to 
+     find what character corresponds with either a 0 or a 1
+    '''
+    huffman_decoded_output = ''
+
+    leaf = tree
+
+    for bit in encoded_data:
+        if bit == '0':
+            leaf = leaf[0]
+        else:
+            leaf = leaf[1]
+
+        if type(leaf) == str:
+            huffman_decoded_output += leaf
+            leaf = tree
+
+    return huffman_decoded_output
 
 
 ##############------ DRIVER CODE -----------############
