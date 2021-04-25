@@ -1,21 +1,20 @@
 ############------------ IMPORTS ------------############
+import sys
 import collections
 
 
 ############------------ FUNCTIONS ------------############
-def count_character_frequency(s):
+def generate_pseudo_heap(s):
+
     character_frequency = collections.Counter(s)
 
-    return character_frequency
-
-
-def sort_character_frequency(character_frequency):
     characters = character_frequency.keys()
 
     pseudo_heap = []
 
     for character in characters:
         pseudo_heap.append((character_frequency[character], character))
+
     pseudo_heap.sort()
 
     return pseudo_heap
@@ -45,14 +44,14 @@ def trim_tree(tree):
         return (trim_tree(leaf[0]), trim_tree(leaf[1]))
 
 
-def encode(node, branch=''):
+def encode(node, pat=''):
     global codes
 
     if type(node) == str:
-        codes[node] = branch
+        codes[node] = pat
     else:
-        encode(node[0], branch + '0')
-        encode(node[1], branch + '1')
+        encode(node[0], pat + '0')
+        encode(node[1], pat + '1')
 
 
 def huffman_encoding(s):
@@ -86,11 +85,10 @@ def huffman_decoding(tree, s):
 ##############------ DRIVER CODE -----------############
 codes = {}
 
-s = 'aaabccdeeeeeffg'
+# s = 'aaabccdeeeeeffg'
+s = 'The bird is the word'
 
-character_frequency_table = count_character_frequency(s)
-
-pseudo_heap = sort_character_frequency(character_frequency_table)
+pseudo_heap = generate_pseudo_heap(s)
 
 tree = build_tree(pseudo_heap)
 
@@ -102,3 +100,26 @@ encoded_data = huffman_encoding(s)
 print(encoded_data)
 
 print(huffman_decoding(trim, encoded_data))
+
+# if __name__ == "__main__":
+#     codes = {}
+
+#     a_great_sentence = "The bird is the word"
+
+#     print()
+
+#     print("The size of the data is: {}\n".format(
+#         sys.getsizeof(a_great_sentence)))
+#     print("The content of the data is: {}".format(a_great_sentence))
+
+#     encoded_data, tree = huffman_encoding(a_great_sentence)
+
+#     print("The size of the encoded data is: {}\n".format(
+#         sys.getsizeof(int(encoded_data, base=2))))
+#     print("The content of the encoded data is: {}".format(encoded_data))
+
+#     decoded_data = huffman_decoding(encoded_data, tree)
+
+#     print("The size of the decoded data is: {}\n".format(
+#         sys.getsizeof(decoded_data)))
+#     print("The content of the encoded data is: {}".format(decoded_data))
