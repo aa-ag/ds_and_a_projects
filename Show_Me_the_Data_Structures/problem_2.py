@@ -1,6 +1,6 @@
 ############------------ IMPORTS ------------############
 import os
-from pathlib import Path
+from pathlib import Path as p
 
 
 ############------------ GLOBAL VARIABLES ------------############
@@ -9,26 +9,15 @@ suffix = ".c"
 
 
 ############------------ FUNCTIONS ------------############
-def find_files(s, p):
+def find_files(s, path_to_root_directory):
     """
-    Find all files beneath path with file name suffix.
-
-    Note that a path may contain further subdirectories
-    and those subdirectories may also contain further subdirectories.
-
-    There are no limit to the depth of the subdirectories can be.
-
-    Args:
-      suffix(str): suffix if the file name to be found
-      path(str): path of the file system
-
-    Returns:
-       a list of paths
+     Finds all files beneath path with file name suffix.
     """
+
     answer = list()
 
-    for path in Path(p).rglob('*.c'):
-        answer.append(path.name)
+    for directory_or_file in p(path_to_root_directory).rglob('*.c'):
+        answer.append(directory_or_file.name)
 
     print(answer)
     # ['t1.c', 'b.c', 'a.c', 'a.c']

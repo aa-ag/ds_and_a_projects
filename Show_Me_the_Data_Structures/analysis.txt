@@ -11,9 +11,11 @@ as well as a text explanation of the efficiency of your code and your design cho
 
 
 * problem_1.py: O(1) -  all operations involving a dictionary (lookup, insert, etc)
-                        have a worst-case complexity of O(1)
+                        have a worst-case complexity of O(1).
 
-* problem_2.py: ...
+* problem_2.py: O(n) - while using Python's built-in `append()` is amortized O(1)',
+                        the algo still loops/globs through the entire path, including
+                        subdirectories
 * problem_3.py: ...
 * problem_4.py: ...
 * problem_5.py: ...
@@ -21,3 +23,5 @@ as well as a text explanation of the efficiency of your code and your design cho
 
 
 --------------------------------------------------------------------
+
+' https://stackoverflow.com/questions/33044883/why-is-the-time-complexity-of-pythons-list-append-method-o1
