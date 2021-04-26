@@ -43,8 +43,10 @@ creating a Block class and a Blockchain, as well as inserting new block into Blo
 may be pretty efficient but using sha256 to hash a string (even though inputs are small)
 is the most expensive part of the code at O(n).''
 
-* problem_6.py: ...
+* problem_6.py: O(n)
 
+since for each (union and intersection) in the worst case scenario all elements of
+at least one of the linked lists needs to be checked, runtime is average O(n)
 
 --------------------------------------------------------------------
 
