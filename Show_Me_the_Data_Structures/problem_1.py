@@ -3,14 +3,17 @@ import collections
 
 
 ############------------ CODE ------------############
-class LRU_Cache():
+class LRU_Cache:
 
     def __init__(self, capacity):
         '''
          Initialize class variables
         '''
-        self.capacity = capacity
-        self.cache = collections.OrderedDict()
+        if type(capacity) == int and capacity > 0:
+            self.capacity = capacity
+            self.cache = collections.OrderedDict()
+        else:
+            raise "invalid input"
 
     def get_(self, key):
         '''
@@ -43,21 +46,30 @@ class LRU_Cache():
 
 ############------------ DRIVER CODE ------------############
 # TEST CASE 1
-our_cache = LRU_Cache(5)
+if __name__ == "__main__":
+    our_cache = LRU_Cache(5)
 
-our_cache.set_(1, 1)  # adds 1, 1 to ordered dictionary/cache
-our_cache.set_(2, 2)  # adds 2, 2 to ordered dictionary/cache
-our_cache.set_(3, 3)  # adds 3, 3 to ordered dictionary/cache
-our_cache.set_(4, 4)  # adds 4, 4 to ordered dictionary/cache
+    our_cache.set_(1, 1)  # adds 1, 1 to ordered dictionary/cache
+    our_cache.set_(2, 2)  # adds 2, 2 to ordered dictionary/cache
+    our_cache.set_(3, 3)  # adds 3, 3 to ordered dictionary/cache
+    our_cache.set_(4, 4)  # adds 4, 4 to ordered dictionary/cache
 
-our_cache.get_(1)  # returns 1
-our_cache.get_(2)  # returns 2
-our_cache.get_(9)  # returns -1 because 9 is not present in the cache
+    our_cache.get_(1)  # returns 1
+    our_cache.get_(2)  # returns 2
+    our_cache.get_(9)  # returns -1 because 9 is not present in the cache
 
-our_cache.set_(5, 5)  # adds 5, 5 to ordered dictionary/cache
-our_cache.print_cache()  # see full object
-our_cache.set_(6, 6)  # returns -1 because the cache reached it's capacity
-# but it also removes oldest item to add 6, 6
+    our_cache.set_(5, 5)  # adds 5, 5 to ordered dictionary/cache
+    our_cache.print_cache()  # see full object
+    our_cache.set_(6, 6)  # returns -1 because the cache reached it's capacity
+    # but it also removes oldest item to add 6, 6
 
-our_cache.print_cache()  # see full object
-our_cache.get_(3)  # returns 3
+    our_cache.print_cache()  # see full object
+    our_cache.get_(3)  # returns 3
+
+    # TEST CASE 2
+    our_cache = LRU_Cache(-1)
+    our_cache.print_cache()
+
+    # TEST CASE 3
+    our_cache = LRU_Cache([])
+    our_cache.print_cache
