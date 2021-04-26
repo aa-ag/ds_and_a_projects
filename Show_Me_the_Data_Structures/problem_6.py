@@ -21,7 +21,6 @@ class LinkedList:
         return out_string.rstrip(' -> ')
 
     def append(self, value):
-
         if self.head is None:
             self.head = Node(value)
             return
@@ -61,16 +60,16 @@ def is_in(llist, v):
 ############------------ FUNCTIONS ------------############
 def union(llist_1, llist_2):
     '''
-     creates a variable `n2` to
+     creates a variable `h2` to
      store head and traverse `llist_2`
      whilst its head isn't `None`, appending
      each node to `llist_1`
     '''
-    n2 = llist_2.head
+    h2 = llist_2.head
 
-    while n2 is not None:
-        llist_1.append(n2)
-        n2 = n2.next
+    while h2 is not None:
+        llist_1.append(h2)
+        h2 = h2.next
 
     return llist_1
 
@@ -135,6 +134,7 @@ def test_case_2():
 
     print(union(linked_list_3, linked_list_4))
     print(intersection(linked_list_3, linked_list_4))
+    print()
 
 
 # Test case 3

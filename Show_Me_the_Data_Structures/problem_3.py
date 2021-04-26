@@ -3,6 +3,10 @@ import sys
 import collections
 
 
+############------------ GLOBAL VARIABLES ------------############
+codes = {}
+
+
 ############------------ HELPER CODE ------------############
 def generate_pseudo_heap(s):
     '''
@@ -10,6 +14,7 @@ def generate_pseudo_heap(s):
      creates a list of charactes called `characters` and generates
      a pseudo min heap of tuples
     '''
+
     character_frequency = collections.Counter(s)
 
     characters = character_frequency.keys()
@@ -77,8 +82,8 @@ def trim_tree(tree):
 
 def encode(node, branch=''):
     '''
-     recursively traverses tree and keeps track of 
-     left or right turns (branch) and replaces character in 
+     recursively traverses tree and keeps track of
+     left or right turns (branch) and replaces character in
      global variable codes (dictionary) for either a 0 or a 1
     '''
     global codes
@@ -95,8 +100,8 @@ def huffman_encoding(s):
     '''
      creates empty string, imports global codes variable,
      iterates through input string `s` and pupolates output
-     string with either a 0 or a 1 depending on frequency 
-     using global variable `codes` which is itself prepared in 
+     string with either a 0 or a 1 depending on frequency
+     using global variable `codes` which is itself prepared in
      function `encode`
     '''
     global codes
@@ -113,9 +118,10 @@ def huffman_decoding(tree, encoded_data):
     '''
      creates empty string, and using the `tree` created
      in `build_tree()` function, together with ecoded data
-     generated in `huffman_encoding`, iterates over tree to 
+     generated in `huffman_encoding`, iterates over tree to
      find what character corresponds with either a 0 or a 1
     '''
+
     huffman_decoded_output = ''
 
     leaf = tree
@@ -133,11 +139,10 @@ def huffman_decoding(tree, encoded_data):
     return huffman_decoded_output
 
 
-##############------ DRIVER CODE -----------############
-if __name__ == "__main__":
-    print()
-
-    codes = {}
+##############------ TESTS -----------############
+# TEST CASE 1
+def test_case_1():
+    global codes
 
     s = "The bird is the word"
 
@@ -164,3 +169,8 @@ if __name__ == "__main__":
     print("The size of the decoded data is: {}".format(
         sys.getsizeof(decoded_data)))
     print("The content of the encoded data is: {}\n".format(decoded_data))
+
+
+##############------ DRIVER CODE -----------############
+if __name__ == "__main__":
+    test_case_1()

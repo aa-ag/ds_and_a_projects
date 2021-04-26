@@ -21,6 +21,7 @@ class Group:
         return self.name
 
 
+############------------ HELPER CODE ------------############
 parent = Group("parent")
 child = Group("child")
 sub_child = Group("subchild")
@@ -51,11 +52,13 @@ def is_user_in_group(user, group):
         return "Invalid Input"
 
 
-############------------ DRIVER CODE ------------############
+############------------ TEST CASES ------------############
 user_1 = 'sub_child_user'
 user_2 = ['sub_child_user_within_list']
 user_3 = None
 
+
+############------------ DRIVER CODE ------------############
 if __name__ == "__main__":
     print(is_user_in_group(user_1, sub_child))  # True
     print(is_user_in_group(user_2, sub_child))  # False
