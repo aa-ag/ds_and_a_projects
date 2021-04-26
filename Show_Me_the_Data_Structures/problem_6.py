@@ -94,6 +94,7 @@ def intersection(llist_1, llist_2):
 
     if intersection_llist.size() == 0:
         print("N\A")
+
     return intersection_llist
 
 

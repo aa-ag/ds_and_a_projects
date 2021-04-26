@@ -37,12 +37,16 @@ elements easily (say by index if `groups` and/or `users` were lists) and it also
 neither `groups` nor `users` would allow duplicates, but by using sets, the code 
 can and does look up if user in in group very efficently, at a worst-case runtime of O(1)
 
+* problem_5.py: O(n)
 
+creating a Block class and a Blockchain, as well as inserting new block into Blockchain
+may be pretty efficient but using sha256 to hash a string (even though inputs are small)
+is the most expensive part of the code at O(n).''
 
-* problem_5.py: ...
 * problem_6.py: ...
 
 
 --------------------------------------------------------------------
 
 ' https://stackoverflow.com/questions/33044883/why-is-the-time-complexity-of-pythons-list-append-method-o1
+'' https://stackoverflow.com/questions/44598732/how-fast-is-computing-a-hash
