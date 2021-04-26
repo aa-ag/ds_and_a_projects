@@ -9,7 +9,7 @@ suffix = ".c"
 
 
 ############------------ FUNCTIONS ------------############
-def find_files(s, path_to_root_directory):
+def find_files(suffix, path_to_root_directory):
     """
      Finds all files beneath path with file name suffix.
     """
