@@ -137,7 +137,26 @@ def test_case_2():
     print(intersection(linked_list_3, linked_list_4))
 
 
+# Test case 3
+def test_case_3():
+    linked_list_3 = LinkedList()
+    linked_list_4 = LinkedList()
+
+    element_1 = []
+    element_2 = [1, 7, 8, 9, 11, 21, 1]
+
+    for i in element_1:
+        linked_list_3.append(i)
+
+    for i in element_2:
+        linked_list_4.append(i)
+
+    print(union(linked_list_3, linked_list_4))
+    print(intersection(linked_list_3, linked_list_4))
+
+
 ############------------ DRIVER CODE ------------############
 if __name__ == '__main__':
     test_case_1()
     test_case_2()
+    test_case_3()

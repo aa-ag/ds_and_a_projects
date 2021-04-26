@@ -1,9 +1,5 @@
 ############------------ HELPER CODE ------------############
 class Group:
-    # def __init__(self, _name):
-    #     self.name = _name
-    #     self.groups = []
-    #     self.users = []
     def __init__(self, _name):
         self.name = _name
         self.groups = set()
@@ -49,11 +45,18 @@ def is_user_in_group(user, group):
      Returns True if user is in the group,
      False otherwise.
     """
-    print(user in group.get_users())
+    try:
+        return user in group.get_users()
+    except:
+        return "Invalid Input"
 
 
 ############------------ DRIVER CODE ------------############
-user = 'sub_child_user'
+user_1 = 'sub_child_user'
+user_2 = ['sub_child_user_within_list']
+user_3 = None
 
 if __name__ == "__main__":
-    is_user_in_group(user, sub_child)
+    print(is_user_in_group(user_1, sub_child))  # True
+    print(is_user_in_group(user_2, sub_child))  # False
+    print(is_user_in_group(user_3, sub_child))  # False
