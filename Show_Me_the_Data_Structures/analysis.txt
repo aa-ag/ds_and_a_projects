@@ -10,14 +10,35 @@ as well as a text explanation of the efficiency of your code and your design cho
 --------------------------------------------------------------------
 
 
-* problem_1.py: O(1) -  all operations involving a dictionary (lookup, insert, etc)
-                        have a worst-case complexity of O(1).
+* problem_1.py: O(1)
 
-* problem_2.py: O(n) - while using Python's built-in `append()` is amortized O(1)',
-                        the algo still loops/globs through the entire path, including
-                        subdirectories
-* problem_3.py: ...
-* problem_4.py: ...
+all operations involving a dictionary (lookup, insert, etc)
+have a worst-case complexity of O(1).
+
+* problem_2.py: O(n)
+
+while using Python's built-in `append()` is amortized O(1)',
+the algo still loops/globs through the entire path, including
+subdirectories
+
+* problem_3.py: O(n log n)
+
+a few operations within code (such as `collections.Counter(s)`)
+have a run time of O(1), and most have O(n) (for loops, checking conditionals, etc);
+however, both Python's `sort()` and `sorted()` have worst-case scenario of O(n log n)
+
+
+* problem_4.py: O(1)
+
+this was an interesting one.  problem instructions read "Write a function 
+that provides an efficient look up of whether the user is in a group."
+to achieve "efficiency", the code may have to give away the ability to look up
+elements easily (say by index if `groups` and/or `users` were lists) and it also meant
+neither `groups` nor `users` would allow duplicates, but by using sets, the code 
+can and does look up if user in in group very efficently, at a worst-case runtime of O(1)
+
+
+
 * problem_5.py: ...
 * problem_6.py: ...
 
