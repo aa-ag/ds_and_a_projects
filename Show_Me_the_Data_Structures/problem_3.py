@@ -171,6 +171,38 @@ def test_case_1():
     print("The content of the encoded data is: {}\n".format(decoded_data))
 
 
+# TEST CASE 2
+def test_case_2():
+    global codes
+
+    s = "AAAA"
+
+    pseudo_heap = generate_pseudo_heap(s)
+
+    tree = build_tree(pseudo_heap)
+
+    encode(tree)
+
+    print()
+
+    print("The size of the data is: {}".format(
+        sys.getsizeof(s)))
+    print("The content of the data is: {}\n".format(s))
+
+    encoded_data = huffman_encoding(s)
+
+    print("The size of the encoded data is: {}".format(
+        sys.getsizeof(int(encoded_data, base=2))))
+    print("The content of the encoded data is: {}\n".format(encoded_data))
+
+    decoded_data = huffman_decoding(tree, encoded_data)
+
+    print("The size of the decoded data is: {}".format(
+        sys.getsizeof(decoded_data)))
+    print("The content of the encoded data is: {}\n".format(decoded_data))
+
+
 ##############------ DRIVER CODE -----------############
 if __name__ == "__main__":
-    test_case_1()
+    # test_case_1()
+    test_case_2()
