@@ -67,3 +67,8 @@ print(first_blockchain.next.next.timestamp)  # 2021-04-20 19:58:26.874726
 print(first_blockchain.next.next.previous_hash)  # hijklmn
 print(first_blockchain.next.next.hash)
 # 0eb6146ed8b2eff5b1f9ab848b6534d1cab216040f5d729070e6ba0208a6789a
+
+'''
+Trying to create an empty block
+Try to create different blocks with the same timestamp
+'''
