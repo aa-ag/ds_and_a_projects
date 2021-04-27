@@ -160,3 +160,7 @@ if __name__ == '__main__':
     test_case_1()
     test_case_2()
     test_case_3()
+
+'''
+For this program, You need to add test case for Both sets are empty.
+'''
