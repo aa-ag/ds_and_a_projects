@@ -106,6 +106,9 @@ def huffman_encoding(s):
     '''
     global codes
 
+    if s == "":
+        return "No data to encode!"
+
     huffman_encoded_output = ''
 
     for character in s:
@@ -175,7 +178,7 @@ def test_case_1():
 def test_case_2():
     global codes
 
-    s = "AAAA"
+    s = ""
 
     pseudo_heap = generate_pseudo_heap(s)
 
@@ -206,3 +209,20 @@ def test_case_2():
 if __name__ == "__main__":
     # test_case_1()
     test_case_2()
+
+
+'''
+One important edge test case for this problem is 
+to correctly encode and decode a string of the same character repeated multiple times 
+like "AAAAAAA". 
+This string should be correctly encoded to 0000000 or 1111111 and 
+decoded back to its original form. 
+For this, one approach is to create a tree with just one branch and 
+one leaf since the Huffman code will only need 1 bit to represent 
+the set of unique characters in this string.
+
+
+Another edge test case could be to pass an empty string like "". 
+In such a case the program can print some warning messages 
+like "No data to encode!"
+'''

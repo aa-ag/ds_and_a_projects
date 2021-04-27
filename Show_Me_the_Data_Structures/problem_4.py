@@ -63,3 +63,8 @@ if __name__ == "__main__":
     print(is_user_in_group(user_1, sub_child))  # True
     print(is_user_in_group(user_2, sub_child))  # False
     print(is_user_in_group(user_3, sub_child))  # False
+
+'''
+For this program, You need to add test case for 
+empty or not found in the group or hasn't not any parent.
+'''
