@@ -57,6 +57,29 @@ def test_case_1():
     print(is_user_in_group(user_1, sub_child))  # True
 
 
+def test_case_2():
+    parent = Group("parent")
+    child = Group("child")
+    sub_child = Group("subchild")
+    foo = Group('foo')
+    bar = Group('bar')
+
+    sub_child_user = "sub_child_user"
+    another_sub_child_user = "another_sub_child_user"
+
+    sub_child.add_user(sub_child_user)
+    sub_child.add_user(another_sub_child_user)
+
+    child.add_group(sub_child)
+    parent.add_group(child)
+    sub_child.add_group(foo)
+    sub_child.add_group(bar)
+
+    user_2 = ['sub_child_user_within_list']
+    print(is_user_in_group(user_2, sub_child))  # False
+
+
 ############------------ DRIVER CODE ------------############
 if __name__ == "__main__":
     test_case_1()
+    test_case_2()
