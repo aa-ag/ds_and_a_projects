@@ -28,6 +28,9 @@ class LRU_Cache:
          If the cache is at capacity remove the oldest item.
         '''
 
+        if type(value) != int or value < 0:
+            raise "invalid input"
+
         if len(self.cache) < self.capacity:
             self.cache[key] = value
         else:
@@ -80,14 +83,15 @@ def test_case_2():
 def test_case_3():
     our_cache = LRU_Cache(3)
 
-    our_cache.set_(1, 1)  # adds 1, 1 to ordered dictionary/cache
-    our_cache.set_(2, 2)  # adds 2, 2 to ordered dictionary/cache
+    our_cache.set_(-1, -1)  # adds 1, 1 to ordered dictionary/cache
+    # adds 2, 2 to ordered dictionary/cache
+    our_cache.set_('testing', 'testing')
     our_cache.set_(3, 3)  # adds 3, 3 to ordered dictionary/cache
 
-    our_cache.print_cache
+    our_cache.print_cache()
 
 
 if __name__ == "__main__":
-    test_case_1()
+    # test_case_1()
     # test_case_2()
-    # test_case_3()
+    test_case_3()
