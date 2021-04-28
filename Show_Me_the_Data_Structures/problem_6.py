@@ -65,6 +65,9 @@ def union(llist_1, llist_2):
      whilst its head isn't `None`, appending
      each node to `llist_1`
     '''
+    if llist_1.size() == 0 and llist_2.size() == 0:
+        return "Both lists are empty"
+
     h2 = llist_2.head
 
     while h2 is not None:
@@ -81,6 +84,9 @@ def intersection(llist_1, llist_2):
      if value in both "llists", appends element 
      to `intersection_llist`
     '''
+    if llist_1.size() == 0 and llist_2.size() == 0:
+        return "Both lists are empty"
+
     intersection_llist = LinkedList()
 
     head_from_llist_1 = llist_1.head
@@ -99,7 +105,6 @@ def intersection(llist_1, llist_2):
 
 ############------------ TESTS ------------############
 # Test case 1
-
 def test_case_1():
     linked_list_1 = LinkedList()
     linked_list_2 = LinkedList()
@@ -143,7 +148,7 @@ def test_case_3():
     linked_list_4 = LinkedList()
 
     element_1 = []
-    element_2 = [1, 7, 8, 9, 11, 21, 1]
+    element_2 = []
 
     for i in element_1:
         linked_list_3.append(i)
@@ -160,7 +165,3 @@ if __name__ == '__main__':
     test_case_1()
     test_case_2()
     test_case_3()
-
-'''
-For this program, You need to add test case for Both sets are empty.
-'''
