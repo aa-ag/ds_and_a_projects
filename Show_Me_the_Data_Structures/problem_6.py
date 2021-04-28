@@ -68,6 +68,12 @@ def union(llist_1, llist_2):
     if llist_1.size() == 0 and llist_2.size() == 0:
         return "Both lists are empty"
 
+    if llist_1.size() == 0 and llist_2.size() > 0:
+        return llist_2
+
+    if llist_1.size() > 0 and llist_2.size() == 0:
+        return llist_1
+
     h2 = llist_2.head
 
     while h2 is not None:
@@ -86,6 +92,12 @@ def intersection(llist_1, llist_2):
     '''
     if llist_1.size() == 0 and llist_2.size() == 0:
         return "Both lists are empty"
+
+    if llist_1.size() == 0 and llist_2.size() > 0:
+        return llist_2
+
+    if llist_1.size() > 0 and llist_2.size() == 0:
+        return llist_1
 
     intersection_llist = LinkedList()
 
