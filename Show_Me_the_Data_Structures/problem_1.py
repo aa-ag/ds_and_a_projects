@@ -9,6 +9,9 @@ class LRU_Cache:
         '''
          Initialize class variables
         '''
+        if type(capacity) != int or capacity < 0:
+            raise "invalid input"
+
         self.capacity = capacity
         self.cache = collections.OrderedDict()
 
@@ -93,5 +96,5 @@ def test_case_3():
 
 if __name__ == "__main__":
     # test_case_1()
-    # test_case_2()
-    test_case_3()
+    test_case_2()
+    # test_case_3()
