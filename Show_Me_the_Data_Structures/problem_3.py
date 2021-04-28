@@ -205,24 +205,39 @@ def test_case_2():
     print("The content of the encoded data is: {}\n".format(decoded_data))
 
 
+# TEST CASE 3
+def test_case_3():
+    global codes
+
+    s = "AAAAAA"
+
+    pseudo_heap = generate_pseudo_heap(s)
+
+    tree = build_tree(pseudo_heap)
+
+    encode(tree)
+
+    print()
+
+    print("The size of the data is: {}".format(
+        sys.getsizeof(s)))
+    print("The content of the data is: {}\n".format(s))
+
+    encoded_data = huffman_encoding(s)
+
+    print("The size of the encoded data is: {}".format(
+        sys.getsizeof(int(encoded_data, base=2))))
+    print("The content of the encoded data is: {}\n".format(encoded_data))
+
+    decoded_data = huffman_decoding(tree, encoded_data)
+
+    print("The size of the decoded data is: {}".format(
+        sys.getsizeof(decoded_data)))
+    print("The content of the encoded data is: {}\n".format(decoded_data))
+
+
 ##############------ DRIVER CODE -----------############
 if __name__ == "__main__":
     # test_case_1()
-    test_case_2()
-
-
-'''
-One important edge test case for this problem is 
-to correctly encode and decode a string of the same character repeated multiple times 
-like "AAAAAAA". 
-This string should be correctly encoded to 0000000 or 1111111 and 
-decoded back to its original form. 
-For this, one approach is to create a tree with just one branch and 
-one leaf since the Huffman code will only need 1 bit to represent 
-the set of unique characters in this string.
-
-
-Another edge test case could be to pass an empty string like "". 
-In such a case the program can print some warning messages 
-like "No data to encode!"
-'''
+    # test_case_2()
+    # test_case_3()
