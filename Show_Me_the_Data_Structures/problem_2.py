@@ -3,27 +3,11 @@ import os
 from pathlib import Path as p
 
 
-############------------ GLOBAL VARIABLES ------------############
-path_to_root_directory = '/Users/aaronaguerrevere/Documents/portfolio/filerecursion/testdir'
-suffix = ".c"
-
-
-path_to_invalid_input_path = '/Users/aaronaguerrevere/Documents/portfolio/filerecursion/thisdirectorydoesnotexists'
-suffix = ".c"
-
-
-path_to_empty_input_path = '/Users/aaronaguerrevere/Documents/portfolio/filerecursion/testdir/subdir2'
-suffix = ".c"
-
-
 ############------------ FUNCTIONS ------------############
 def find_files(suffix, file_path):
     """
      Finds all files beneath path with file name suffix.
     """
-
-    # if len(os.listdir(file_path)) == 0:
-    #     return "No files found for the given extension"
 
     if os.path.exists(file_path):
 
@@ -39,13 +23,35 @@ def find_files(suffix, file_path):
     return "Invalid input path"
 
 
-############------------ DRIVER CODE ------------############
-if __name__ == '__main__':
+############------------ TESTS ------------############
+def test_case_1():
+    path_to_root_directory = '/Users/aaronaguerrevere/Documents/portfolio/filerecursion/testdir'
+    suffix = ".c"
     print(find_files(suffix, path_to_root_directory))
     # ['t1.c', 'b.c', 'a.c', 'a.c']
 
+
+def test_case_2():
+    path_to_invalid_input_path = '/Users/aaronaguerrevere/Documents/portfolio/filerecursion/thisdirectorydoesnotexists'
+    suffix = ".c"
     print(find_files(suffix, path_to_invalid_input_path))
     # Invalid input path
 
+
+def test_case_3():
+    path_to_empty_input_path = '/Users/aaronaguerrevere/Documents/portfolio/filerecursion/testdir/subdir2'
+    suffix = ".c"
     print(find_files(suffix, path_to_empty_input_path))
     # No files found for the given extension
+
+
+############------------ DRIVER CODE ------------############
+if __name__ == '__main__':
+    # TEST CASE 1
+    test_case_1()
+
+    # TEST CASE 2
+    test_case_2()
+
+    # TEST CASE 3
+    test_case_3()
