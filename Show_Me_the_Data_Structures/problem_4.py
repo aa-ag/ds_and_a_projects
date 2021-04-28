@@ -21,25 +21,6 @@ class Group:
         return self.name
 
 
-############------------ HELPER CODE ------------############
-parent = Group("parent")
-child = Group("child")
-sub_child = Group("subchild")
-foo = Group('foo')
-bar = Group('bar')
-
-sub_child_user = "sub_child_user"
-another_sub_child_user = "another_sub_child_user"
-
-sub_child.add_user(sub_child_user)
-sub_child.add_user(another_sub_child_user)
-
-child.add_group(sub_child)
-parent.add_group(child)
-sub_child.add_group(foo)
-sub_child.add_group(bar)
-
-
 ############------------ FUNCTIONS ------------############
 def is_user_in_group(user, group):
     """
@@ -53,18 +34,29 @@ def is_user_in_group(user, group):
 
 
 ############------------ TEST CASES ------------############
-user_1 = 'sub_child_user'
-user_2 = ['sub_child_user_within_list']
-user_3 = None
+def test_case_1():
+    parent = Group("parent")
+    child = Group("child")
+    sub_child = Group("subchild")
+    foo = Group('foo')
+    bar = Group('bar')
+
+    sub_child_user = "sub_child_user"
+    another_sub_child_user = "another_sub_child_user"
+
+    sub_child.add_user(sub_child_user)
+    sub_child.add_user(another_sub_child_user)
+
+    child.add_group(sub_child)
+    parent.add_group(child)
+    sub_child.add_group(foo)
+    sub_child.add_group(bar)
+
+    user_1 = 'sub_child_user'
+
+    print(is_user_in_group(user_1, sub_child))  # True
 
 
 ############------------ DRIVER CODE ------------############
 if __name__ == "__main__":
-    print(is_user_in_group(user_1, sub_child))  # True
-    print(is_user_in_group(user_2, sub_child))  # False
-    print(is_user_in_group(user_3, sub_child))  # False
-
-'''
-For this program, You need to add test case for 
-empty or not found in the group or hasn't not any parent.
-'''
+    test_case_1()
