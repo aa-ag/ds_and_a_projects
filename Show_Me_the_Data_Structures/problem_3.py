@@ -106,9 +106,6 @@ def huffman_encoding(s):
     '''
     global codes
 
-    if s == "":
-        return "No data to encode!"
-
     huffman_encoded_output = ''
 
     for character in s:
@@ -144,10 +141,12 @@ def huffman_decoding(tree, encoded_data):
 
 ##############------ TESTS -----------############
 # TEST CASE 1
-def test_case_1():
+def test_case_1(s):
     global codes
 
-    s = "The bird is the word"
+    if s == "":
+        print("No data to encode!")
+        return
 
     pseudo_heap = generate_pseudo_heap(s)
 
@@ -175,10 +174,12 @@ def test_case_1():
 
 
 # TEST CASE 2
-def test_case_2():
+def test_case_2(s):
     global codes
 
-    s = ""
+    if s == "":
+        print("No data to encode!")
+        return
 
     pseudo_heap = generate_pseudo_heap(s)
 
@@ -206,10 +207,12 @@ def test_case_2():
 
 
 # TEST CASE 3
-def test_case_3():
+def test_case_3(s):
     global codes
 
-    s = "AAAAAA"
+    if s == "":
+        print("No data to encode!")
+        return
 
     pseudo_heap = generate_pseudo_heap(s)
 
@@ -238,7 +241,7 @@ def test_case_3():
 
 ##############------ DRIVER CODE -----------############
 if __name__ == "__main__":
-    test_case_1()
+    # test_case_1("The bird is the word")
     '''
     The size of the data is: 69
     The content of the data is: The bird is the word
@@ -249,5 +252,5 @@ if __name__ == "__main__":
     The size of the decoded data is: 69
     The content of the encoded data is: The bird is the word
     '''
-    # test_case_2()
-    # test_case_3()
+    test_case_2("")
+    # test_case_3("AAAAAA")
