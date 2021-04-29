@@ -35,6 +35,7 @@ def build_tree(pseudo_heap):
      min heap created in `generate_pseudo_heap` and creating
      branches and parent nodes
     '''
+
     while len(pseudo_heap) > 1:
         two_lower_values = tuple(pseudo_heap[0:2])
 
@@ -245,5 +246,13 @@ if __name__ == "__main__":
 
     test_case_3("AAAA ")
     '''
-     pass
+     One important edge test case for this problem is to correctly encode 
+     and decode a string of the same character repeated multiple times 
+     like "AAAAAAA". This string should be correctly encoded to 0000000 
+     or 1111111 and decoded back to its original form. 
+     
+     For this, one approach is to create a tree with just one branch and one leaf 
+     since the Huffman code will only need 1 bit to represent the set of 
+     unique characters in this string.
     '''
+    # https://stackoverflow.com/questions/22429854/huffman-code-for-a-single-character
