@@ -238,6 +238,16 @@ def test_case_3():
 
 ##############------ DRIVER CODE -----------############
 if __name__ == "__main__":
-    # test_case_1()
+    test_case_1()
+    '''
+    The size of the data is: 69
+    The content of the data is: The bird is the word
+
+    The size of the encoded data is: 36
+    The content of the encoded data is: 0110000111111001110010101110110001100111010100001111110101110000101110
+
+    The size of the decoded data is: 69
+    The content of the encoded data is: The bird is the word
+    '''
     # test_case_2()
     # test_case_3()
