@@ -48,22 +48,7 @@ def build_tree(pseudo_heap):
 
     tree = pseudo_heap[0]
 
-    '''
-    this is what `tree` looks like:
-
-    (20, ((8, ((4, ((2, 'h'), (2, 'i'))), (4, ((2, 'r'), (2, ((1, 'T'), \
-    (1, 'b'))))))), (12, ((4, ((2, ((1, 'o'), (1, 's'))), (2, ((1, 't'), \
-    (1, 'w'))))), (8, ((4, ' '), (4, ((2, 'd'), (2, 'e')))))))))
-    '''
-
     trimmed_tree = trim_tree(tree)
-
-    '''
-    this is what `trimmed_tree` looks like:
-
-    ((('h', 'i'), ('r', ('T', 'b'))), ((('o', 's'), ('t', 'w')), \
-        (' ', ('d', 'e'))))
-    '''
 
     return trimmed_tree
 
@@ -216,13 +201,9 @@ def test_case_3(s):
 
     pseudo_heap = generate_pseudo_heap(s)
 
-    print(pseudo_heap)
-
     tree = build_tree(pseudo_heap)
 
-    print(tree)
-
-    print(encode(tree))
+    encode(tree)
 
     print()
 
@@ -232,11 +213,8 @@ def test_case_3(s):
 
     encoded_data = huffman_encoding(s)
 
-    if encoded_data == '':
-        print('0')
-    else:
-        print("The size of the encoded data is: {}".format(
-            sys.getsizeof(int(encoded_data, base=2))))
+    print("The size of the encoded data is: {}".format(
+        sys.getsizeof(int(encoded_data, base=2))))
     print("The content of the encoded data is: {}\n".format(encoded_data))
 
     decoded_data = huffman_decoding(tree, encoded_data)
@@ -265,7 +243,7 @@ if __name__ == "__main__":
      No data to encode!
     '''
 
-    test_case_3("AAAA")
+    test_case_3("AAAA ")
     '''
      pass
     '''
