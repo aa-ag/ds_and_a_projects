@@ -13,11 +13,11 @@ def find_files(suffix, file_path):
 
         answer = list()
 
-        for directory_or_file in p(file_path).rglob('*.c'):
+        for directory_or_file in p(file_path).rglob(suffix):
             answer.append(directory_or_file.name)
 
         if not answer:
-            return "No files found for the given extension"
+            return "No files found in the given path"
         return answer
 
     return "Invalid input path"
@@ -26,7 +26,7 @@ def find_files(suffix, file_path):
 ############------------ TESTS ------------############
 def test_case_1():
     path_to_root_directory = '/Users/aaronaguerrevere/Documents/portfolio/filerecursion/testdir'
-    suffix = ".c"
+    suffix = ".test"
     print(find_files(suffix, path_to_root_directory))
     # ['t1.c', 'b.c', 'a.c', 'a.c']
 

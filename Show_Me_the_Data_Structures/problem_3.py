@@ -216,9 +216,13 @@ def test_case_3(s):
 
     pseudo_heap = generate_pseudo_heap(s)
 
+    print(pseudo_heap)
+
     tree = build_tree(pseudo_heap)
 
-    encode(tree)
+    print(tree)
+
+    print(encode(tree))
 
     print()
 
@@ -228,8 +232,11 @@ def test_case_3(s):
 
     encoded_data = huffman_encoding(s)
 
-    print("The size of the encoded data is: {}".format(
-        sys.getsizeof(int(encoded_data, base=2))))
+    if encoded_data == '':
+        print('0')
+    else:
+        print("The size of the encoded data is: {}".format(
+            sys.getsizeof(int(encoded_data, base=2))))
     print("The content of the encoded data is: {}\n".format(encoded_data))
 
     decoded_data = huffman_decoding(tree, encoded_data)
@@ -243,14 +250,22 @@ def test_case_3(s):
 if __name__ == "__main__":
     # test_case_1("The bird is the word")
     '''
-    The size of the data is: 69
-    The content of the data is: The bird is the word
+     The size of the data is: 69
+     The content of the data is: The bird is the word
 
-    The size of the encoded data is: 36
-    The content of the encoded data is: 0110000111111001110010101110110001100111010100001111110101110000101110
+     The size of the encoded data is: 36
+     The content of the encoded data is: 0110000111111001110010101110110001100111010100001111110101110000101110
 
-    The size of the decoded data is: 69
-    The content of the encoded data is: The bird is the word
+     The size of the decoded data is: 69
+     The content of the encoded data is: The bird is the word
     '''
-    test_case_2("")
-    # test_case_3("AAAAAA")
+
+    # test_case_2("")
+    '''
+     No data to encode!
+    '''
+
+    test_case_3("AAAA")
+    '''
+     pass
+    '''
