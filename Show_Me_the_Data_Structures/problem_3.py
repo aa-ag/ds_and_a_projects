@@ -8,6 +8,15 @@ codes = {}
 
 
 ############------------ HELPER CODE ------------############
+def check_empty_string(s):
+    '''
+     checks if s == ""
+    '''
+    if s == "":
+        return True
+    return False
+
+
 def generate_pseudo_heap(s):
     '''
      counts frequency of each character in input string `s`
@@ -95,6 +104,7 @@ def huffman_encoding(s):
     huffman_encoded_output = ''
 
     for character in s:
+
         huffman_encoded_output += codes[character]
 
     return huffman_encoded_output
@@ -130,7 +140,7 @@ def huffman_decoding(tree, encoded_data):
 def test_case_1(s):
     global codes
 
-    if s == "":
+    if check_empty_string(s) == True:
         print("No data to encode!")
         return
 
@@ -163,7 +173,7 @@ def test_case_1(s):
 def test_case_2(s):
     global codes
 
-    if s == "":
+    if check_empty_string(s) == True:
         print("No data to encode!")
         return
 
@@ -196,7 +206,7 @@ def test_case_2(s):
 def test_case_3(s):
     global codes
 
-    if s == "":
+    if check_empty_string(s) == True:
         print("No data to encode!")
         return
 
@@ -239,12 +249,12 @@ if __name__ == "__main__":
      The content of the encoded data is: The bird is the word
     '''
 
-    # test_case_2("")
+    test_case_2("")
     '''
      No data to encode!
     '''
 
-    test_case_3("AAAA ")
+    # test_case_3("AAAA ")
     '''
      One important edge test case for this problem is to correctly encode 
      and decode a string of the same character repeated multiple times 
