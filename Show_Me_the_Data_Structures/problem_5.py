@@ -14,7 +14,7 @@ class Block:
         self.next = None
 
     def __repr__(self):
-        if not self.timestamp or not self.data or not self.previous_hash:
+        if not self.timestamp or not self.data or not self.hash:
             return 'empty block'
         return self.data
 
@@ -47,14 +47,22 @@ class BlockChain:
 
 # TEST 1
 # Trying to create an empty block
-empty_blockchain = BlockChain()
-empty_blockchain.head = Block('', '', '')
-print(empty_blockchain.head)
+def test_case_1():
+    empty_blockchain = BlockChain()
+    empty_blockchain.head = Block('', '', '')
+    return empty_blockchain.head
 
 
 # TEST 2
 # Try to create different blocks with the same timestamp
+def test_case_2():
+    two_blocks_with_same_timestamp = BlockChain()
+    two_blocks_with_same_timestamp.head = Block(
+        datetime.now(), '1', None)
+    two_blocks_with_same_timestamp.next = Block(
+        datetime.now(), '2', None)
 
+    return two_blocks_with_same_timestamp.head.timestamp, two_blocks_with_same_timestamp.next.timestamp
 
 # TEST 3
 # first_blockchain = BlockChain()
@@ -81,3 +89,12 @@ print(empty_blockchain.head)
 # print(first_blockchain.next.next.previous_hash)  # hijklmn
 # print(first_blockchain.next.next.hash)
 # # 0eb6146ed8b2eff5b1f9ab848b6534d1cab216040f5d729070e6ba0208a6789a
+
+
+############------------ DRIVER CODE ------------############
+if __name__ == '__main__':
+    # print(test_case_1())
+    # empty block
+
+    print(test_case_2())
+    # (datetime.datetime(2021, 4, 30, 20, 10, 59, 696464), datetime.datetime(2021, 4, 30, 20, 10, 59, 696483))
