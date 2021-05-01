@@ -8,7 +8,7 @@ _instructions_: Your paragraph should not be a detailed walkthrough of the code 
 
 *Time Complexity*: O(1)
 
-*Space Complexity*:
+*Space Complexity*: Linear
 
 _Walkthroug_
 
@@ -22,7 +22,7 @@ The most important design choice I made was to use `collections.OrderedDict()` f
 
 *Time Complexity*: O(n)
 
-*Space Complexity*:
+*Space Complexity*: Constant
 
 _Walkthroug_
 
@@ -35,9 +35,9 @@ For this excercise, one important design decision was the it would not need 3 te
 
 ### problem_3.py
 
-*Time Complexity*: O(n log n)
+*Time Complexity*: O(log n)
 
-*Space Complexity*:
+*Space Complexity*: Logarithmic Linear
 
 _Walkthroug_
 
@@ -53,7 +53,7 @@ On this one, I struggled using starting point provided in class so instead I use
 
 *Time Complexity*: O(1)
 
-*Space Complexity*:
+*Space Complexity*: Linear
 
 _Walkthroug_
 
@@ -71,7 +71,7 @@ I also made sure that the function checked for the correct input type.
 
 *Time Complexity*: O(1)
 
-*Space Complexity*:
+*Space Complexity*: O(1)
 
 _Walkthroug_
 
@@ -86,7 +86,7 @@ Here, I just implemented a Linked List that would allow for new blocks to be ins
 
 *Time Complexity*: O(n)
 
-*Space Complexity*:
+*Space Complexity*: Logarithmic
 
 _Walkthroug_
 
@@ -99,4 +99,5 @@ In this case, surprisingly, adding `__str__` to be able to see/visualize both re
 --------------------------------------------------------------------
 
 ' https://stackoverflow.com/questions/33044883/why-is-the-time-complexity-of-pythons-list-append-method-o1
+
 '' https://stackoverflow.com/questions/44598732/how-fast-is-computing-a-hash
