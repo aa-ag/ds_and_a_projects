@@ -95,6 +95,11 @@ def test_case_3():
 
 
 if __name__ == "__main__":
-    # test_case_1()
+    # TEST CASE 1
+    test_case_1()
+
+    # TEST CASE 2
     test_case_2()
-    # test_case_3()
+
+    # TEST CASE 3
+    test_case_3()

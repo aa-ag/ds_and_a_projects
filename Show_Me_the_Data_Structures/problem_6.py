@@ -174,6 +174,11 @@ def test_case_3():
 
 ############------------ DRIVER CODE ------------############
 if __name__ == '__main__':
+    # TEST CASE 1
     test_case_1()
+
+    # TEST CASE 2
     test_case_2()
+
+    # TEST CASE 3
     test_case_3()

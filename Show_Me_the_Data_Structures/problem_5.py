@@ -94,12 +94,13 @@ def test_case_3():
 
 ############------------ DRIVER CODE ------------############
 if __name__ == '__main__':
-    # Trying to create an empty block
-    # print(test_case_1())
+    # TEST CASE 1
+    print(test_case_1())
     # empty block
 
-    # Try to create different blocks with the same timestamp
-    # print(test_case_2())
+    # TEST CASE 2
+    print(test_case_2())
     # (datetime.datetime(2021, 4, 30, 20, 10, 59, 696464), datetime.datetime(2021, 4, 30, 20, 10, 59, 696483))
 
+    # TEST CASE 3
     test_case_3()

@@ -64,6 +64,8 @@ def build_tree(pseudo_heap):
 
     trimmed_tree = trim_tree(tree)
 
+    print(type(trimmed_tree))
+
     return trimmed_tree
 
 
@@ -71,6 +73,7 @@ def trim_tree(tree):
     '''
      removes frequencies from pseudo min heap
     '''
+
     leaf = tree[1]
 
     if type(leaf) == str:
@@ -79,7 +82,7 @@ def trim_tree(tree):
         return trim_tree(leaf[0]), trim_tree(leaf[1])
 
 
-def encode(node, branch='0'):
+def encode(node, branch=''):
     '''
      recursively traverses tree and keeps track of
      left or right turns (branch) and replaces character in
@@ -241,6 +244,7 @@ def test_case_3(s):
 
 ##############------ DRIVER CODE -----------############
 if __name__ == "__main__":
+    # TEST CASE 1
     # test_case_1("The bird is the word")
     '''
      The size of the data is: 69
@@ -253,12 +257,14 @@ if __name__ == "__main__":
      The content of the encoded data is: The bird is the word
     '''
 
+    # TEST CASE 2
     # test_case_2("")
     '''
      No data to encode!
     '''
 
-    test_case_3("AAAAAAA")
+    # TEST CASE 3
+    test_case_3("AAAAAAA ")
     '''
      The size of the data is: 56
      The content of the data is: AAAAAAA
