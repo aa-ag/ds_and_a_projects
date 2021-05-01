@@ -51,21 +51,21 @@ In natural language, the logic of the program can be described as:
 
 This is what the pseufo heap looks like:
 
-'''
+```
 [(1, 'T'), (1, 'b'), (1, 'o'), (1, 's'), (1, 't'), (1, 'w'), (2, 'd'), (2, 'e'), (2, 'h'), (2, 'i'), (2, 'r'), (4, ' ')]
-'''
+```
 
 (iii) After that, a tree is generated, with parent and children nodes to look like this:
 
-'''
+```
 (20, ((8, ((4, ((2, 'h'), (2, 'i'))), (4, ((2, 'r'), (2, ((1, 'T'), (1, 'b'))))))), (12, ((4, ((2, ((1, 'o'), (1, 's'))), (2, ((1, 't'), (1, 'w'))))), (8, ((4, ' '), (4, ((2, 'd'), (2, 'e')))))))))
-'''
+```
 
 (iv) then that tree is trimmed: 
 
-'''
+```
 ((('h', 'i'), ('r', ('T', 'b'))), ((('o', 's'), ('t', 'w')), (' ', ('d', 'e'))))
-'''
+```
 
 (v) and then, that tree is encoded, creating a new empty string `''` where in each `idex` an econded character from `codes` takes place instead of the original character that was there.
 
