@@ -46,7 +46,6 @@ class BlockChain:
 
 
 # TEST 1
-# Trying to create an empty block
 def test_case_1():
     empty_blockchain = BlockChain()
     empty_blockchain.head = Block('', '', '')
@@ -54,7 +53,6 @@ def test_case_1():
 
 
 # TEST 2
-# Try to create different blocks with the same timestamp
 def test_case_2():
     two_blocks_with_same_timestamp = BlockChain()
     two_blocks_with_same_timestamp.head = Block(
@@ -64,37 +62,44 @@ def test_case_2():
 
     return two_blocks_with_same_timestamp.head.timestamp, two_blocks_with_same_timestamp.next.timestamp
 
+
 # TEST 3
-# first_blockchain = BlockChain()
-# first_blockchain.head = Block(datetime.now(), 'abcdefg', None)
-# first_blockchain.next = Block(datetime.now(), 'hijklmn', first_blockchain.head)
-# first_blockchain.next.next = Block(
-#     datetime.now(), 'opqrstu', first_blockchain.next)
+def test_case_3():
+    first_blockchain = BlockChain()
+    first_blockchain.head = Block(datetime.now(), 'abcdefg', None)
+    first_blockchain.next = Block(
+        datetime.now(), 'hijklmn', first_blockchain.head)
+    first_blockchain.next.next = Block(
+        datetime.now(), 'opqrstu', first_blockchain.next)
 
-# print(first_blockchain.head)  # abcdefg
-# print(first_blockchain.head.timestamp)  # 2021-04-20 19:58:26.874650
-# print(first_blockchain.head.hash)
-# # 7d1a54127b222502f5b79b5fb0803061152a44f92b37e23c6527baf665d4da9a
-# print()
+    print(first_blockchain.head)  # abcdefg
+    print(first_blockchain.head.timestamp)  # 2021-04-20 19:58:26.874650
+    print(first_blockchain.head.hash)
+    # 7d1a54127b222502f5b79b5fb0803061152a44f92b37e23c6527baf665d4da9a
+    print()
 
-# print(first_blockchain.next)  # hijklmn
-# print(first_blockchain.next.timestamp)  # 2021-04-20 19:58:26.874718
-# print(first_blockchain.next.previous_hash)  # abcdefg
-# print(first_blockchain.next.hash)
-# # a2cc0056817d002901742f20883fb838f296af3a4fa9dbb6da71b8af69ccd4d5
-# print()
+    print(first_blockchain.next)  # hijklmn
+    print(first_blockchain.next.timestamp)  # 2021-04-20 19:58:26.874718
+    print(first_blockchain.next.previous_hash)  # abcdefg
+    print(first_blockchain.next.hash)
+    # a2cc0056817d002901742f20883fb838f296af3a4fa9dbb6da71b8af69ccd4d5
+    print()
 
-# print(first_blockchain.next.next)  # opqrstu
-# print(first_blockchain.next.next.timestamp)  # 2021-04-20 19:58:26.874726
-# print(first_blockchain.next.next.previous_hash)  # hijklmn
-# print(first_blockchain.next.next.hash)
-# # 0eb6146ed8b2eff5b1f9ab848b6534d1cab216040f5d729070e6ba0208a6789a
+    print(first_blockchain.next.next)  # opqrstu
+    print(first_blockchain.next.next.timestamp)  # 2021-04-20 19:58:26.874726
+    print(first_blockchain.next.next.previous_hash)  # hijklmn
+    print(first_blockchain.next.next.hash)
+    # 0eb6146ed8b2eff5b1f9ab848b6534d1cab216040f5d729070e6ba0208a6789a
 
 
 ############------------ DRIVER CODE ------------############
 if __name__ == '__main__':
+    # Trying to create an empty block
     # print(test_case_1())
     # empty block
 
-    print(test_case_2())
+    # Try to create different blocks with the same timestamp
+    # print(test_case_2())
     # (datetime.datetime(2021, 4, 30, 20, 10, 59, 696464), datetime.datetime(2021, 4, 30, 20, 10, 59, 696483))
+
+    test_case_3()
