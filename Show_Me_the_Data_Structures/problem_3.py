@@ -44,6 +44,10 @@ def build_tree(pseudo_heap):
      min heap created in `generate_pseudo_heap` and creating
      branches and parent nodes
     '''
+    if len(pseudo_heap) == 1:
+        tree = pseudo_heap[0]
+        trimmed_tree = trim_tree(tree)
+        return trimmed_tree
 
     while len(pseudo_heap) > 1:
         two_lower_values = tuple(pseudo_heap[0:2])
@@ -75,7 +79,7 @@ def trim_tree(tree):
         return trim_tree(leaf[0]), trim_tree(leaf[1])
 
 
-def encode(node, branch=''):
+def encode(node, branch='0'):
     '''
      recursively traverses tree and keeps track of
      left or right turns (branch) and replaces character in
@@ -254,7 +258,7 @@ if __name__ == "__main__":
      No data to encode!
     '''
 
-    test_case_3("AAAA ")
+    test_case_3("AAAAAAA")
     '''
      One important edge test case for this problem is to correctly encode 
      and decode a string of the same character repeated multiple times 
