@@ -44,6 +44,7 @@ def build_tree(pseudo_heap):
      min heap created in `generate_pseudo_heap` and creating
      branches and parent nodes
     '''
+
     if len(pseudo_heap) == 1:
         tree = pseudo_heap[0]
         trimmed_tree = trim_tree(tree)
@@ -245,7 +246,7 @@ def test_case_3(s):
 ##############------ DRIVER CODE -----------############
 if __name__ == "__main__":
     # TEST CASE 1
-    # test_case_1("The bird is the word")
+    test_case_1("The bird is the word")
     '''
      The size of the data is: 69
      The content of the data is: The bird is the word
@@ -265,7 +266,7 @@ if __name__ == "__main__":
     '''
 
     # TEST CASE 3
-    test_case_3("AAAAAAA")
+    # test_case_3("AAAAAAA")
     '''
      The size of the data is: 56
      The content of the data is: AAAAAAA

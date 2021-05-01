@@ -1,6 +1,7 @@
 ############------------ IMPORTS ------------############
 import hashlib
 from datetime import datetime
+import sys
 
 
 ############------------ HELPER CODE ------------############
@@ -23,6 +24,7 @@ class Block:
         # this allows us to feed this object
         # with bytes-like objects (normally bytes)
         # using the update() method.
+
         sha = hashlib.sha256()
 
         # returns a bytes representation of the Unicode string,
@@ -36,6 +38,7 @@ class Block:
         # This is a bytes object of size digest_size
         # which may contain bytes
         # in the whole range from 0 to 255.
+
         return sha.hexdigest()
 
 
