@@ -249,12 +249,12 @@ if __name__ == "__main__":
      The content of the encoded data is: The bird is the word
     '''
 
-    test_case_2("")
+    # test_case_2("")
     '''
      No data to encode!
     '''
 
-    # test_case_3("AAAA ")
+    test_case_3("AAAA ")
     '''
      One important edge test case for this problem is to correctly encode 
      and decode a string of the same character repeated multiple times 
