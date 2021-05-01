@@ -64,8 +64,6 @@ def build_tree(pseudo_heap):
 
     trimmed_tree = trim_tree(tree)
 
-    print(type(trimmed_tree))
-
     return trimmed_tree
 
 
@@ -111,8 +109,10 @@ def huffman_encoding(s):
     huffman_encoded_output = ''
 
     for character in s:
-
-        huffman_encoded_output += codes[character]
+        if len(codes) == 1:
+            huffman_encoded_output += '0'
+        else:
+            huffman_encoded_output += codes[character]
 
     return huffman_encoded_output
 
@@ -251,7 +251,8 @@ if __name__ == "__main__":
      The content of the data is: The bird is the word
 
      The size of the encoded data is: 36
-     The content of the encoded data is: 0110000111111001110010101110110001100111010100001111110101110000101110
+     The content of the encoded data is: \
+     0110000111111001110010101110110001100111010100001111110101110000101110
 
      The size of the decoded data is: 69
      The content of the encoded data is: The bird is the word
@@ -264,7 +265,7 @@ if __name__ == "__main__":
     '''
 
     # TEST CASE 3
-    test_case_3("AAAAAAA ")
+    test_case_3("AAAAAAA")
     '''
      The size of the data is: 56
      The content of the data is: AAAAAAA
