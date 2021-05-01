@@ -6,11 +6,11 @@ _instructions_: Your paragraph should not be a detailed walkthrough of the code 
 
 ### problem_1.py
 
-*Time Complexity*: O(1)
+__*Time Complexity*__: O(1)
 
-*Space Complexity*: Linear
+__*Space Complexity*__: Linear
 
-_Walkthroug_
+__Walkthroug__
 
 The most important design choice I made was to use `collections.OrderedDict()` for `cache`.  I did this because all operations involving a dictionary (lookup, insert, etc)
 have a worst-case complexity of O(1).  This, would allow `LRU_Cache` to be efficient to insert to and to look up values in and at the same time, it would allow for values to be ordered, and therefore, keep tally of capacity.  
@@ -20,9 +20,9 @@ This remains true even while checking for invalid inputs at `if type(capacity) !
 
 ### problem_2.py
 
-*Time Complexity*: O(n)
+__*Time Complexity*__: O(n)
 
-*Space Complexity*: Linear
+__*Space Complexity*__: Linear
 
 _Walkthroug_
 
@@ -35,9 +35,9 @@ If any files in the directory or subdirectories exists, they are appended to `an
 
 ### problem_3.py
 
-*Time Complexity*: O(log n)
+__*Time Complexity*__: O(log n)
 
-*Space Complexity*: Logarithmic Linear
+__*Space Complexity*__: Logarithmic Linear
 
 _Walkthroug_
 
@@ -76,9 +76,9 @@ however, both Python's `sort()` and `sorted()` have worst-case scenario of O(n l
 
 ### problem_4.py
 
-*Time Complexity*: O(1)
+__*Time Complexity*__: O(1)
 
-*Space Complexity*: Linear
+__*Space Complexity*__: Linear
 
 _Walkthroug_
 
@@ -95,9 +95,9 @@ At the same time, the program generates the need for space of each `groups` and 
 
 ### problem_5.py
 
-*Time Complexity*: O(1)
+__*Time Complexity*__: O(1)
 
-*Space Complexity*: O(n)
+__*Space Complexity*__: O(n)
 
 _Walkthroug_
 
@@ -116,9 +116,9 @@ Finally, how much memory is needed also a function of the lenth of the blockchai
 
 ### problem_6.py
 
-*Time Complexity*: O(n)
+__*Time Complexity*__: O(n)
 
-*Space Complexity*: Logarithmic
+__*Space Complexity*__: Logarithmic
 
 _Walkthroug_
 
