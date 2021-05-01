@@ -4,11 +4,11 @@ _What is this_: A paragraph explaining desing choices for each problem solved.
 
 _instructions_: Your paragraph should not be a detailed walkthrough of the code you provided, but provide your reasoning behind decisions made in the code.  For example, why did you use that data structure? You also need to explain the efficiency (time and space) of your solution.
 
-### problem_1.py
+## problem_1.py
 
-__*Time Complexity*__: O(1)
+__Time Complexity__: O(1)
 
-__*Space Complexity*__: Linear
+__Space Complexity__: Linear
 
 __Walkthroug__
 
@@ -18,11 +18,11 @@ have a worst-case complexity of O(1).  This, would allow `LRU_Cache` to be effic
 This remains true even while checking for invalid inputs at `if type(capacity) != int or capacity < 0: raise "invalid input"`. 
 
 
-### problem_2.py
+## problem_2.py
 
-__*Time Complexity*__: O(n)
+__Time Complexity__: O(n)
 
-__*Space Complexity*__: Linear
+__Space Complexity__: Linear
 
 _Walkthroug_
 
@@ -33,11 +33,11 @@ For this excercise, one important design decision was the it would not need 3 te
 
 If any files in the directory or subdirectories exists, they are appended to `answer`, and as a list it requires auxiliary space.  Even so, this was the best alternative to present the result in a readable format as expected in the instructions.
 
-### problem_3.py
+## problem_3.py
 
-__*Time Complexity*__: O(log n)
+__Time Complexity__: O(log n)
 
-__*Space Complexity*__: Logarithmic Linear
+__Space Complexity__: Logarithmic Linear
 
 _Walkthroug_
 
@@ -74,11 +74,11 @@ have a run time of O(1), and most have O(n) (for loops, checking conditionals, e
 however, both Python's `sort()` and `sorted()` have worst-case scenario of O(n log n).  This speef efficiencies make up for an otherwise costly use of space through auxiliary lists, dictionaries and empty strings.
 
 
-### problem_4.py
+## problem_4.py
 
-__*Time Complexity*__: O(1)
+__Time Complexity__: O(1)
 
-__*Space Complexity*__: Linear
+__Space Complexity__: Linear
 
 _Walkthroug_
 
@@ -93,11 +93,11 @@ I also made sure that the function checked for the correct input type.
 
 At the same time, the program generates the need for space of each `groups` and `users` sets and those space needs grow linearly with the amount of elements in each.
 
-### problem_5.py
+## problem_5.py
 
-__*Time Complexity*__: O(1)
+__Time Complexity__: O(1)
 
-__*Space Complexity*__: O(n)
+__Space Complexity__: O(n)
 
 _Walkthroug_
 
@@ -114,11 +114,11 @@ Using `hashlib.sha256()` to create each block's hash also requires additional sp
 Finally, how much memory is needed also a function of the lenth of the blockchain. With each new block, more space is required. 
 
 
-### problem_6.py
+## problem_6.py
 
-__*Time Complexity*__: O(n)
+__Time Complexity__: O(n)
 
-__*Space Complexity*__: Logarithmic
+__Space Complexity__: Logarithmic
 
 _Walkthroug_
 
