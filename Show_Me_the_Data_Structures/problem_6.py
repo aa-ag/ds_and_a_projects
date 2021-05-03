@@ -221,9 +221,3 @@ if __name__ == '__main__':
 
     # TEST CASE 4
     test_case_4()
-
-'''
- You made great work on adding more than test case.
-I can see that you added only one edge case where both lists are empty
-It is required to add another edge case where one list is empty
-'''
