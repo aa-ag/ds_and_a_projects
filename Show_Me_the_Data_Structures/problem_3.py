@@ -260,13 +260,13 @@ if __name__ == "__main__":
     '''
 
     # TEST CASE 2
-    # test_case_2("")
+    test_case_2("")
     '''
      No data to encode!
     '''
 
     # TEST CASE 3
-    # test_case_3("AAAAAAA")
+    test_case_3("AAAAAAA")
     '''
      The size of the data is: 56
      The content of the data is: AAAAAAA

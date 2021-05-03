@@ -9,10 +9,7 @@ class LRU_Cache:
         '''
          Initialize class variables
         '''
-        if type(capacity) != int or capacity < 0:
-            raise "invalid input"
-
-        self.capacity = capacity
+        self.capacity = self.is_valid_input(capacity)
         self.cache = collections.OrderedDict()
 
     def get_(self, key):
@@ -31,9 +28,6 @@ class LRU_Cache:
          If the cache is at capacity remove the oldest item.
         '''
 
-        if type(value) != int or value < 0:
-            raise "invalid input"
-
         if len(self.cache) < self.capacity:
             self.cache[key] = value
         else:
@@ -46,6 +40,14 @@ class LRU_Cache:
          prints out entire `cache` in terminal
         '''
         print(self.cache)
+
+    def is_valid_input(self, inp):
+        '''
+         check if input is valid for other methods
+        '''
+        if type(inp) == int and inp > 0:
+            return inp
+        raise ValueError("Invalid input")
 
 
 ############------------ DRIVER CODE ------------############
@@ -73,7 +75,7 @@ def test_case_1():
 
 # TEST CASE 2
 def test_case_2():
-    our_cache = LRU_Cache([])
+    our_cache = LRU_Cache(3)
 
     our_cache.set_(1, 1)  # adds 1, 1 to ordered dictionary/cache
     our_cache.set_(2, 2)  # adds 2, 2 to ordered dictionary/cache
@@ -84,12 +86,11 @@ def test_case_2():
 
 # TEST CASE 3
 def test_case_3():
-    our_cache = LRU_Cache(3)
+    our_cache = LRU_Cache(0)
 
-    our_cache.set_(-1, -1)  # adds 1, 1 to ordered dictionary/cache
-    # adds 2, 2 to ordered dictionary/cache
+    our_cache.set_(1, 1)  # adds 1, 1 to ordered dictionary/cache
     our_cache.set_('testing', 'testing')
-    our_cache.set_(3, 3)  # adds 3, 3 to ordered dictionary/cache
+    our_cache.set_(2, 2)  # adds 3, 3 to ordered dictionary/cache
 
     our_cache.print_cache()
 

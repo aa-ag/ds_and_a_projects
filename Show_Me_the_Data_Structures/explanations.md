@@ -140,3 +140,10 @@ https://stackoverflow.com/questions/46664007/why-do-tuples-take-less-space-in-me
 https://stackoverflow.com/questions/33044883/why-is-the-time-complexity-of-pythons-list-append-method-o1
 
 https://stackoverflow.com/questions/44598732/how-fast-is-computing-a-hash
+
+
+```
+Please mention space complexity in Big O notation
+Ex: O(N)
+If you want to learn more about what is space complexity and how to construct it, look at this link.
+```
