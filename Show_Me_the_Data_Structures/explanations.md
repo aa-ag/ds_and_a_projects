@@ -8,7 +8,7 @@ _instructions_: Your paragraph should not be a detailed walkthrough of the code 
 
 __Time Complexity__: O(1)
 
-__Space Complexity__: Linear
+__Space Complexity__: O(n)
 
 __Walkthroug__
 
@@ -22,7 +22,7 @@ This remains true even while checking for invalid inputs at `if type(capacity) !
 
 __Time Complexity__: O(n)
 
-__Space Complexity__: Linear
+__Space Complexity__: O(n)
 
 _Walkthroug_
 
@@ -37,7 +37,7 @@ If any files in the directory or subdirectories exists, they are appended to `an
 
 __Time Complexity__: O(log n)
 
-__Space Complexity__: Logarithmic Linear
+__Space Complexity__: O(logn)
 
 _Walkthroug_
 
@@ -78,7 +78,7 @@ however, both Python's `sort()` and `sorted()` have worst-case scenario of O(n l
 
 __Time Complexity__: O(1)
 
-__Space Complexity__: Linear
+__Space Complexity__: O(n)
 
 _Walkthroug_
 
@@ -118,7 +118,7 @@ Finally, how much memory is needed also a function of the lenth of the blockchai
 
 __Time Complexity__: O(n)
 
-__Space Complexity__: Logarithmic
+__Space Complexity__: O(logn)
 
 _Walkthroug_
 
