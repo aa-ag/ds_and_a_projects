@@ -134,6 +134,11 @@ def test_case_1():
     print(intersection(linked_list_1, linked_list_2))
     print()
 
+    '''
+     3 -> 2 -> 4 -> 35 -> 6 -> 65 -> 6 -> 4 -> 3 -> 21 -> 6 -> 32 -> 4 -> 9 -> 6 -> 1 -> 11 -> 21 -> 1
+     4 -> 6 -> 21
+    '''
+
 
 # Test case 2
 def test_case_2():
@@ -153,6 +158,11 @@ def test_case_2():
     print(intersection(linked_list_3, linked_list_4))
     print()
 
+    '''
+     3 -> 2 -> 4 -> 35 -> 6 -> 65 -> 6 -> 4 -> 3 -> 23 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 1
+     N\A
+    '''
+
 
 # Test case 3
 def test_case_3():
@@ -170,6 +180,32 @@ def test_case_3():
 
     print(union(linked_list_3, linked_list_4))
     print(intersection(linked_list_3, linked_list_4))
+    '''
+     Both lists are empty
+     Both lists are empty
+    '''
+
+
+# Test case 4
+def test_case_4():
+    linked_list_5 = LinkedList()
+    linked_list_6 = LinkedList()
+
+    element_1 = [1, 2, 3, 4, 5, 6]
+    element_2 = []
+
+    for i in element_1:
+        linked_list_5.append(i)
+
+    for i in element_2:
+        linked_list_5.append(i)
+
+    print(union(linked_list_5, linked_list_6))
+    print(intersection(linked_list_5, linked_list_6))
+    '''
+     1 -> 2 -> 3 -> 4 -> 5 -> 6
+     1 -> 2 -> 3 -> 4 -> 5 -> 6
+    '''
 
 
 ############------------ DRIVER CODE ------------############
@@ -182,6 +218,9 @@ if __name__ == '__main__':
 
     # TEST CASE 3
     test_case_3()
+
+    # TEST CASE 4
+    test_case_4()
 
 '''
  You made great work on adding more than test case.
