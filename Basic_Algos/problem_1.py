@@ -11,9 +11,10 @@ The expected time complexity is O(log(n))
 
 Here is some boilerplate code and test cases to start with:
 '''
+############------------ IMPORTS ------------############
 
 
-######------ FUNCTION ------######
+############------------ FUNCTIONS ------------############
 def sqrt(number):
     """
     Calculate the floored square root of a number
@@ -26,7 +27,8 @@ def sqrt(number):
     return number ** 0.5 // 1
 
 
-######------ DRIVER CODE + TESTS ------######
+############------------ TESTS ------------############
+############------------ DRIVER CODE ------------############
 if __name__ == '__main__':
     print("Pass" if (3 == sqrt(9)) else "Fail")
     print("Pass" if (0 == sqrt(0)) else "Fail")
