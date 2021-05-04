@@ -13,7 +13,8 @@ For example, is your solution the most efficient one possible?
 Are you doing a good job of explaining your thoughts? 
 Is your code elegant and easy to read?
 
-Required
+Required: https://review.udacity.com/#!/rubrics/2498/view
+
 Answer all 7 problems listed in the previous concepts.
 Code solutions must be in a separate file like "problem_1.py". 
 You are able to submit your answers by uploading a single .zip file
