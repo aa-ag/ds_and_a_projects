@@ -37,7 +37,7 @@ If any files in the directory or subdirectories exists, they are appended to `an
 
 __Time Complexity__: O(log n)
 
-__Space Complexity__: O(logn)
+__Space Complexity__: O(n)
 
 _Walkthroug_
 
@@ -118,7 +118,7 @@ Finally, how much memory is needed also a function of the lenth of the blockchai
 
 __Time Complexity__: O(n)
 
-__Space Complexity__: O(logn)
+__Space Complexity__: O(n)
 
 _Walkthroug_
 

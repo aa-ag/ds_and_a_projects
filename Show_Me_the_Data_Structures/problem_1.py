@@ -95,6 +95,16 @@ def test_case_3():
     our_cache.print_cache()
 
 
+# TEST CASE 4
+def test_case_4():
+    our_cache = LRU_Cache(1000)
+
+    for i in range(1000):
+        our_cache.set_(i, i)
+
+    our_cache.print_cache()
+
+
 if __name__ == "__main__":
     # TEST CASE 1
     test_case_1()
@@ -104,3 +114,6 @@ if __name__ == "__main__":
 
     # TEST CASE 3
     test_case_3()
+
+    # TEST CASE 4
+    test_case_4()
