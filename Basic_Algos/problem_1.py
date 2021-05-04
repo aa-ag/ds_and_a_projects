@@ -1,25 +1,10 @@
 '''
-Find the square root of the integer without using any Python library.
-You have to find the floor value of the square root.
-
-For example if the given number is 16, then the answer would be 4.
-
-If the given number is 27,
-the answer would be 5 because sqrt(5) = 5.196 whose floor value is 5.
-
-The expected time complexity is O(log(n))
-
-Here is some boilerplate code and test cases to start with:
+TIME COMPLEXITY: O(LogN)
+SPACE COMPLEXITY: O(N)
 '''
 
 '''
 # CLUES:
-- I think it's possible to get logN with divide and conquer,
-
-simply find the middle number (divide target by 2), and keep dividing it until you find the closest answer.
-
-also the answer is an integer not Float, so it's quite straightforward to find I think.
-
 https://www.ideserve.co.in/learn/time-and-space-complexity-of-recursive-algorithms
 
 https://www.geeksforgeeks.org/binary-search/
@@ -31,10 +16,10 @@ https://www.geeksforgeeks.org/square-root-of-an-integer/
 ############------------ FUNCTIONS ------------############
 def sqrt(n):
     """
-    creates base case for n = 0/1
-    sets a variable i to 1
-    to try everything from 1 up to
-    i * i >= n
+     creates base case for n = 0/1
+     sets a variable i to 1
+     to try everything from 1 up to
+     i * i >= n
     """
 
     if n == 0 or n == 1:
@@ -52,7 +37,7 @@ def sqrt(n):
 
 def input_is_valid(n):
     '''
-    checks if input `n` is valid (int)
+     checks if input `n` is valid (int)
     '''
     if type(n) == int:
         return True
