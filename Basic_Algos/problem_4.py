@@ -13,10 +13,10 @@ that would still be an O(n) solution but it will not count as single traversal.
 ############------------ FUNCTIONS ------------############
 def sort_012(input_list):
     """
-    Given an input array consisting on only 0, 1, and 2, sort the array in a single traversal.
-
-    Args:
-       input_list(list): List to be sorted
+     checks inputs: (i) most be lists, 
+     (ii) elements must only be 0, 1 or 2
+     places 0's and 2's in correct ends of list, 
+     hence leaving 1's in correct place too
     """
     pass
 
@@ -62,6 +62,16 @@ def test_case_4(test_case):
         print("Fail")
 
 
+# TEST CASE 5
+def test_case_5(test_case):
+    sorted_array = sort_012(test_case)
+    print(sorted_array)
+    if sorted_array == sorted(test_case):
+        print("Pass")
+    else:
+        print("Fail")
+
+
 ############------------ DRIVER CODE ------------############
 if __name__ == "__main__":
     # TEST CASE 1
@@ -76,3 +86,6 @@ if __name__ == "__main__":
 
     # TEST CASE 4
     test_case_4({0, 0, 0, 0, 0})
+
+    # TEST CASE 5
+    test_case_5([0, 1, 2, 0, 1, 2, 5])
