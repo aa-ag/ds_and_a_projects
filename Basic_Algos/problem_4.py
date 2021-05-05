@@ -18,7 +18,16 @@ def sort_012(input_list):
      places 0's and 2's in correct ends of list, 
      hence leaving 1's in correct place too
     """
-    pass
+    print(input_is_valid(input_list))
+
+
+def input_is_valid(input_list):
+    """
+     checks if input is valid
+    """
+    if type(input_list) == list and all(i in [0, 1, 2] for i in input_list):
+        return True
+    return False
 
 
 ############------------ TESTS ------------############
