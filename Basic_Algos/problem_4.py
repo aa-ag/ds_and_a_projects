@@ -18,8 +18,38 @@ def sort_012(input_list):
      places 0's and 2's in correct ends of list, 
      hence leaving 1's in correct place too
     """
+
+    # if input isn't valid, raise error
     if input_is_valid(input_list) == False:
         raise "Invalid input"
+
+    # set pointers
+    # 0 starts at index 0 to move right
+    next_position_of_zero = 0
+    # 2 starts at last index to move left
+    next_position_of_2 = len(input_list) - 1
+    front_index = 0
+
+    # iterate over and swap elements
+    while front_index <= next_position_of_2:
+        # as long as the element in the index
+        # is 0 or 1
+        if input_list[front_index] == 0:
+            # if the element in the index is 0
+            input_list[front_index] = input_list[next_position_of_zero]
+            input_list[next_position_of_zero] = 0
+            # move to the right
+            next_position_of_zero += 1
+            front_index += 1
+
+        elif input_list[front_index] == 2:
+            # if the element in the index is 2
+            input_list[front_index] = input_list[next_position_of_2]
+            input_list[next_position_of_2] = 2
+            next_position_of_2 -= 1
+        else:
+            # otherwise, move one index to the right
+            front_index += 1
 
 
 def input_is_valid(input_list):
@@ -34,9 +64,8 @@ def input_is_valid(input_list):
 ############------------ TESTS ------------############
 # TEST CASE 1
 def test_case_1(test_case):
-    sorted_array = sort_012(test_case)
-    print(sorted_array)
-    if sorted_array == sorted(test_case):
+    sort_012(test_case)
+    if test_case == sorted(test_case):
         print("Pass")
     else:
         print("Fail")
@@ -44,9 +73,8 @@ def test_case_1(test_case):
 
 # TEST CASE 2
 def test_case_2(test_case):
-    sorted_array = sort_012(test_case)
-    print(sorted_array)
-    if sorted_array == sorted(test_case):
+    sort_012(test_case)
+    if test_case == sorted(test_case):
         print("Pass")
     else:
         print("Fail")
@@ -54,9 +82,8 @@ def test_case_2(test_case):
 
 # TEST CASE 3
 def test_case_3(test_case):
-    sorted_array = sort_012(test_case)
-    print(sorted_array)
-    if sorted_array == sorted(test_case):
+    sort_012(test_case)
+    if test_case == sorted(test_case):
         print("Pass")
     else:
         print("Fail")
@@ -64,9 +91,8 @@ def test_case_3(test_case):
 
 # TEST CASE 4
 def test_case_4(test_case):
-    sorted_array = sort_012(test_case)
-    print(sorted_array)
-    if sorted_array == sorted(test_case):
+    sort_012(test_case)
+    if test_case == sorted(test_case):
         print("Pass")
     else:
         print("Fail")
@@ -74,9 +100,8 @@ def test_case_4(test_case):
 
 # TEST CASE 5
 def test_case_5(test_case):
-    sorted_array = sort_012(test_case)
-    print(sorted_array)
-    if sorted_array == sorted(test_case):
+    sort_012(test_case)
+    if test_case == sorted(test_case):
         print("Pass")
     else:
         print("Fail")
