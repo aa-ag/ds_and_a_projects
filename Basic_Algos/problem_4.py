@@ -7,6 +7,9 @@ You're not allowed to use any sorting function that Python provides.
 Note: O(n) does not necessarily mean single-traversal. 
 For e.g. if you traverse the array twice, 
 that would still be an O(n) solution but it will not count as single traversal.
+
+TIME COMPLEXITY: O(n)
+SPACE COMPLEXITY: O(1)
 '''
 
 
@@ -37,15 +40,18 @@ def sort_012(input_list):
         if input_list[front_index] == 0:
             # if the element in the index is 0
             input_list[front_index] = input_list[next_position_of_zero]
+            # set value in that index to zero
             input_list[next_position_of_zero] = 0
-            # move to the right
+            # and move to the right 1
             next_position_of_zero += 1
             front_index += 1
 
         elif input_list[front_index] == 2:
             # if the element in the index is 2
             input_list[front_index] = input_list[next_position_of_2]
+            # set value in that index to 2
             input_list[next_position_of_2] = 2
+            # and move to the left 1
             next_position_of_2 -= 1
         else:
             # otherwise, move one index to the right
