@@ -25,6 +25,7 @@ def get_min_max(integers):
      and keep track of min and max at each index,
      finally return both
     """
+
     minimun_integer = 0
     maximun_integer = 0
 
@@ -37,10 +38,66 @@ def get_min_max(integers):
     return minimun_integer, maximun_integer
 
 
+def input_is_valid(integers):
+    """
+     checks if input `integers` is valid (list)
+    """
+    if type(integers) == list:
+        return True
+    return False
+
+
 ############------------ TESTS ------------############
-l = [i for i in range(0, 10)]  # a list containing 0 - 9
-random.shuffle(l)
+# TEST CASE 1
+def test_case_1():
+    # a list containing 0 - 1001
+    integers = [i for i in range(0, 1001)]
+    # checks if input is valid type
+    if input_is_valid(integers) == False:
+        return "Invalid input type"
+    # shuffintegerse them randomly
+    random.shuffle(integers)
+    # pass if min is 0 and max is 9
+    return "Pass" if ((0, 1000) == get_min_max(integers)) else "Fail"
+
+
+# TEST CASE 2
+def test_case_2():
+    integers = []
+    if input_is_valid(integers) == False:
+        return "Invalid input type"
+    random.shuffle(integers)
+    return "Pass" if ((0, 0) == get_min_max(integers)) else "Fail"
+
+
+# TEST CASE 3
+def test_case_3():
+    integers = 'this is a string'
+    if input_is_valid(integers) == False:
+        return "Invalid input type"
+    random.shuffle(integers)
+    return "Pass" if ((0, 0) == get_min_max(integers)) else "Fail"
+
+
+# TEST CASE 4
+def test_case_4():
+    integers = 'this is a string'
+    if input_is_valid(integers) == False:
+        return "Invalid input type"
+    random.shuffle(integers)
+    return "Pass" if ((0, 0) == get_min_max(integers)) else "Fail"
 
 
 ############------------ DRIVER CODE ------------############
-print("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
+if __name__ == "__main__":
+    # TEST CASE 1
+    print(test_case_1())  # Pass
+
+    # TEST CASE 2
+    print(test_case_2())  # Pass
+
+    # TEST CASE 3
+    print(test_case_3())  # Invalid input type
+
+    # TEST CASE 4
+    print(test_case_4())  # Invalid input type
