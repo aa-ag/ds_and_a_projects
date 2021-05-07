@@ -29,29 +29,29 @@ def sort_012(input_list):
     # set pointers
     # 0 starts at index 0 to move right
     next_position_of_zero = 0
-    # 2 starts at last index to move left
+    # 2 starts at second to last index to move left
     next_position_of_2 = len(input_list) - 1
     front_index = 0
 
     # iterate over and swap elements
     while front_index <= next_position_of_2:
-        # as long as the element in the index
-        # is 0 or 1
+        # if the value in the index is 0
         if input_list[front_index] == 0:
-            # if the element in the index is 0
+            # swap with next index where value is 0
             input_list[front_index] = input_list[next_position_of_zero]
             # set value in that index to zero
             input_list[next_position_of_zero] = 0
-            # and move to the right 1
+            # and move index the right 1
             next_position_of_zero += 1
             front_index += 1
 
+        # if the value in the index is 2
         elif input_list[front_index] == 2:
-            # if the element in the index is 2
+            # swap with next index where value is 2
             input_list[front_index] = input_list[next_position_of_2]
-            # set value in that index to 2
+            # set value in that index to two
             input_list[next_position_of_2] = 2
-            # and move to the left 1
+            # and move index the left 1
             next_position_of_2 -= 1
         else:
             # otherwise, move one index to the right
@@ -70,7 +70,9 @@ def input_is_valid(input_list):
 ############------------ TESTS ------------############
 # TEST CASE 1
 def test_case_1(test_case):
+    print(test_case)
     sort_012(test_case)
+    print(test_case)
     if test_case == sorted(test_case):
         print("Pass")
     else:
