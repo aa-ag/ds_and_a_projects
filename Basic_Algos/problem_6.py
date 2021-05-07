@@ -10,6 +10,9 @@ to find the max and min in a single traversal?
 
 Sorting usually requires O(n log n) time
 Can you come up with a O(n) algorithm (i.e., linear time)?
+
+TIME COMPLEXITY: O(n)
+SPACE COMPLEXITY: O(1)
 '''
 ############------------ IMPORTS ------------############
 import random
