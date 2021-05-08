@@ -16,6 +16,8 @@ Input: nums = [4,5,6,7,0,1,2], target = 0, Output: 4
 ############------------ IMPORTS ------------############
 
 
+############------------ FUNCTIONS ------------############
+
 def contains(target, source):
     if len(source) == 0:
         return False
@@ -26,8 +28,6 @@ def contains(target, source):
         return contains(target, source[center+1:])
     else:
         return contains(target, source[:center])
-
-############------------ FUNCTIONS ------------############
 
 
 def rotated_array_search(input_list, number):

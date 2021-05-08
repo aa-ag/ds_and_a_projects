@@ -3,15 +3,6 @@ TIME COMPLEXITY: O(LogN)
 SPACE COMPLEXITY: O(N)
 '''
 
-'''
-# CLUES:
-https://www.ideserve.co.in/learn/time-and-space-complexity-of-recursive-algorithms
-
-https://www.geeksforgeeks.org/binary-search/
-
-https://www.geeksforgeeks.org/square-root-of-an-integer/
-'''
-
 
 ############------------ FUNCTIONS ------------############
 def sqrt(n):

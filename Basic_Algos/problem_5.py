@@ -1,12 +1,24 @@
 '''
-Before we start let us reiterate the key components of a Trie or Prefix Tree. A trie is a tree-like data structure that stores a dynamic set of strings. Tries are commonly used to facilitate operations like predictive text or autocomplete features on mobile phones or web search.
+Before we start let us reiterate 
+the key components of a Trie or Prefix Tree. 
+A trie is a tree-like data structure 
+that stores a dynamic set of strings. 
+Tries are commonly used to facilitate operations 
+like predictive text or autocomplete features 
+on mobile phones or web search.
 
-Before we move into the autocomplete function we need to create a working trie for storing strings. We will create two classes:
+Before we move into the autocomplete 
+function we need to create a working trie 
+for storing strings. We will create two classes:
 
 A Trie class that contains the root node (empty string)
-A TrieNode class that exposes the general functionality of the Trie, like inserting a word or finding the node which represents a prefix.
-Give it a try by implementing the TrieNode and Trie classes below!
+A TrieNode class that exposes the general functionality 
+of the Trie, like inserting a word or finding 
+the node which represents a prefix.
+Give it a try by implementing the TrieNode 
+and Trie classes below!
 '''
+
 ############------------ IMPORTS ------------############
 from ipywidgets import widgets
 from IPython.display import display
