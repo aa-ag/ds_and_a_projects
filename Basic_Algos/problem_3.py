@@ -27,19 +27,24 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
-    pass
+    middle = len(input_list) // 2
+
+    print(middle)
+
+
+rearrange_digits([1, 2, 3, 4, 5])
 
 
 ############------------ TESTS ------------############
-def test_function(test_case):
-    output = rearrange_digits(test_case[0])
-    solution = test_case[1]
-    if sum(output) == sum(solution):
-        print("Pass")
-    else:
-        print("Fail")
+# def test_function(test_case):
+#     output = rearrange_digits(test_case[0])
+#     solution = test_case[1]
+#     if sum(output) == sum(solution):
+#         print("Pass")
+#     else:
+#         print("Fail")
 
 
 ############------------ DRIVER CODE ------------############
-test_function([[1, 2, 3, 4, 5], [542, 31]])
-test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
+# test_function([[1, 2, 3, 4, 5], [542, 31]])
+# test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
