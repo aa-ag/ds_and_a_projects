@@ -27,13 +27,19 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
+
     middle = len(input_list) // 2
 
-    print(middle)
+    left = input_list[middle:]
+    right = input_list[:middle]
+
+    return left, right
 
 
-rearrange_digits([1, 2, 3, 4, 5])
-
+# odd lenght
+print(rearrange_digits([1, 2, 3, 4, 5]))
+# even length
+print(rearrange_digits([4, 6, 2, 5, 9, 8]))
 
 ############------------ TESTS ------------############
 # def test_function(test_case):
