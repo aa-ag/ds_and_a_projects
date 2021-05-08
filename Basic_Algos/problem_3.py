@@ -15,6 +15,7 @@ In scenarios such as these when there are more
 than one possible answers, return any one.
 '''
 ############------------ IMPORTS ------------############
+from itertools import combinations
 
 
 ############------------ FUNCTIONS ------------############
@@ -29,17 +30,21 @@ def rearrange_digits(input_list):
     """
 
     middle = len(input_list) // 2
+    left = len(input_list[middle:])
+    right = len(input_list[:middle])
 
-    left = input_list[middle:]
-    right = input_list[:middle]
+    left_combinations = list(combinations(map(str, input_list), left))
 
-    return left, right
+    return left_combinations
 
 
 # odd lenght
 print(rearrange_digits([1, 2, 3, 4, 5]))
+# [542, 31]
+
 # even length
-print(rearrange_digits([4, 6, 2, 5, 9, 8]))
+# print(rearrange_digits([4, 6, 2, 5, 9, 8]))
+# [964, 852]
 
 ############------------ TESTS ------------############
 # def test_function(test_case):
