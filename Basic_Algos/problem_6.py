@@ -26,8 +26,8 @@ def get_min_max(integers):
      finally return both
     """
 
-    minimun_integer = 0
-    maximun_integer = 0
+    minimun_integer = integers[0]
+    maximun_integer = integers[0]
 
     for integer in integers:
         if integer > maximun_integer:
@@ -42,7 +42,7 @@ def input_is_valid(integers):
     """
      checks if input `integers` is valid (list)
     """
-    if type(integers) == list:
+    if integers and type(integers) == list:
         return True
     return False
 
@@ -63,7 +63,7 @@ def test_case_1():
 
 # TEST CASE 2
 def test_case_2():
-    integers = []
+    integers = [0]
     if input_is_valid(integers) == False:
         return "Invalid input type"
     random.shuffle(integers)
@@ -72,6 +72,15 @@ def test_case_2():
 
 # TEST CASE 3
 def test_case_3():
+    integers = [i for i in range(-10, 0)]
+    if input_is_valid(integers) == False:
+        return "Invalid input type"
+    random.shuffle(integers)
+    return "Pass" if ((-10, -1) == get_min_max(integers)) else "Fail"
+
+
+# TEST CASE 4
+def test_case_4():
     integers = 'this is a string'
     if input_is_valid(integers) == False:
         return "Invalid input type"
@@ -79,8 +88,8 @@ def test_case_3():
     return "Pass" if ((0, 0) == get_min_max(integers)) else "Fail"
 
 
-# TEST CASE 4
-def test_case_4():
+# TEST CASE 5
+def test_case_5():
     integers = 'this is a string'
     if input_is_valid(integers) == False:
         return "Invalid input type"
@@ -97,7 +106,10 @@ if __name__ == "__main__":
     print(test_case_2())  # Pass
 
     # TEST CASE 3
-    print(test_case_3())  # Invalid input type
+    print(test_case_3())  # Pass
 
     # TEST CASE 4
     print(test_case_4())  # Invalid input type
+
+    # TEST CASE 5
+    print(test_case_5())  # Invalid input type
