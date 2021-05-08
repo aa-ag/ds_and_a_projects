@@ -15,7 +15,7 @@ In scenarios such as these when there are more
 than one possible answers, return any one.
 '''
 ############------------ IMPORTS ------------############
-from itertools import combinations
+from itertools import permutations
 
 
 ############------------ FUNCTIONS ------------############
@@ -33,7 +33,8 @@ def rearrange_digits(input_list):
     left = len(input_list[middle:])
     right = len(input_list[:middle])
 
-    left_combinations = list(combinations(map(str, input_list), left))
+    left_combinations = [(int(''.join(i)[right:]), int(''.join(i)[left:])) for i in list(
+        permutations(map(str, input_list)))]
 
     return left_combinations
 
