@@ -30,7 +30,7 @@ def rearrange_digits(input_list):
     l = ''
     r = ''
 
-    s = ''.join(str(sorted(input_list, reverse=True)))
+    s = ''.join(str(i) for i in sorted(input_list, reverse=True))
 
     return s  # [5, 4, 3, 2, 1]
 
@@ -40,7 +40,7 @@ def rearrange_digits(input_list):
     #     else:
     #         r += s[i]
 
-    # return l, r
+    # return [l, r]
 
 
 # odd lenght
