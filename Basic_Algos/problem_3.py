@@ -32,15 +32,15 @@ def rearrange_digits(input_list):
 
     s = ''.join(str(i) for i in sorted(input_list, reverse=True))
 
-    return s  # [5, 4, 3, 2, 1]
+    # return s  # [5, 4, 3, 2, 1]
 
-    # for i in range(len(s)):
-    #     if i % 2 == 0:
-    #         l += s[i]
-    #     else:
-    #         r += s[i]
+    for i in range(len(s)):
+        if i % 2 == 0:
+            l += s[i]
+        else:
+            r += s[i]
 
-    # return [l, r]
+    return [int(l), int(r)]
 
 
 # odd lenght
@@ -48,7 +48,7 @@ print(rearrange_digits([1, 2, 3, 4, 5]))
 # [542, 31]
 
 # even length
-# print(rearrange_digits([4, 6, 2, 5, 9, 8]))
+print(rearrange_digits([4, 6, 2, 5, 9, 8]))
 # [964, 852]
 
 ############------------ TESTS ------------############
