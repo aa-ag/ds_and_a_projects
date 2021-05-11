@@ -32,13 +32,15 @@ def rearrange_digits(input_list):
 
     s = ''.join(str(sorted(input_list, reverse=True)))
 
-    for i in range(len(s)):
-        if i % 2 == 0:
-            l += s[i]
-        else:
-            r += s[i]
+    return s  # [5, 4, 3, 2, 1]
 
-    return l, r
+    # for i in range(len(s)):
+    #     if i % 2 == 0:
+    #         l += s[i]
+    #     else:
+    #         r += s[i]
+
+    # return l, r
 
 
 # odd lenght
