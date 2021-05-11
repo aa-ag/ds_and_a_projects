@@ -1,21 +1,20 @@
 '''
-Rearrange Array Elements so as to form two number 
-such that their sum is maximum. Return these two numbers. 
-You can assume that all array elements are in the range [0, 9]. 
-The number of digits in both the numbers cannot differ by more than 1. 
+Rearrange Array Elements so as to form two number
+such that their sum is maximum. Return these two numbers.
+You can assume that all array elements are in the range [0, 9].
+The number of digits in both the numbers cannot differ by more than 1.
 
-You're not allowed to use any sorting function that Python provides 
+You're not allowed to use any sorting function that Python provides
 and the expected time complexity is O(nlog(n)).
 
 for e.g. [1, 2, 3, 4, 5]
 
-The expected answer would be [531, 42]. 
-Another expected answer can be [542, 31]. 
-In scenarios such as these when there are more 
+The expected answer would be [531, 42].
+Another expected answer can be [542, 31].
+In scenarios such as these when there are more
 than one possible answers, return any one.
 '''
 ############------------ IMPORTS ------------############
-from itertools import permutations
 
 
 ############------------ FUNCTIONS ------------############
@@ -28,15 +27,18 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
+    l = ''
+    r = ''
 
-    middle = len(input_list) // 2
-    left = len(input_list[middle:])
-    right = len(input_list[:middle])
+    s = ''.join(str(sorted(input_list, reverse=True)))
 
-    left_combinations = [(int(''.join(i)[right:]), int(''.join(i)[left:])) for i in list(
-        permutations(map(str, input_list)))]
+    for i in range(len(s)):
+        if i % 2 == 0:
+            l += s[i]
+        else:
+            r += s[i]
 
-    return left_combinations
+    return l, r
 
 
 # odd lenght
