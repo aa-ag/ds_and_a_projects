@@ -17,21 +17,6 @@ than one possible answers, return any one.
 
 
 ############------------ FUNCTIONS ------------############
-def mergesort(items):
-    # case where input is list of 1
-    if len(items) <= 1:
-        return items
-
-    middle_index = len(items) // 2
-    left = items[:middle_index]
-    right = items[middle_index:]
-
-    left = mergesort(left)
-    right = mergesort(right)
-
-    return merge(left, right)
-
-
 def merge(left, right):
     merged = []
     left_index = 0
@@ -60,8 +45,58 @@ def merge(left, right):
     return merged
 
 
-print(mergesort([4, 6, 2, 5, 9, 8]))
+def mergesort(list):
+    # case where input is list of 1
+    if len(list) <= 1:
+        return list
+
+    middle_index = len(list) // 2
+    left = list[:middle_index]
+    right = list[middle_index:]
+
+    left = mergesort(left)
+    right = mergesort(right)
+
+    return merge(left, right)
+
+
+def rearrange_digits(input_list):
+
+    sorted_list = mergesort(input_list)
+
+    input_length = len(input_list)
+
+    if input_length % 2 == 0:
+        first_integer = 0
+        second_integer = 0
+
+        number_of_digits = input_length // 2
+
+        for i in range(number_of_digits):
+            first_integer += (10 ** i) * sorted_list.pop(0)
+            second_integer += (10 ** i) * sorted_list.pop(0)
+
+    else:
+        first_integer = 0
+        second_integer = 0
+
+        number_of_digits = input_length // 2
+
+        for i in range(number_of_digits):
+            first_integer += (10 ** i) * sorted_list.pop(0)
+            second_integer += (10 ** i) * sorted_list.pop(0)
+
+        first_integer += (10 ** (i + 1)) * sorted_list.pop(0)
+
+    return [first_integer, second_integer]
+
+
+# print(mergesort([9]))
+# [9]
+# print(mergesort([4, 6, 2, 5, 9, 8]))
 # [2, 4, 5, 6, 8, 9]
+print(rearrange_digits([4, 6, 2, 5, 9, 8]))
+# [852, 964]
 
 
 ############------------ TESTS ------------############
