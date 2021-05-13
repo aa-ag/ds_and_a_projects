@@ -1,7 +1,14 @@
+'''
+TIME COMPLEXITY = O(logN)
+SPACE COMPLEXITY = O(n)
+https://stackoverflow.com/questions/10342890/merge-sort-time-and-space-complexity
+'''
+
+
 ############------------ FUNCTIONS ------------############
 def merge(left, right):
     '''
-     merges two sorted halfs
+     this helper function merges two sorted halfs
      resulting from `mergesort()` function
     '''
     merged = []
