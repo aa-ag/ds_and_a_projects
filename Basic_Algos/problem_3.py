@@ -91,24 +91,16 @@ def rearrange_digits(input_list):
     return [first_integer, second_integer]
 
 
-# print(mergesort([9]))
-# [9]
-# print(mergesort([4, 6, 2, 5, 9, 8]))
-# [2, 4, 5, 6, 8, 9]
-print(rearrange_digits([4, 6, 2, 5, 9, 8]))
-# [852, 964]
-
-
 ############------------ TESTS ------------############
-# def test_function(test_case):
-#     output = rearrange_digits(test_case[0])
-#     solution = test_case[1]
-#     if sum(output) == sum(solution):
-#         print("Pass")
-#     else:
-#         print("Fail")
+def test_function(test_case):
+    output = rearrange_digits(test_case[0])
+    solution = test_case[1]
+    if sum(output) == sum(solution):
+        print("Pass")
+    else:
+        print("Fail")
 
 
 ############------------ DRIVER CODE ------------############
-# test_function([[1, 2, 3, 4, 5], [542, 31]])
-# test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
+test_function([[1, 2, 3, 4, 5], [542, 31]])
+test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
