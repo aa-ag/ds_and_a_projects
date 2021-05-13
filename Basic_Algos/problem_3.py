@@ -88,11 +88,67 @@ def rearrange_digits(input_list):
 
         first_integer += (10 ** (i + 1)) * sorted_list.pop(0)
 
+    # print([first_integer, second_integer])
     return [first_integer, second_integer]
 
 
+def is_input_valid(input):
+    if type(input) == list \
+        and len(input) >= 1 \
+            and len(input) < 10:
+        return True
+    return False
+
+
 ############------------ TESTS ------------############
-def test_function(test_case):
+# TEST CASE 1
+def test_case_1(test_case):
+    if is_input_valid(test_case) == False:
+        print("Invalid input")
+        return
+
+    output = rearrange_digits(test_case[0])
+    solution = test_case[1]
+    if sum(output) == sum(solution):
+        print("Pass")
+    else:
+        print("Fail")
+
+
+# TEST CASE 2
+def test_case_2(test_case):
+    if is_input_valid(test_case) == False:
+        print("Invalid input")
+        return
+
+    output = rearrange_digits(test_case[0])
+    solution = test_case[1]
+    if sum(output) == sum(solution):
+        print("Pass")
+    else:
+        print("Fail")
+
+
+# TEST CASE 3
+def test_case_3(test_case):
+    if is_input_valid(test_case) == False:
+        print("Invalid input")
+        return
+
+    output = rearrange_digits(test_case[0])
+    solution = test_case[1]
+    if sum(output) == sum(solution):
+        print("Pass")
+    else:
+        print("Fail")
+
+
+# TEST CASE 4
+def test_case_4(test_case):
+    if is_input_valid(test_case) == False:
+        print("Invalid input")
+        return
+
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
     if sum(output) == sum(solution):
@@ -102,5 +158,15 @@ def test_function(test_case):
 
 
 ############------------ DRIVER CODE ------------############
-test_function([[1, 2, 3, 4, 5], [542, 31]])
-test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
+if __name__ == '__main__':
+    # TEST CASE 1
+    test_case_1([[1, 2, 3, 4, 5], [542, 31]])
+
+    # TEST CASE 2
+    test_case_2([[4, 6, 2, 5, 9, 8], [964, 852]])
+
+    # TEST CASE 3
+    test_case_3([])
+
+    # TEST CASE 4
+    test_case_4([11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
