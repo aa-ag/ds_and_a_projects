@@ -1,23 +1,9 @@
-'''
-Rearrange Array Elements so as to form two number
-such that their sum is maximum. Return these two numbers.
-You can assume that all array elements are in the range [0, 9].
-The number of digits in both the numbers cannot differ by more than 1.
-
-You're not allowed to use any sorting function that Python provides
-and the expected time complexity is O(nlog(n)).
-
-for e.g. [1, 2, 3, 4, 5]
-
-The expected answer would be [531, 42].
-Another expected answer can be [542, 31].
-In scenarios such as these when there are more
-than one possible answers, return any one.
-'''
-
-
 ############------------ FUNCTIONS ------------############
 def merge(left, right):
+    '''
+     merges two sorted halfs
+     resulting from `mergesort()` function
+    '''
     merged = []
     left_index = 0
     right_index = 0
@@ -46,6 +32,11 @@ def merge(left, right):
 
 
 def mergesort(list):
+    '''
+     divides list into 2, 
+     calls itself to sort each half, 
+     and then merges the two sorted halves
+    '''
     # case where input is list of 1
     if len(list) <= 1:
         return list
@@ -61,6 +52,11 @@ def mergesort(list):
 
 
 def rearrange_digits(input_list):
+    '''
+     sorts input list using mergesort
+     then uses divide and conquer to 
+     generate two largest sums 
+    '''
 
     sorted_list = mergesort(input_list)
 
@@ -88,11 +84,14 @@ def rearrange_digits(input_list):
 
         first_integer += (10 ** (i + 1)) * sorted_list.pop(0)
 
-    # print([first_integer, second_integer])
     return [first_integer, second_integer]
 
 
 def is_input_valid(input):
+    '''
+     checks if input is type list,
+     not empty and has less than 10 elements
+    '''
     if type(input) == list \
         and len(input) >= 1 \
             and len(input) < 10:
@@ -161,12 +160,16 @@ def test_case_4(test_case):
 if __name__ == '__main__':
     # TEST CASE 1
     test_case_1([[1, 2, 3, 4, 5], [542, 31]])
+    # Pass
 
     # TEST CASE 2
     test_case_2([[4, 6, 2, 5, 9, 8], [964, 852]])
+    # Pass
 
     # TEST CASE 3
     test_case_3([])
+    # Invalid input
 
     # TEST CASE 4
     test_case_4([11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
+    # Invalid input
