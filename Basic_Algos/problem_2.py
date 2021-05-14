@@ -27,26 +27,26 @@ Returns:
 ############------------ FUNCTIONS ------------############
 #  def rotated_array_search(input_list, number):
 
-def binary_search(arr, x):
-    low = 0
-    high = len(arr) - 1
-    mid = 0
+def binary_search(input_list, number):
+    start_index = 0
+    end_index = len(input_list) - 1
+    middle_index = 0
 
-    while low <= high:
+    while start_index <= end_index:
 
-        mid = (high + low) // 2
+        middle_index = (end_index + start_index) // 2
 
         # If x is greater, ignore left half
-        if arr[mid] < x:
-            low = mid + 1
+        if input_list[middle_index] < number:
+            start_index = middle_index + 1
 
         # If x is smaller, ignore right half
-        elif arr[mid] > x:
-            high = mid - 1
+        elif input_list[middle_index] > number:
+            end_index = middle_index - 1
 
-        # means x is present at mid
+        # means x is present at middle_index
         else:
-            return mid
+            return middle_index
 
     # If we reach here, then the element was not present
     return -1
