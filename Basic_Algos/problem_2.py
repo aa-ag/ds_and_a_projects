@@ -43,6 +43,9 @@ def rotated_array_search(input_list, number):
 
         middle_index = (end_index + start_index) // 2
 
+        if input_list[middle_index] == number:
+            return middle_index
+
         # If number is greater, ignore left half
         if input_list[middle_index] < number:
             start_index = middle_index + 1
@@ -50,10 +53,6 @@ def rotated_array_search(input_list, number):
         # If number is smaller, ignore right half
         elif input_list[middle_index] > number:
             end_index = middle_index - 1
-
-        # Thus, number is present at middle_index
-        else:
-            return middle_index
 
     # Alternatively, then the element is not in `input_list`
     return -1
@@ -72,15 +71,15 @@ def test_function(test_case):
     number = test_case[1]
     print(linear_search(input_list, number))
     print(rotated_array_search(input_list, number))
-    # if linear_search(input_list, number) == rotated_array_search(input_list, number):
-    #     print("Pass")
-    # else:
-    #     print("Fail")
+    if linear_search(input_list, number) == rotated_array_search(input_list, number):
+        print("Pass")
+    else:
+        print("Fail")
 
 
 ############------------ DRIVER CODE ------------############
-# test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
-# test_function([[6, 7, 8, 1, 2, 3, 4], 1])
-# test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+test_function([[6, 7, 8, 1, 2, 3, 4], 1])
+test_function([[6, 7, 8, 1, 2, 3, 4], 10])
