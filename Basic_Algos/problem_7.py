@@ -59,6 +59,7 @@ class Router:
         # for 404 page not found responses as well!
         self.route_trie = RouterTrie(handler)
         self.not_found_hanlder = not_found_handler
+        self.path_length_in_characters = len(handler)
 
     def add_handler(self, path, handler):
         # Add a handler for a path
@@ -66,8 +67,12 @@ class Router:
         # and pass the pass parts
         # as a list to the RouteTrie
         # node = self.routeTrie
-        elements_in_path = self.split_path(path)
-        self.route_trie.insert(elements_in_path, handler)
+        if self.path_length_in_characters + len(path) < 1900:
+            elements_in_path = self.split_path(path)
+            self.route_trie.insert(elements_in_path, handler)
+            self.path_length_in_characters += len(path)
+        else:
+            raise ValueError("Can't handle that")
 
     def lookup(self, path):
         # lookup path (by parts) and
@@ -94,31 +99,41 @@ class Router:
 
 
 ############------------ TESTS ------------############
+# TEST CASE 1
 def test_case_1():
-    router = Router("root handler", "404 page not found")
+    r = Router("root handler", "404 page not found")
 
-    router.add_handler("/home/about", "about handler")  # add a route
+    r.add_handler("/home/about", "about handler")  # add a route
 
     # some lookups with the expected output
-    print(router.lookup("/"))  # should print 'root handler'
+    print(r.lookup("/"))  # should print 'root handler'
     # should print 'not found handler'
     # or None if you did not implement one
-    print(router.lookup("/home"))
-    print(router.lookup("/home/about"))  # should print 'about handler'
+    print(r.lookup("/home"))
+    print(r.lookup("/home/about"))  # should print 'about handler'
     # should print 'about handler'
     # or None if you did not handle trailing slashes
-    print(router.lookup("/home/about/"))
+    print(r.lookup("/home/about/"))
     # should print 'not found handler'
     # or None if you did not implement one
-    print(router.lookup("/home/about/me"))
+    print(r.lookup("/home/about/me"))
 
 
+# TEST CASE 2
 def test_case_2():
-    router = Router("root handler")
-    print(router.lookup("/home"))
+    r = Router("root handler")
+    print(r.lookup("/home"))
     # 404 page not found
-    print(router.lookup(""))
+    print(r.lookup(""))
     # root handler
+
+
+# TEST CASE 3
+def test_case_3():
+    r = Router("root handler")
+    r.add_handler("/" + ("a" * 1900), "too large")
+    # ValueError: Can't handle that
+    # https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers
 
 
 ############------------ DRIVER CODE ------------############
@@ -128,3 +143,6 @@ if __name__ == '__main__':
 
     # TEST CASE 2
     test_case_2()
+
+    # TEST CASE 3
+    test_case_3()
