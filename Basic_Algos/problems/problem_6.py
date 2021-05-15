@@ -1,7 +1,3 @@
-'''
-TIME COMPLEXITY: O(n)
-SPACE COMPLEXITY: O(1)
-'''
 ############------------ IMPORTS ------------############
 import random
 

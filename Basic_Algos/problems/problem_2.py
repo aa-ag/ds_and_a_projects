@@ -1,9 +1,3 @@
-'''
-TIME COMPLEXITY: O(log n).
-SPACE COMPLEXITY: O(n).
-'''
-
-
 ############------------ FUNCTIONS ------------############
 def rotated_array_search(input_list, number):
     '''

@@ -1,9 +1,3 @@
-'''
-TIME COMPLEXITY: O(n)
-SPACE COMPLEXITY: O(1)
-'''
-
-
 ############------------ FUNCTIONS ------------############
 def sort_012(input_list):
     """

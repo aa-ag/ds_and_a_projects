@@ -1,9 +1,3 @@
-'''
-TIME COMPLEXITY: O(LogN)
-SPACE COMPLEXITY: O(N)
-'''
-
-
 ############------------ FUNCTIONS ------------############
 def sqrt(n):
     """
