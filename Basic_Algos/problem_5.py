@@ -1,19 +1,13 @@
 '''
-Finding Suffixes¶
-Now that we have a functioning Trie, 
-we need to add the ability to list suffixes to implement 
-our autocomplete feature. To do that, we need to implement 
-a new function on the TrieNode object that will return 
-all complete word suffixes that exist below it in the trie. 
-For example, if our Trie contains the words 
-["fun", "function", "factory"] and we ask for suffixes 
-from the f node, we would expect to receive 
-["un", "unction", "actory"] back from node.suffixes().
-
-Using the code you wrote for the TrieNode above, 
-try to add the suffixes function below. 
-(Hint: recurse down the trie, 
-collecting suffixes as you go.)
+TIME COMPLEXITY: O(W*L), 
+                    where W is the number of words, 
+                    and L is an average length of the word: 
+                    you need to perform L lookups on the average 
+                    for each of the W words in the set
+SPACE COMPLEXITY: 
+https://stackoverflow.com/questions/13032116/trie-complexity-and-searching
+https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
+https://www.cs.cmu.edu/~fp/courses/15122-f10/lectures/18-tries.pdf
 '''
 
 ############------------ IMPORTS ------------############
@@ -24,15 +18,16 @@ from collections import defaultdict
 class TrieNode:
     def __init__(self):
         self.children = defaultdict(TrieNode)
-        self.isWord = False
+        self.is_word = False
 
     def suffixes(self, suffix=''):
         suffixes = []
         for char, node in self.children.items():
-            if node.isWord:
+            if node.is_word:
                 suffixes.append(suffix + char)
             if node.children:
                 suffixes += node.suffixes(suffix + char)
+
         return suffixes
 
 
@@ -44,11 +39,11 @@ class Trie:
         node = self.root
         for char in word:
             node = node.children[char]
-        node.isWord = True
+        node.is_word = True
 
     def exists(self, word):
         node = self.find(word)
-        return node.isWord if node else False
+        return node.is_word if node else False
 
     def find(self, prefix):
         node = self.root
