@@ -15,7 +15,7 @@ class RouteTrieNode:
 
 
 class RouteTrie:
-    def __init__(self, handler='root handler'):
+    def __init__(self, handler):
         # Initialize the trie with an root node
         # and a handler, this is the root path
         # or home page node
@@ -60,21 +60,22 @@ class RouteTrie:
 
 
 class Router:
-    def __init__(self, handler):
+    def __init__(self, root_handler):
         # Create a new RouteTrie for holding
         # our routes
         # You could also add a handler for 404
         # page not found responses as well!
-        pass
+        RouteTrie.__init__(self, root_handler)
 
-    def add_handler(self, ...):
+    def add_handler(self, path, handler):
         # Add a handler for a path
         # You will need to split the path and
         # pass the pass parts
         # as a list to the RouteTrie
-        pass
+        elements_in_path = self.split_path(path)
+        self.insert(elements_in_path, handler)
 
-    def lookup(self, ...):
+    def lookup(self, path):
         # lookup path (by parts) and return
         # the associated handler
         # you can return None if it's not found or
@@ -83,13 +84,17 @@ class Router:
         # without a trailing slash
         # e.g. /about and /about/ both return
         # the /about handler
-        pass
+        elements_in_path = self.split_path(path)
+        return self.find(elements_in_path)
 
-    def split_path(self, ...):
+    def split_path(self, path):
         # you need to split the path into parts for
         # both the add_handler and loopup functions,
         # so it should be placed in a function here
-        pass
+        if path == '/':
+            return [path]
+
+        return path.split('/')
 
 
 # Here are some test cases and expected outputs
