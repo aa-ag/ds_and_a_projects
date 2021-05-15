@@ -22,12 +22,20 @@ class RouteTrie:
         self.root = RouteTrieNode()
         self.root.children['/'] = RouteTrieNode(handler)
 
-    def insert(self, ...):
+    def insert(self, path, handler):
         # Similar to our previous example you will
         # want to recursively add nodes
         # Make sure you assign the handler
         # to only the leaf (deepest) node of this path
-        pass
+        node = self.root
+
+        for i in path:
+            if i == '':
+                continue
+            if i not in node.children:
+                node.children[i] = RouteTrieNode()
+            node = node.children[i]
+        node.handler = handler
 
     def find(self, ...):
         # Starting at the root, navigate the Trie
