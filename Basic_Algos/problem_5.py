@@ -17,9 +17,7 @@ collecting suffixes as you go.)
 '''
 
 ############------------ IMPORTS ------------############
-# from ipywidgets import widgets
-# from IPython.display import display
-# from ipywidgets import interact
+import collections
 
 
 ############------------ FUNCTIONS ------------############
@@ -27,30 +25,19 @@ collecting suffixes as you go.)
 class TrieNode:
     def __init__(self):
         # Initialize this node in the Trie
-        self.children = {}
-
-    def insert(self, char):
-        # Add a child node in this Trie
-        pass
+        self.children = collections.defaultdict(TrieNode)
+        self.is_word = False
 
     def suffixes(self, suffix=''):
         # Recursive function that collects the suffix for
         # all complete words below this point
-        pass
-
-
-class Trie:
-    def __init__(self):
-        # Initialize this Trie (add a root node)
-        pass
-
-    def insert(self, word):
-        # Add a word to the Trie
-        pass
-
-    def find(self, prefix):
-        # Find the Trie node that represents this prefix
-        pass
+        suffixes = []
+        for char, node in self.children.items():
+            if node.isWord:
+                suffixes.append(suffix + char)
+            if node.children:
+                suffixes += node.suffixes(suffix + char)
+        return suffixes
 
 
 ############------------ TESTS ------------############
