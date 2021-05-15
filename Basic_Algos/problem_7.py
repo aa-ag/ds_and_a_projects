@@ -37,7 +37,7 @@ class RouteTrie:
             node = node.children[i]
         node.handler = handler
 
-    def find(self, ...):
+    def find(self, path):
         # Starting at the root, navigate the Trie
         # to find a match for this path
         # Return the handler for a match,
@@ -46,7 +46,17 @@ class RouteTrie:
         # A RouteTrieNode will be similar to our
         # autocomplete TrieNode...
         # with one additional element, a handler.
-        pass
+        if len(path) == 0:
+            return None
+
+        node = self.root
+
+        for i in path:
+            if i not in node.children:
+                return None
+            node = node.children[i]
+
+        return node.handler
 
 
 class Router:
