@@ -2,30 +2,27 @@
 from collections import defaultdict
 
 
-# A RouteTrieNode will be similar to our autocomplete TrieNode...
-# with one additional element, a handler.
 ############------------ CLASSES ------------############
-
-class TrieNode:
+class RouterTrieNode:
     def __init__(self, handler=None):
         # Initialize the node with children
         # as before, plus a handler
-        self.children = defaultdict(TrieNode)
+        self.children = defaultdict(RouterTrieNode)
         self.handler = handler
 
     def insert(self, path_part):
         # Insert the node as before
-        self.children[path_part] = TrieNode()
+        self.children[path_part] = RouterTrieNode()
 
 
 # A RouteTrie will store our routes
 # and their associated handlers
-class Trie:
+class RouterTrie:
     def __init__(self, handler):
         # Initialize the trie with an root node
         # and a handler, this is the root path
         # or home page node
-        self.root = TrieNode(handler)
+        self.root = RouterTrieNode(handler)
 
     def insert(self, path, handler):
         # Similar to our previous example
@@ -33,10 +30,10 @@ class Trie:
         # Make sure you assign the handler
         # to only the leaf (deepest) node of this path
         node = self.root
-        for path_part in path:
+        for element in path:
             # if path_part not in node.children:
-            node.insert(path_part)
-            node = node.children[path_part]
+            node.insert(element)
+            node = node.children[element]
         node.handler = handler
 
     def find(self, path):
@@ -46,10 +43,10 @@ class Trie:
         # Return the handler for a match,
         # or None for no match
         node = self.root
-        for path_part in path:
-            if path_part not in node.children:
+        for i in path:
+            if i not in node.children:
                 return None
-            node = node.children[path_part]
+            node = node.children[i]
         return node.handler
 
 
@@ -60,7 +57,7 @@ class Router:
         # for holding our routes
         # You could also add a handler
         # for 404 page not found responses as well!
-        self.routeTrie = Trie(handler)
+        self.route_trie = RouterTrie(handler)
         self.not_found_hanlder = not_found_handler
 
     def add_handler(self, path, handler):
@@ -70,7 +67,7 @@ class Router:
         # as a list to the RouteTrie
         # node = self.routeTrie
         path_list = self.split_path(path)
-        self.routeTrie.insert(path_list, handler)
+        self.route_trie.insert(path_list, handler)
 
     def lookup(self, path):
         # lookup path (by parts) and
@@ -81,7 +78,7 @@ class Router:
         # with and without a trailing slash
         # e.g. /about and /about/ both return the /about handler
         path_list = self.split_path(path)
-        found = self.routeTrie.find(path_list)
+        found = self.route_trie.find(path_list)
         if found is None:
             return self.not_found_hanlder
         return found
@@ -91,7 +88,6 @@ class Router:
         # both the add_handler and loopup functions,
         # so it should be placed in a function here
         path = path.strip('/')
-        # return path.split('/') if path else []
         if path:
             return path.split('/')
         return []
@@ -99,8 +95,8 @@ class Router:
 
 ############------------ TESTS ------------############
 def test_case_1():
-    router = Router("root handler", "not found handler")
-    print(router)
+    router = Router("root handler", "404 page not found")
+
     router.add_handler("/home/about", "about handler")  # add a route
 
     # some lookups with the expected output
@@ -114,6 +110,7 @@ def test_case_1():
     print(router.lookup("/home/about/"))
     # should print 'not found handler'
     # or None if you did not implement one
+    router.add_handler("/home/about/me", "about me handler")
     print(router.lookup("/home/about/me"))
 
 
