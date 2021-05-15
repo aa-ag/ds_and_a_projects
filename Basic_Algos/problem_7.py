@@ -52,7 +52,7 @@ class RouterTrie:
 
 # The Router class will wrap the Trie and handle
 class Router:
-    def __init__(self, handler, not_found_handler):
+    def __init__(self, handler, not_found_handler='404 page not found'):
         # Create a new RouteTrie
         # for holding our routes
         # You could also add a handler
@@ -66,8 +66,8 @@ class Router:
         # and pass the pass parts
         # as a list to the RouteTrie
         # node = self.routeTrie
-        path_list = self.split_path(path)
-        self.route_trie.insert(path_list, handler)
+        elements_in_path = self.split_path(path)
+        self.route_trie.insert(elements_in_path, handler)
 
     def lookup(self, path):
         # lookup path (by parts) and
@@ -77,8 +77,8 @@ class Router:
         # bonus points if a path works
         # with and without a trailing slash
         # e.g. /about and /about/ both return the /about handler
-        path_list = self.split_path(path)
-        found = self.route_trie.find(path_list)
+        elements_in_path = self.split_path(path)
+        found = self.route_trie.find(elements_in_path)
         if found is None:
             return self.not_found_hanlder
         return found
@@ -87,9 +87,9 @@ class Router:
         # you need to split the path into parts for
         # both the add_handler and loopup functions,
         # so it should be placed in a function here
-        path = path.strip('/')
-        if path:
-            return path.split('/')
+        clean_path = path.replace('/', '')
+        if clean_path != '':
+            return clean_path.split('/')
         return []
 
 
@@ -110,11 +110,21 @@ def test_case_1():
     print(router.lookup("/home/about/"))
     # should print 'not found handler'
     # or None if you did not implement one
-    router.add_handler("/home/about/me", "about me handler")
     print(router.lookup("/home/about/me"))
+
+
+def test_case_2():
+    router = Router("root handler")
+    print(router.lookup("/home"))
+    # 404 page not found
+    print(router.lookup(""))
+    # root handler
 
 
 ############------------ DRIVER CODE ------------############
 if __name__ == '__main__':
     # TEST CASE 1
     test_case_1()
+
+    # TEST CASE 2
+    test_case_2()

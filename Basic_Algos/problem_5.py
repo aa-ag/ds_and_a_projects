@@ -22,9 +22,9 @@ class TrieNode:
 
     def suffixes(self, suffix=''):
         suffixes = []
-        for char, node in self.children.items():
+        for character, node in self.children.items():
             if node.is_word:
-                suffixes.append(suffix + char)
+                suffixes.append(suffix + character)
             if node.children:
                 suffixes += node.suffixes(suffix + char)
 
@@ -37,8 +37,8 @@ class Trie:
 
     def insert(self, word):
         node = self.root
-        for char in word:
-            node = node.children[char]
+        for character in word:
+            node = node.children[character]
         node.is_word = True
 
     def exists(self, word):
@@ -47,9 +47,9 @@ class Trie:
 
     def find(self, prefix):
         node = self.root
-        for char in prefix:
-            if char in node.children:
-                node = node.children[char]
+        for character in prefix:
+            if character in node.children:
+                node = node.children[character]
             else:
                 return None
         return node
