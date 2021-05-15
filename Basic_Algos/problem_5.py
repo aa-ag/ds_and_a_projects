@@ -1,54 +1,4 @@
 '''
-Before we start let us reiterate 
-the key components of a Trie or Prefix Tree. 
-A trie is a tree-like data structure 
-that stores a dynamic set of strings. 
-Tries are commonly used to facilitate operations 
-like predictive text or autocomplete features 
-on mobile phones or web search.
-
-Before we move into the autocomplete 
-function we need to create a working trie 
-for storing strings. We will create two classes:
-
-A Trie class that contains the root node (empty string)
-A TrieNode class that exposes the general functionality 
-of the Trie, like inserting a word or finding 
-the node which represents a prefix.
-Give it a try by implementing the TrieNode 
-and Trie classes below!
-'''
-
-############------------ IMPORTS ------------############
-from ipywidgets import widgets
-from IPython.display import display
-from ipywidgets import interact
-
-
-############------------ FUNCTIONS ------------############
-# Represents a single node in the Trie
-class TrieNode:
-    def __init__(self):
-        # Initialize this node in the Trie
-
-    def insert(self, char):
-        # Add a child node in this Trie
-
-        # The Trie itself containing the root node and insert/find functions
-
-
-class Trie:
-    def __init__(self):
-        # Initialize this Trie (add a root node)
-
-    def insert(self, word):
-        # Add a word to the Trie
-
-    def find(self, prefix):
-        # Find the Trie node that represents this prefix
-
-
-'''
 Finding Suffixes¶
 Now that we have a functioning Trie, 
 we need to add the ability to list suffixes to implement 
@@ -66,11 +16,18 @@ try to add the suffixes function below.
 collecting suffixes as you go.)
 '''
 
+############------------ IMPORTS ------------############
+# from ipywidgets import widgets
+# from IPython.display import display
+# from ipywidgets import interact
 
+
+############------------ FUNCTIONS ------------############
+# Represents a single node in the Trie
 class TrieNode:
     def __init__(self):
         # Initialize this node in the Trie
-        pass
+        self.children = {}
 
     def insert(self, char):
         # Add a child node in this Trie
@@ -82,6 +39,20 @@ class TrieNode:
         pass
 
 
+class Trie:
+    def __init__(self):
+        # Initialize this Trie (add a root node)
+        pass
+
+    def insert(self, word):
+        # Add a word to the Trie
+        pass
+
+    def find(self, prefix):
+        # Find the Trie node that represents this prefix
+        pass
+
+
 ############------------ TESTS ------------############
 MyTrie = Trie()
 wordList = [
@@ -89,6 +60,7 @@ wordList = [
     "fun", "function", "factory",
     "trie", "trigger", "trigonometry", "tripod"
 ]
+
 for word in wordList:
     MyTrie.insert(word)
 
