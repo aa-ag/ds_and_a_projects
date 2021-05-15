@@ -17,20 +17,16 @@ collecting suffixes as you go.)
 '''
 
 ############------------ IMPORTS ------------############
-import collections
+from collections import defaultdict
 
 
 ############------------ FUNCTIONS ------------############
-# Represents a single node in the Trie
 class TrieNode:
     def __init__(self):
-        # Initialize this node in the Trie
-        self.children = collections.defaultdict(TrieNode)
-        self.is_word = False
+        self.children = defaultdict(TrieNode)
+        self.isWord = False
 
     def suffixes(self, suffix=''):
-        # Recursive function that collects the suffix for
-        # all complete words below this point
         suffixes = []
         for char, node in self.children.items():
             if node.isWord:
@@ -38,6 +34,30 @@ class TrieNode:
             if node.children:
                 suffixes += node.suffixes(suffix + char)
         return suffixes
+
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            node = node.children[char]
+        node.isWord = True
+
+    def exists(self, word):
+        node = self.find(word)
+        return node.isWord if node else False
+
+    def find(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char in node.children:
+                node = node.children[char]
+            else:
+                return None
+        return node
 
 
 ############------------ TESTS ------------############
