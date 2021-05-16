@@ -15,4 +15,4 @@ With exercise limitations being:
 
 What seemed like a sensible approach was to set some "trackers" using the absolute first element in any given input list/array, as long as they are indeed valid inputs (non-empty, list of integers) and iterate over each element in the list keeping track of whether the next element is heigher or lower than that first value-tracker.
 
-This way, using very little additional space, in one traversal we can were able to find all tests.
+This way, using very little additional space, in one traversal we can were able to find all tests without worrying about if the list was sorted.

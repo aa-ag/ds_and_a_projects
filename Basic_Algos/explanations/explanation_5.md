@@ -4,7 +4,7 @@
 
 ## SPACE COMPLEXITY 
 
-`O(ALPHABET_SIZE * key_length * N)`
+`O(m * n)` where m is the length of the word and n is the number of words
 
 ## Design choices
 
@@ -16,6 +16,8 @@ Where I tried to gain some speed was in having each `TrieNode` be a `defaultdict
 
 \[1\] https://stackoverflow.com/questions/13032116/trie-complexity-and-searching
 
-\[2\] https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
+\[2\] https://dev.to/katkelly/trie-like-pie-539o
 
-\[3\] https://www.cs.cmu.edu/~fp/courses/15122-f10/lectures/18-tries.pdf
+\[3\] https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
+
+\[4\] https://www.cs.cmu.edu/~fp/courses/15122-f10/lectures/18-tries.pdf
