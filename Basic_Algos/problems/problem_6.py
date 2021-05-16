@@ -74,15 +74,6 @@ def test_case_4():
 
 # TEST CASE 5
 def test_case_5():
-    integers = 'this is a string'
-    if input_is_valid(integers) == False:
-        return "Invalid input type"
-    random.shuffle(integers)
-    return "Pass" if ((0, 0) == get_min_max(integers)) else "Fail"
-
-
-# TEST CASE 6
-def test_case_6():
     integers = []
     if input_is_valid(integers) == False:
         return "Invalid input type"
@@ -106,6 +97,3 @@ if __name__ == "__main__":
 
     # TEST CASE 5
     print(test_case_5())  # Invalid input type
-
-    # TEST CASE 6
-    print(test_case_6())  # Invalid input type
