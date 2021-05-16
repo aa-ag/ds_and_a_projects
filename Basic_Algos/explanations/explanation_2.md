@@ -1,2 +1,9 @@
-TIME COMPLEXITY: O(log n).
-SPACE COMPLEXITY: O(n).
+## TIME COMPLEXITY
+
+O(log n).
+
+## SPACE COMPLEXITY 
+
+O(n).
+
+## Design choices

@@ -2,22 +2,32 @@
 def sqrt(n):
     """
      creates base case for n = 0/1
-     sets a variable i to 1
-     to try everything from 1 up to
-     i * i >= n
+     sets pointers at 
     """
-
-    if n == 0 or n == 1:
+    # base cases for 0 and 1
+    if n in (0, 1):
         return n
 
-    i = 1
-    floored_squared_root = 1
+    # pointers
+    start = 1
+    end = n
 
-    while floored_squared_root <= n:
-        i += 1
-        floored_squared_root = i * i
+    # binary search using while loop
+    # from `start` up to `n`
+    while start <= end:
+        middle = (start + end) // 2
 
-    return i - 1
+        if middle * middle == n:
+            return middle
+
+        if (middle * middle) < n:
+            start = middle + 1
+            answer = middle
+
+        else:
+            end = middle - 1
+
+    return answer
 
 
 def input_is_valid(n):
@@ -75,19 +85,20 @@ def test_case_6(n):
 ############------------ DRIVER CODE ------------############
 if __name__ == '__main__':
     # TEST 1
-    print(test_case_1(3))
+    print(test_case_1(3))  # Pass
 
     # TEST 2
-    print(test_case_2(0))
+    print(test_case_2(0))  # Pass
 
     # TEST 3
-    print(test_case_3(4))
+    print(test_case_3(4))  # Pass
 
     # TEST 4
-    print(test_case_4(1))
+    print(test_case_4(1))  # Pass
 
     # TEST 5
-    print(test_case_5(5))
+    print(test_case_5(5))  # Pass
 
     # TEST 6
     print(test_case_6('this is a string'))
+    # Invalid input
