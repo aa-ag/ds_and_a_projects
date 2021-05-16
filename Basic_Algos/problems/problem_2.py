@@ -1,32 +1,29 @@
 ############------------ FUNCTIONS ------------############
 def rotated_array_search(input_list, number):
-    '''
-
-    '''
     # set pointers
-    low = 0
-    high = len(input_list)
+    lowerbound = 0
+    upperbound = len(input_list)
 
-    # set conditions to break out of the loop
-    while low < high:
+    # set condition to break out of the loop
+    while lowerbound < upperbound:
         # set middle index
-        mid = low + (high-low)//2
+        middle = lowerbound + (upperbound - lowerbound)//2
         # base case
         # if the element in the middle index is the number
         # return its index
-        if input_list[mid] == number:
-            return mid
+        if input_list[middle] == number:
+            return middle
 
-        if input_list[low] <= input_list[mid]:
-            if number >= input_list[low] and number < input_list[mid]:
-                high = mid
+        if input_list[lowerbound] <= input_list[middle]:
+            if number >= input_list[lowerbound] and number < input_list[middle]:
+                upperbound = middle
             else:
-                low = mid+1
+                lowerbound = middle + 1
         else:
-            if number <= input_list[high-1] and number > input_list[mid]:
-                low = mid+1
+            if number <= input_list[upperbound - 1] and number > input_list[middle]:
+                lowerbound = middle + 1
             else:
-                high = mid
+                upperbound = middle
     # alternatively, the number isn't in the list
     return -1
 

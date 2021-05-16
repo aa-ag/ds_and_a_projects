@@ -4,7 +4,7 @@
 
 ## SPACE COMPLEXITY 
 
-`O(n)`
+`O(1)`
 
 ## Design choices
 
