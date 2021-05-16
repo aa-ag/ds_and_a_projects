@@ -1,31 +1,32 @@
 ############------------ FUNCTIONS ------------############
 def sqrt(n):
     """
-     creates base case for n = 0/1
-     sets pointers at 
+     perform binary search from 
+     1 to a number that is larger than n
+     and return value previous to that limit
     """
     # base cases for 0 and 1
     if n in (0, 1):
         return n
 
     # pointers
-    start = 1
-    end = n
+    lowerbound = 1
+    upperbound = n
 
     # binary search using while loop
-    # from `start` up to `n`
-    while start <= end:
-        middle = (start + end) // 2
+    # from `lowerbound` up to `n`
+    while lowerbound <= upperbound:
+        middle = (lowerbound + upperbound) // 2
 
         if middle * middle == n:
             return middle
 
-        if (middle * middle) < n:
-            start = middle + 1
+        if middle * middle < n:
+            lowerbound = middle + 1
             answer = middle
 
         else:
-            end = middle - 1
+            upperbound = middle - 1
 
     return answer
 
