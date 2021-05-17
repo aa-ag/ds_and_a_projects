@@ -1,4 +1,7 @@
 ############------------ IMPORTS ------------############
+from ipywidgets import interact
+from IPython.display import display
+from ipywidgets import widgets
 from collections import defaultdict
 
 
@@ -50,9 +53,12 @@ wordList = [
     "fun", "function", "factory",
     "trie", "trigger", "trigonometry", "tripod"
 ]
-
 for word in wordList:
     MyTrie.insert(word)
+
+
+# THIS SECTION NEEDS TO BE RAN IN JUPYTER NOTEBOOK, ELSE
+# WILL RESULT IN ERROR
 
 
 def f(prefix):
