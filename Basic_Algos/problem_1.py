@@ -72,7 +72,7 @@ def test_case_4(n):
 # TEST 5
 def test_case_5(n):
     if input_is_valid(n) == True:
-        return "Pass" if (n == sqrt(27)) else "Fail"
+        return "Pass" if (n == sqrt(1000000)) else "Fail"
     return "Invalid input"
 
 
@@ -98,7 +98,7 @@ if __name__ == '__main__':
     print(test_case_4(1))  # Pass
 
     # TEST 5
-    print(test_case_5(5))  # Pass
+    print(test_case_5(1000))  # Pass
 
     # TEST 6
     print(test_case_6('this is a string'))
