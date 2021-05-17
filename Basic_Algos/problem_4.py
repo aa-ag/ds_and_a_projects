@@ -1,9 +1,9 @@
 ############------------ FUNCTIONS ------------############
 def sort_012(input_list):
     """
-     checks inputs: (i) most be lists, 
+     checks inputs: (i) most be lists,
      (ii) elements must only be 0, 1 or 2
-     places 0's and 2's in correct ends of list, 
+     places 0's and 2's in correct ends of list,
      hence leaving 1's in correct place too
     """
 
@@ -55,65 +55,74 @@ def input_is_valid(input_list):
 ############------------ TESTS ------------############
 # TEST CASE 1
 def test_case_1(test_case):
-    print(test_case)
+    if input_is_valid(test_case) == False:
+        return "invalid input"
     sort_012(test_case)
-    print(test_case)
     if test_case == sorted(test_case):
-        print("Pass")
+        return "Pass"
     else:
-        print("Fail")
+        return "Fail"
 
 
 # TEST CASE 2
 def test_case_2(test_case):
+    if input_is_valid(test_case) == False:
+        return "invalid input"
     sort_012(test_case)
     if test_case == sorted(test_case):
-        print("Pass")
+        return "Pass"
     else:
-        print("Fail")
+        return "Fail"
 
 
 # TEST CASE 3
 def test_case_3(test_case):
+    if input_is_valid(test_case) == False:
+        return "invalid input"
     sort_012(test_case)
     if test_case == sorted(test_case):
-        print("Pass")
+        return "Pass"
     else:
-        print("Fail")
+        return "Fail"
 
 
 # TEST CASE 4
 def test_case_4(test_case):
+    if input_is_valid(test_case) == False:
+        return "invalid input"
     sort_012(test_case)
     if test_case == sorted(test_case):
-        print("Pass")
+        return "Pass"
     else:
-        print("Fail")
+        return "Fail"
 
 
 # TEST CASE 5
 def test_case_5(test_case):
+    if input_is_valid(test_case) == False:
+        return "invalid input"
     sort_012(test_case)
     if test_case == sorted(test_case):
-        print("Pass")
+        return "Pass"
     else:
-        print("Fail")
+        return "Fail"
 
 
 ############------------ DRIVER CODE ------------############
 if __name__ == "__main__":
     # TEST CASE 1
-    test_case_1([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
+    print(test_case_1([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2]))
 
     # TEST CASE 2
-    test_case_2([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2,
-                 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
+    print(test_case_2([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2,
+                       2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1]))
 
     # TEST CASE 3
-    test_case_3([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
+    print(test_case_3([0, 0, 0, 0, 0, 0, 1, 1,
+                       1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2]))
 
     # TEST CASE 4
-    test_case_4({0, 0, 0, 0, 0})
+    print(test_case_4({0, 0, 0, 0, 0}))
 
     # TEST CASE 5
-    test_case_5([0, 1, 2, 0, 1, 2, 5])
+    print(test_case_5([0, 1, 2, 0, 1, 2, 5]))
