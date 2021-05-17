@@ -90,7 +90,8 @@ class Router:
             self.route_trie.insert(elements_in_path, handler)
             self.path_length_in_characters += len(path)
         else:
-            raise ValueError("Can't handle that")
+            print("This input is invalid: it would make the URL too long")
+            return
 
     def lookup(self, path):
         '''
@@ -155,7 +156,7 @@ def test_case_2():
 def test_case_3():
     r = Router("root handler")
     r.add_handler("/" + ("a" * 1900), "too large")
-    # ValueError: Can't handle that
+    # prints error message "Can't handle that" because input is too long:
     # https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers
 
 
