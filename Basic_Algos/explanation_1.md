@@ -12,7 +12,7 @@ There were two key limitations on how I was able to aproach this problem.
 
 First, using any Python library wasn't allowed. 
 
-Second, the expected time complexity was O(log(n)). 
+Second, the expected time complexity was `O(log(n))`. 
 
 To meet both criteria, the most time-efficient way to approach the problem was to perform a binary search on an moving "middle" which is set by discarding half of all possible answers.
 
