@@ -4,10 +4,13 @@ import heapq
 
 ############------------ FUNCTIONS ------------############
 def a_star():
-    heap = []
-    heapq.heapify(heap)
-    heapq.heappush(heap, 0)
-    print(heap)
+    frontier = []
+    heapq.heapify(frontier)
+
+    for i in range(20):
+        heapq.heappush(frontier, i)
+
+    print(frontier)
 
 
 ############------------ DRIVER CODE ------------############
