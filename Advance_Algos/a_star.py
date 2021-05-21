@@ -17,6 +17,9 @@ class PriorityQueue:
         priority, value = heapq.heappop(self.heap)
         return value
 
+    def __len__(self):
+        return len(self.heap)
+
 
 ############------------ FUNCTIONS ------------############
 def a_star():
