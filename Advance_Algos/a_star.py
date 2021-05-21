@@ -10,30 +10,36 @@ class PriorityQueue:
         for value in iterable:
             heapq.heappush(self.heap, (0, value))
 
-    def add(self, value, priority=0):
+    def enqueue(self, value, priority=0):
         heapq.heappush(self.heap, (priority, value))
 
-    def pop(self):
+    def dequeque(self):
         priority, value = heapq.heappop(self.heap)
         return value
 
-    def __len__(self):
+    def __str__(self):
+        return self.heap.__str__()
+
+    def size(self):
         return len(self.heap)
 
 
 ############------------ FUNCTIONS ------------############
-def a_star():
-    pass
+def test_priority_queue():
+
+    priority_queue = PriorityQueue()
+
+    priority_queue.enqueue(0, 1)
+    priority_queue.enqueue(0, 2)
+    priority_queue.enqueue(0, 2)
+
+    print(priority_queue)
+    # [(1, 0), (2, 0), (2, 0)]
+
+    print(priority_queue.size())
+    # 3
 
 
 ############------------ DRIVER CODE ------------############
 if __name__ == "__main__":
-    a_star()
-
-'''
-f(n) = g(n) + h(n)
-
-g  (n) : The actual cost path from the start node to the current node. 
-h (itn) : The actual cost path from the current node to goal node.
-f  (n) : The actual cost path from the start node to the goal node.
-'''
+    test_priority_queue()
