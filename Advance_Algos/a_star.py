@@ -30,14 +30,19 @@ def test_priority_queue():
     priority_queue = PriorityQueue()
 
     priority_queue.enqueue(0, 1)
-    priority_queue.enqueue(0, 2)
-    priority_queue.enqueue(0, 2)
+    priority_queue.enqueue(1, 2)
+    priority_queue.enqueue(2, 3)
 
     print(priority_queue)
-    # [(1, 0), (2, 0), (2, 0)]
+    # [(1, 0), (2, 1), (3, 2)]
 
     print(priority_queue.size())
     # 3
+
+    priority_queue.dequeque()
+    priority_queue.dequeque()
+    print(priority_queue)
+    # [(3, 2)]
 
 
 ############------------ DRIVER CODE ------------############
