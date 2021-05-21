@@ -13,9 +13,12 @@ class PriorityQueue:
     def add(self, value, priority=0):
         heapq.heappush(self.heap, (priority, value))
 
+    def pop(self):
+        priority, value = heapq.heappop(self.heap)
+        return value
+
+
 ############------------ FUNCTIONS ------------############
-
-
 def a_star():
     pass
 
