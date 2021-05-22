@@ -1,50 +1,49 @@
-############------------ IMPORTS ------------############
-import heapq
+# SOURCE:
+# https://github.com/Moglten/Nanodegree-Data-structure-and-Algorithm-Udacity/blob/master/Route%20planner/Code.py
+
+import math
+from queue import PriorityQueue
 
 
-############------------ HELPER CODE ------------############
-class PriorityQueue:
+def shortest_path(map, start, goal):
+    intersections = map.intersections
+    roads = map.roads
 
-    def __init__(self, iterable=[]):
-        self.heap = []
-        for value in iterable:
-            heapq.heappush(self.heap, (0, value))
+    frontier = PriorityQueue()
+    frontier.put(0, start)
+    distance_from_start = {start: 0}
+    prev = {start: None}
+    distance_frontier = {0: start}
+    current_node = ''
+    while current_node != goal:
+        shortest_distance = frontier.get()
+        current_node = distance_frontier[shortest_distance]
+        for node in roads[current_node]:
+            g = distance_from_start[current_node] + calculate_distance(
+                intersections[node], intersections[current_node])
+            h = calculate_distance(intersections[node], intersections[goal])
+            if node not in distance_from_start or g < distance_from_start[node]:
+                f = g + h
+                frontier.put(f, node)
+                distance_frontier[f] = node
+                distance_from_start[node] = g
+                prev[node] = current_node
 
-    def enqueue(self, value, priority=0):
-        heapq.heappush(self.heap, (priority, value))
-
-    def dequeque(self):
-        priority, value = heapq.heappop(self.heap)
-        return value
-
-    def __str__(self):
-        return self.heap.__str__()
-
-    def size(self):
-        return len(self.heap)
-
-
-############------------ FUNCTIONS ------------############
-def test_priority_queue():
-
-    priority_queue = PriorityQueue()
-
-    priority_queue.enqueue(0, 1)
-    priority_queue.enqueue(1, 2)
-    priority_queue.enqueue(2, 3)
-
-    print(priority_queue)
-    # [(1, 0), (2, 1), (3, 2)]
-
-    print(priority_queue.size())
-    # 3
-
-    priority_queue.dequeque()
-    priority_queue.dequeque()
-    print(priority_queue)
-    # [(3, 2)]
+    return get_right_path(prev, start, goal)
 
 
-############------------ DRIVER CODE ------------############
-if __name__ == "__main__":
-    test_priority_queue()
+def calculate_distance(point1, point2):
+    x_diff = point2[0] - point1[0]
+    y_diff = point2[1] - point1[1]
+    distance = math.sqrt(x_diff * x_diff + y_diff * y_diff)
+    return distance
+
+
+def get_right_path(prev, start, goal):
+    path = [goal]
+    node = goal
+    while prev[node] != None:
+        path.append(prev[node])
+        node = prev[node]
+    path.reverse()
+    return path
