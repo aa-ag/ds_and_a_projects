@@ -1,10 +1,30 @@
 # SOURCE:
 # https://github.com/Moglten/Nanodegree-Data-structure-and-Algorithm-Udacity/blob/master/Route%20planner/Code.py
-
+############------------ IMPORTS ------------############
+import heapq
 import math
-from queue import PriorityQueue
 
 
+############------------ HELPER CODE ------------############
+class PriorityQueue:
+
+    def __init__(self, iterable=[]):
+        self.heap = []
+        for value in iterable:
+            heapq.heappush(self.heap, (0, value))
+
+    def add(self, value, priority=0):
+        heapq.heappush(self.heap, (priority, value))
+
+    def pop(self):
+        priority, value = heapq.heappop(self.heap)
+        return value
+
+    def __len__(self):
+        return len(self.heap)
+
+
+############------------ FUNCTIONS ------------############
 def shortest_path(map, start, goal):
     intersections = map.intersections
     roads = map.roads
