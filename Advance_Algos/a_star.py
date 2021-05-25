@@ -1,69 +1,48 @@
-# SOURCE:
-# https://github.com/Moglten/Nanodegree-Data-structure-and-Algorithm-Udacity/blob/master/Route%20planner/Code.py
 ############------------ IMPORTS ------------############
-import heapq
+from queue import PriorityQueue
 import math
 
 
 ############------------ HELPER CODE ------------############
-class PriorityQueue:
-
-    def __init__(self, iterable=[]):
-        self.heap = []
-        for value in iterable:
-            heapq.heappush(self.heap, (0, value))
-
-    def add(self, value, priority=0):
-        heapq.heappush(self.heap, (priority, value))
-
-    def pop(self):
-        priority, value = heapq.heappop(self.heap)
-        return value
-
-    def __len__(self):
-        return len(self.heap)
+def heuristic_measure(start, goal):
+    return math.sqrt(((start[0] - goal[0]) ** 2) + ((start[1] - goal[1]) ** 2))
 
 
-############------------ FUNCTIONS ------------############
-def shortest_path(map, start, goal):
-    intersections = map.intersections
-    roads = map.roads
-
-    frontier = PriorityQueue()
-    frontier.put(0, start)
-    distance_from_start = {start: 0}
-    prev = {start: None}
-    distance_frontier = {0: start}
-    current_node = ''
-    while current_node != goal:
-        shortest_distance = frontier.get()
-        current_node = distance_frontier[shortest_distance]
-        for node in roads[current_node]:
-            g = distance_from_start[current_node] + calculate_distance(
-                intersections[node], intersections[current_node])
-            h = calculate_distance(intersections[node], intersections[goal])
-            if node not in distance_from_start or g < distance_from_start[node]:
-                f = g + h
-                frontier.put(f, node)
-                distance_frontier[f] = node
-                distance_from_start[node] = g
-                prev[node] = current_node
-
-    return get_right_path(prev, start, goal)
-
-
-def calculate_distance(point1, point2):
-    x_diff = point2[0] - point1[0]
-    y_diff = point2[1] - point1[1]
-    distance = math.sqrt(x_diff * x_diff + y_diff * y_diff)
-    return distance
-
-
-def get_right_path(prev, start, goal):
-    path = [goal]
-    node = goal
-    while prev[node] != None:
-        path.append(prev[node])
-        node = prev[node]
+def generate_path(prev, start, goal):
+    current = goal
+    path = [current]
+    while current is not start:
+        current = prev[current]
+        path.append(current)
     path.reverse()
     return path
+
+
+############------------ FUNCTION ------------############
+def shortest_path(graph, start, goal):
+
+    path_queue = PriorityQueue()
+    path_queue.put(start, 0)
+
+    prev = {start: None}
+    score = {start: 0}
+
+    while not path_queue.empty():
+        current = path_queue.get()
+
+        if current == goal:
+            generate_path(prev, start, goal)
+
+        for node in graph.roads[current]:
+            update_score = score[current] + heuristic_measure(
+                graph.intersections[current], graph.intersections[node])
+
+            if node not in score or update_score < score[node]:
+                score[node] = update_score
+                total_score = update_score + \
+                    heuristic_measure(
+                        graph.intersections[current], graph.intersections[node])
+                path_queue.put(node, total_score)
+                prev[node] = current
+
+    return generate_path(prev, start, goal)
